@@ -10,6 +10,10 @@ Implementation of <a href="https://deepmind.com/blog/article/enformer">Enformer<
 $ pip install enformer-pytorch
 ```
 
+```bash
+If using on Gadi activate the environment enformer-fine-tune under zelun's path
+```
+
 ## Usage
 
 ```python
