@@ -171,6 +171,7 @@ class TargetLengthCrop(nn.Module):
         self.target_length = target_length
 
     def forward(self, x):
+        print(f"Target Length Trim seq_len {x.shape}")
         seq_len, target_len = x.shape[-2], self.target_length
 
         if target_len == -1:
@@ -183,7 +184,7 @@ class TargetLengthCrop(nn.Module):
 
         if trim == 0:
             return x
-
+        print(f"cropped length {x[:, -trim:trim].shape}")
         return x[:, -trim:trim]
 
 def ConvBlock(dim, dim_out = None, kernel_size = 1):
@@ -331,10 +332,14 @@ class Enformer(PreTrainedModel):
         self.transformer = nn.Sequential(*transformer)
 
         # target cropping
-
+        
+        # NOTE: ZELUN here the Enformer is cropped down into the target length
+        # Might need to alter the target length into 1
+        # NOTE: Change it back
+        config.target_length = 200
         self.target_length = config.target_length
         self.crop_final = TargetLengthCrop(config.target_length)
-
+        print(f"this is self.crop_final {self.crop_final} and this is config.target_length {config.target_length}")
         # final pointwise
 
         self.final_pointwise = nn.Sequential(

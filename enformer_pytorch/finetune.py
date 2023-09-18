@@ -92,6 +92,101 @@ def get_enformer_embeddings(
 
 # fine-tune wrapper classes
 
+# Binary classification
+class BinaryAdapterWrapper(nn.Module):
+    def __init__(
+        self,
+        *,
+        enformer,
+        num_tracks=2,
+        post_transformer_embed = False, # whether to take the embeddings from right after the transformer, instead of after the final pointwise convolutional - this would add another layernorm
+        discrete_key_value_bottleneck = False,
+        bottleneck_num_memories = 256,
+        bottleneck_num_codebooks = 4,
+        bottleneck_decay = 0.9,
+        transformer_embed_fn: nn.Module = nn.Identity(),
+        auto_set_target_length = True
+    ):
+        super().__init__()
+        assert isinstance(enformer, Enformer)
+        enformer_hidden_dim = enformer.dim * (2 if not post_transformer_embed else 1)
+        print(f"this is enformer hidden_dim {enformer_hidden_dim}")
+
+        self.discrete_key_value_bottleneck = discrete_key_value_bottleneck
+
+        if discrete_key_value_bottleneck:
+            enformer = DiscreteKeyValueBottleneck(
+                encoder = enformer,
+                dim = enformer_hidden_dim,
+                num_memory_codebooks = bottleneck_num_codebooks,
+                num_memories = bottleneck_num_memories,
+                dim_memory = enformer_hidden_dim // bottleneck_num_codebooks,
+                decay = bottleneck_decay,
+            )
+
+        self.post_transformer_embed = post_transformer_embed
+
+        self.enformer = enformer
+
+        self.auto_set_target_length = auto_set_target_length
+
+        self.criterion = nn.CrossEntropyLoss()
+
+        if post_transformer_embed:
+            self.enformer = deepcopy(enformer)
+            self.enformer._trunk[-1] = nn.Identity()
+            self.enformer.final_pointwise = nn.Identity()
+
+        self.post_embed_transform = Sequential(
+            transformer_embed_fn,
+            nn.LayerNorm(enformer_hidden_dim) if post_transformer_embed else None
+        )
+
+        # NOTE: Output activation is removed since we are doing binary classification
+         
+        self.target_length = 200
+        self.to_tracks = Sequential(
+            # NOTE: ZELUN Added nn.Flatten()
+            nn.Flatten(),
+            nn.Linear(enformer_hidden_dim * self.target_length, num_tracks)
+        )
+
+    def forward(
+        self,
+        seq,
+        *,
+        target = None,
+        freeze_enformer = False,
+        finetune_enformer_ln_only = False,
+        finetune_last_n_layers_only = None
+    ):
+        enformer_kwargs = dict()
+
+        if exists(target) and self.auto_set_target_length:
+            #NOTE: ZELUN DEBUG
+            print(f"========================== TARGET {target} ==========================")
+            # enformer_kwargs = dict(target_length = target.shape[-2])
+            # NOTE: this is trying to set the target length to a fix value regardless of 
+            # how the target tensor is being encoded
+            enformer_kwargs = dict(target_length = 2)
+
+        if self.discrete_key_value_bottleneck:
+            embeddings = self.enformer(seq, return_only_embeddings = True, **enformer_kwargs)
+        else:
+            embeddings = get_enformer_embeddings(self.enformer, seq, freeze = freeze_enformer, train_layernorms_only = finetune_enformer_ln_only, train_last_n_layers_only = finetune_last_n_layers_only, enformer_kwargs = enformer_kwargs)
+
+        print(f"this is the final embeddings shape {embeddings.shape}")
+        preds = self.to_tracks(embeddings)
+
+        if not exists(target):
+            return preds
+        # NOTE: Change to cross entropy loss
+        # print(f"!!!!!!!!!!!!!INSIDE ADAPTER!!!!!!!!!!!!!")
+        # print(f"preds shape {preds.shape}")
+        # print(f"target shape {target.shape}")
+        return self.criterion(preds, target)
+
+
 # extra head projection, akin to how human and mouse tracks were trained
 
 class HeadAdapterWrapper(nn.Module):
@@ -158,6 +253,8 @@ class HeadAdapterWrapper(nn.Module):
         enformer_kwargs = dict()
 
         if exists(target) and self.auto_set_target_length:
+            #NOTE: ZELUN DEBUG
+            print(f"========================== TARGET {target} ==========================")
             enformer_kwargs = dict(target_length = target.shape[-2])
 
         if self.discrete_key_value_bottleneck:

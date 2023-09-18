@@ -10,6 +10,8 @@ from random import randrange, random
 from pathlib import Path
 from pyfaidx import Fasta
 
+SEQUENCE_LENGTH = 196_608
+
 # helper functions
 
 def exists(val):
@@ -245,3 +247,12 @@ class FastaStringExtractor:
     
 def one_hot_encode(sequence):
   return kipoiseq.transforms.functional.one_hot_dna(sequence).astype(np.float32)
+
+def seq_padding(sequence):
+    """
+    TODO: Figure out how we should pad the enformer sequences for predictions
+    """
+    pad_len_left = (SEQUENCE_LENGTH - len(sequence)) // 2
+    pad_len_right = SEQUENCE_LENGTH - pad_len_left - len(sequence)
+    pad_seq = "N" * pad_len_left + sequence + "N" * pad_len_right
+    return pad_seq
