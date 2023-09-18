@@ -41,7 +41,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         return optimizer
 
 # Assume you have DataLoader setup
-batch_size = 1
+batch_size = 2
 train_dataloader = DataLoader(mouse_8_25(data_class='train'), batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(mouse_8_25(data_class='val'), batch_size=batch_size, shuffle=True)
 
@@ -58,3 +58,7 @@ print(f"Memory Allocated {torch.cuda.memory_allocated()}")
 print(f"Memory Reserved {torch.cuda.memory_reserved()}")
 trainer = pl.Trainer(accelerator="gpu", devices=1, max_epochs=2)  # Adjust settings as required
 trainer.fit(model, train_dataloader, val_dataloader)
+
+
+# NOTE: 
+# /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/nn/modules/conv.py -> this file is mod
