@@ -144,19 +144,20 @@ class BinaryAdapterWrapper(nn.Module):
 
         # NOTE: Output activation is removed since we are doing binary classification
          
-        self.target_length = 200
+        # self.target_length = 200
         self.to_tracks = Sequential(
             # NOTE: ZELUN Added nn.Flatten()
             nn.Flatten(),
-            nn.Linear(enformer_hidden_dim * self.target_length, num_tracks)
+            nn.Linear(enformer_hidden_dim * self.enformer.target_length, num_tracks)
         )
+        print(f"this is the enformer target length {self.enformer.target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * self.enformer.target_length}")
 
     def forward(
         self,
         seq,
         *,
         target = None,
-        freeze_enformer = False,
+        freeze_enformer = True,
         finetune_enformer_ln_only = False,
         finetune_last_n_layers_only = None
     ):
@@ -165,10 +166,10 @@ class BinaryAdapterWrapper(nn.Module):
         if exists(target) and self.auto_set_target_length:
             #NOTE: ZELUN DEBUG
             print(f"========================== TARGET {target} ==========================")
-            # enformer_kwargs = dict(target_length = target.shape[-2])
+            enformer_kwargs = dict(target_length = target.shape[-2])
             # NOTE: this is trying to set the target length to a fix value regardless of 
             # how the target tensor is being encoded
-            enformer_kwargs = dict(target_length = 2)
+            # enformer_kwargs = dict(target_length = 2)
 
         if self.discrete_key_value_bottleneck:
             embeddings = self.enformer(seq, return_only_embeddings = True, **enformer_kwargs)
@@ -176,15 +177,15 @@ class BinaryAdapterWrapper(nn.Module):
             embeddings = get_enformer_embeddings(self.enformer, seq, freeze = freeze_enformer, train_layernorms_only = finetune_enformer_ln_only, train_last_n_layers_only = finetune_last_n_layers_only, enformer_kwargs = enformer_kwargs)
 
         print(f"this is the final embeddings shape {embeddings.shape}")
-        preds = self.to_tracks(embeddings)
+        logits = self.to_tracks(embeddings)
 
         if not exists(target):
-            return preds
+            return logits
         # NOTE: Change to cross entropy loss
         # print(f"!!!!!!!!!!!!!INSIDE ADAPTER!!!!!!!!!!!!!")
         # print(f"preds shape {preds.shape}")
         # print(f"target shape {target.shape}")
-        return self.criterion(preds, target)
+        return self.criterion(logits, target), logits
 
 
 # extra head projection, akin to how human and mouse tracks were trained
