@@ -15,6 +15,7 @@ class mouse_8_25(Dataset):
         self.base_dir = '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/'
         # NOTE: not spliting on comma here
         self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+        self.num_workers = 96
 
     def __len__(self):
         return len(self.data)
@@ -32,7 +33,7 @@ class mouse_8_25(Dataset):
         # NOTE: CHANGE THE RETURN
         # print(f"==== target is {target_tensor} ====")
         # print(f"seq SHAPE {sequence_tensor.shape} target SHAPE {target_tensor.shape}")
-        return (sequence_tensor, target_tensor) 
+        return sequence_tensor, target_tensor
         # return {'sequence': sequence_tensor, 'target': target_tensor}
 
 
