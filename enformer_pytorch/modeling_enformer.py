@@ -336,7 +336,7 @@ class Enformer(PreTrainedModel):
         # NOTE: ZELUN here the Enformer is cropped down into the target length
         # Might need to alter the target length into 1
         # NOTE: Change it back
-        config.target_length = 200
+        # config.target_length = 200
         self.target_length = config.target_length
         self.crop_final = TargetLengthCrop(config.target_length)
         print(f"this is self.crop_final {self.crop_final} and this is config.target_length {config.target_length}")
