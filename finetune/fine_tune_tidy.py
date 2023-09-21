@@ -1,4 +1,3 @@
-# import lightning.pytorch as pl
 import os
 import time
 import pytorch_lightning as pl
@@ -25,36 +24,6 @@ from ray.train.lightning import (
 from ray.train.torch import TorchTrainer
 from ray.air.integrations.wandb import WandbLoggerCallback, setup_wandb
 import datetime
-# 1. Poisson negative log-likelihood
-# 2. 
-
-# from pytorch_lightning.callbacks import Callback
-
-# class MetricLogger(pl.Callback):
-
-#     def on_epoch_end(self, trainer, pl_module):
-#         metrics = {
-#             'epoch_loss': pl_module.epoch_loss.item(),
-#             'epoch_accuracy': pl_module.epoch_accuracy.item(),
-#             'epoch_auroc': pl_module.epoch_auroc.item(),
-#             'epoch_mcc': pl_module.epoch_mcc.item()
-#         }
-#         trainer.logger.experiment.log(metrics)
-    
-#     def on_train_end(self, trainer, pl_module):
-#         # If you calculate final metrics for the entire training phase, you can log them here
-#         # Example:
-#         metrics = {
-#             'final_loss': pl_module.final_loss.item(),
-#             'final_accuracy': pl_module.final_accuracy.item(),
-#             'final_auroc': pl_module.final_auroc.item(),
-#             'final_mcc': pl_module.final_mcc.item()
-#         }
-#         trainer.logger.experiment.log(metrics)
-
-#     def on_validation_end(self, trainer: pl.Trainer, pl_module: pl.LightningModule) -> None:
-#         return super().on_validation_end(trainer, pl_module)
-    
 
 class EnformerFineTuneModel(pl.LightningModule):
     def __init__(self, pretrained_model_name):
@@ -85,12 +54,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         return self.model(seq, target=target)
 
     def training_step(self, batch, batch_idx):
-        # NOTE: Don't know why the training step needs to be written in this way
-        # print(f"INSIDE training steps and this the shape {batch[0]}")
         seqs, targets = batch
-        # seqs = batch[0][0]
-        # targets = batch[0][1]
-        # print(f"seqs {seqs.shape} targets {targets.shape}")
         loss, logits = self(seqs, target=targets)
 
         preds = torch.argmax(logits, dim=1)
@@ -98,18 +62,14 @@ class EnformerFineTuneModel(pl.LightningModule):
         correct_count = torch.sum(preds == targets).item()
         accuracy = correct_count / targets.size(0)
 
-        # self.log('train_loss')
         self.log("ptl/train_loss", loss)
         self.log("ptl/train_accuracy", accuracy)
-        # self.log_dict({'train_loss': loss})
         return {'loss': loss}
 
     def validation_step(self, batch, batch_idx):
         seqs, target = batch
         loss, logits = self(seqs, target=target)
 
-        #NOTE: comment out might be useful in the end
-        # print(f"logits {logits}")
         preds = torch.argmax(logits, dim=1)
 
         # Calculate accuracy
@@ -122,7 +82,6 @@ class EnformerFineTuneModel(pl.LightningModule):
         # Select the probabilities corresponding to class 1
         class_1_probs = probabilities[:, 1]
 
-        # print(f"positive class prediction {class_1_probs}")
         auroc = self.auroc(class_1_probs, target.int())
         
         mcc = self.matthews_corrcoef(class_1_probs, target)
@@ -166,16 +125,9 @@ cell_type = 'mixed_meso'
 os.environ["WANDB_RUN_ID"] = f"{cell_type}_fine_tune_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
 train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='val'), batch_size=batch_size, shuffle=True)
-# lr_monitor = LearningRateMonitor(logging_interval='step')
 
 # Initialize model and trainer
-# wandb_logger = WandbLogger(project="Enformer-fine-tune-test")
 model = EnformerFineTuneModel('EleutherAI/enformer-official-rough')
-# for name, para in model.named_parameters():
-#     print('{}: {}'.format(name, para.shape))
-
-# summary(model, (1, 196608, 4), (1))
-# wandb_logger.watch(model)
 
 # Hyperparameter tuning
 scaling_config = ScalingConfig(
@@ -195,7 +147,7 @@ run_config = RunConfig(
 )
 
 search_space = {
-    "lr": tune.loguniform(1e-4, 1e-1),
+    "lr": tune.loguniform(1e-5, 1e-2),
     "batch_size": tune.choice([2, 4, 8]),
 }
 
@@ -241,27 +193,7 @@ def tune_func(num_samples=3):
 
 ray.init()
 time.sleep(30)
-# trainable_with_cpu_gpu = tune.with_resources(trainable, {"cpu": 2, "gpu": 1})
 results = tune_func(num_samples=num_samples)
 end = results.get_best_result(metric="ptl/val_accuracy", mode="max")
 print("BEST END RESULT")
 print(end)
-# , logger=wandb_logger
-# tuner = pl.tuner.tuning.Tuner(trainer)
-
-# lr_finder = tuner.lr_find(model, train_dataloaders=train_dataloader, val_dataloaders=val_dataloader)
-
-# print(f"lr_finder results  {lr_finder.results}")
-
-# fig = lr_finder.plot(suggest=True)
-# fig.savefig("/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/lr_finder_plot.png")
-
-# new_lr = lr_finder.suggestion()
-
-# model.hparams.lr = new_lr
-
-
-
-# NOTE: 
-# /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/nn/modules/conv.py -> this file is mod
-# https://colab.research.google.com/github/ray-project/ray/blob/master/doc/source/tune/examples/tune-pytorch-lightning.ipynb

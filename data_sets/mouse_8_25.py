@@ -1,7 +1,7 @@
 import os
 import torch
 from torch.utils.data import Dataset, DataLoader
-from enformer_pytorch.data import one_hot_encode, seq_padding, str_to_one_hot, str_to_seq_indices
+from enformer_pytorch.data import seq_padding, str_to_one_hot, str_to_seq_indices
 import pandas as pd
 
 class mouse_8_25(Dataset):

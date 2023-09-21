@@ -150,7 +150,8 @@ class BinaryAdapterWrapper(nn.Module):
             nn.Flatten(),
             nn.Linear(enformer_hidden_dim * self.enformer.target_length, num_tracks)
         )
-        print(f"this is the enformer target length {self.enformer.target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * self.enformer.target_length}")
+        # NOTE: ZELUN
+        # print(f"this is the enformer target length {self.enformer.target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * self.enformer.target_length}")
 
     def forward(
         self,
@@ -176,7 +177,8 @@ class BinaryAdapterWrapper(nn.Module):
         else:
             embeddings = get_enformer_embeddings(self.enformer, seq, freeze = freeze_enformer, train_layernorms_only = finetune_enformer_ln_only, train_last_n_layers_only = finetune_last_n_layers_only, enformer_kwargs = enformer_kwargs)
 
-        print(f"this is the final embeddings shape {embeddings.shape}")
+        # NOTE: ZELUN
+        # print(f"this is the final embeddings shape {embeddings.shape}")
         logits = self.to_tracks(embeddings)
 
         if not exists(target):

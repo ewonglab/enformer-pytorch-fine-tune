@@ -171,7 +171,8 @@ class TargetLengthCrop(nn.Module):
         self.target_length = target_length
 
     def forward(self, x):
-        print(f"Target Length Trim seq_len {x.shape}")
+        #NOTE: ZELUN
+        # print(f"Target Length Trim seq_len {x.shape}")
         seq_len, target_len = x.shape[-2], self.target_length
 
         if target_len == -1:
@@ -184,7 +185,8 @@ class TargetLengthCrop(nn.Module):
 
         if trim == 0:
             return x
-        print(f"cropped length {x[:, -trim:trim].shape}")
+        #NOTE: ZELUN
+        # print(f"cropped length {x[:, -trim:trim].shape}")
         return x[:, -trim:trim]
 
 def ConvBlock(dim, dim_out = None, kernel_size = 1):
