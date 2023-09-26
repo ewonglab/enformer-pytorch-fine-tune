@@ -9,11 +9,13 @@ from data_sets.mouse_8_25 import mouse_8_25
 from lightning.pytorch.loggers import WandbLogger
 from torchsummary import summary
 from torchmetrics import AUROC
-from torchmetrics.classification import BinaryMatthewsCorrCoef
+from torchmetrics.classification import BinaryAUROC, BinaryAveragePrecision, BinaryF1Score, BinaryPrecision, BinaryRecall, BinaryMatthewsCorrCoef, BinaryConfusionMatrix
 from lightning.pytorch.callbacks import LearningRateMonitor
 import ray
 from ray import tune
 from ray.tune.schedulers import ASHAScheduler
+from ray.tune.search.optuna import OptunaSearch
+from ray.tune.search.bohb import TuneBOHB
 from ray.train import RunConfig, ScalingConfig, CheckpointConfig
 from ray.train.lightning import (
     RayDDPStrategy,
@@ -43,12 +45,20 @@ class EnformerFineTuneModel(pl.LightningModule):
         self.lr = 1e-3
 
         # logging the metric used
-        self.auroc = AUROC(task="binary") 
         self.matthews_corrcoef = BinaryMatthewsCorrCoef()
+        self.f1_score = BinaryF1Score()
+        self.precision = BinaryPrecision()
+        self.recall = BinaryRecall()
+        self.aupr = BinaryAveragePrecision()
+        self.cfm = BinaryConfusionMatrix()
+        self.auroc = BinaryAUROC()
 
         # setting up the metric logger
         self.eval_loss = []
         self.eval_accuracy = []
+        self.eval_probs = []
+        self.eval_target = []
+        self.eval_preds = []
 
     def forward(self, seq, target):
         return self.model(seq, target=target)
@@ -81,24 +91,73 @@ class EnformerFineTuneModel(pl.LightningModule):
 
         # Select the probabilities corresponding to class 1
         class_1_probs = probabilities[:, 1]
+        
 
         auroc = self.auroc(class_1_probs, target.int())
+        # TODO: add in F1 score, AUPR score precision and recall
+
+        # TODO: need to check if this is correct
+        f1_score = self.f1_score(preds, target.int())
+        
+        precision = self.precision(preds, target.int())
+
+        recall = self.recall(preds, target.int())
+
+        # NOTE: AUPR needs the raw values
+        aupr = self.aupr(class_1_probs, target.int())
         
         mcc = self.matthews_corrcoef(class_1_probs, target)
-        metrics = {'val_loss': loss, 'val_auroc': auroc, 'val_mcc': mcc, 'val_accuracy': accuracy}
-        self.log_dict(metrics)
+        metrics = {
+            'val_loss': loss, 
+            'val_auroc': auroc, 
+            'val_mcc': mcc, 
+            'val_accuracy': accuracy,
+            'val_f1': f1_score,
+            'val_precision': precision,
+            'val_recall': recall,
+            'val_aupr': aupr
+        }
+        self.log_dict(metrics, sync_dist=True)
 
         self.eval_loss.append(torch.tensor(loss))
         self.eval_accuracy.append(torch.tensor(accuracy))
+        self.eval_probs.append(torch.tensor(class_1_probs))
+        self.eval_target.append(torch.tensor(target.int()))
+        self.eval_preds.append(preds)
         return metrics
     
     def on_validation_epoch_end(self) -> None:
         avg_loss = torch.stack(self.eval_loss).mean()
         avg_acc = torch.stack(self.eval_accuracy).mean()
+        probs = torch.cat(self.eval_probs)
+        targets = torch.cat(self.eval_target)
+        preds = torch.cat(self.eval_preds)
+
+        auroc = self.auroc(probs, targets.int())
+        f1_score = self.f1_score(preds, targets.int())
+        
+        precision = self.precision(preds, targets.int())
+
+        recall = self.recall(preds, targets.int())
+
+        aupr = self.aupr(probs, targets.int())
+        
+        mcc = self.matthews_corrcoef(probs, targets.int())
+
         self.log("ptl/val_loss", avg_loss, sync_dist=True)
         self.log("ptl/val_accuracy", avg_acc, sync_dist=True)
+        self.log("ptl/val_auroc", auroc, sync_dist=True)
+        self.log("ptl/val_f1_score", f1_score, sync_dist=True)
+        self.log("ptl/val_precision", precision, sync_dist=True)
+        self.log("ptl/val_recall", recall, sync_dist=True)
+        self.log("ptl/val_aupr", aupr, sync_dist=True)
+        self.log("ptl/val_mcc", mcc, sync_dist=True)
+
         self.eval_loss.clear()
         self.eval_accuracy.clear()
+        self.eval_probs.clear()
+        self.eval_target.clear()
+        self.eval_preds.clear()
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
@@ -113,6 +172,8 @@ if os.environ.get('http_proxy'):
 
 # turn off watch to log faster
 os.environ["WANDB_WATCH"] = "false"
+os.environ["WANDB_MODE"] = "offline"
+
 # set the staging dir
 os.environ["WANDB_DATA_DIR"] = "/home/114/zl1943/data/z_li_hon/wandb_stage"
 
@@ -131,7 +192,7 @@ model = EnformerFineTuneModel('EleutherAI/enformer-official-rough')
 
 # Hyperparameter tuning
 scaling_config = ScalingConfig(
-    num_workers=1, use_gpu=True, resources_per_worker={"CPU": 1, "GPU": 1}
+    num_workers=1, use_gpu=True, resources_per_worker={"CPU": 8, "GPU": 4}
 )
 storage_path_z = "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results"
 
@@ -139,7 +200,7 @@ run_config = RunConfig(
     storage_path=storage_path_z,
     local_dir = storage_path_z,
     checkpoint_config=CheckpointConfig(
-        num_to_keep=2,
+        num_to_keep=1,
         checkpoint_score_attribute="ptl/val_accuracy",
         checkpoint_score_order="max",
     ),
@@ -147,14 +208,14 @@ run_config = RunConfig(
 )
 
 search_space = {
-    "lr": tune.loguniform(1e-5, 1e-2),
-    "batch_size": tune.choice([2, 4, 8]),
+    "lr": tune.loguniform(1e-5, 1e-1),
+    "batch_size": tune.choice([8, 16, 32]),
 }
 
-num_epochs = 8
 
-num_samples = 10
+num_epochs = 2
 
+num_samples = 1
 
 scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
 
@@ -174,6 +235,11 @@ ray_trainer = TorchTrainer(
     run_config=run_config,
 )
 
+bohb_search = TuneBOHB(
+    metric="ptl/val_loss", mode="min"
+)
+
+
 def tune_func(num_samples=3):
     scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
 
@@ -182,11 +248,12 @@ def tune_func(num_samples=3):
 
         param_space={'train_loop_config': search_space},
         tune_config=tune.TuneConfig(
-            metric="ptl/val_accuracy",
-            mode="max",
+            metric="ptl/val_loss",
+            mode="min",
             num_samples=num_samples,
             scheduler=scheduler,
-            max_concurrent_trials=1,
+            max_concurrent_trials=2,
+            search_alg=bohb_search,
         ),
     )
     return tuner.fit()
