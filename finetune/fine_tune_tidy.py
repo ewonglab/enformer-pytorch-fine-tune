@@ -131,7 +131,7 @@ model = EnformerFineTuneModel('EleutherAI/enformer-official-rough')
 
 # Hyperparameter tuning
 scaling_config = ScalingConfig(
-    num_workers=1, use_gpu=True, resources_per_worker={"CPU": 1, "GPU": 1}
+    num_workers=1, use_gpu=True, resources_per_worker={"CPU": 1, "GPU": 4}
 )
 storage_path_z = "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results"
 
@@ -139,9 +139,9 @@ run_config = RunConfig(
     storage_path=storage_path_z,
     local_dir = storage_path_z,
     checkpoint_config=CheckpointConfig(
-        num_to_keep=2,
-        checkpoint_score_attribute="ptl/val_accuracy",
-        checkpoint_score_order="max",
+        num_to_keep=1,
+        checkpoint_score_attribute="ptl/val_loss",
+        checkpoint_score_order="min",
     ),
     callbacks=[WandbLoggerCallback(project=f"{cell_type}_fine_tune")],
 )
@@ -151,10 +151,9 @@ search_space = {
     "batch_size": tune.choice([2, 4, 8]),
 }
 
-num_epochs = 8
+num_epochs = 2
 
-num_samples = 10
-
+num_samples = 2
 
 scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
 
