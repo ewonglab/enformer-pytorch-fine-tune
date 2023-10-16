@@ -1,10 +1,10 @@
 import os
+from enformer_pytorch.finetune import BinaryAdapterWrapper
 import time
 import pytorch_lightning as pl
 import torch
 from torch.utils.data import Dataset, DataLoader
 from enformer_pytorch import Enformer
-from enformer_pytorch.finetune import BinaryAdapterWrapper
 from data_sets.mouse_8_25 import mouse_8_25
 from lightning.pytorch.loggers import WandbLogger
 from torchsummary import summary
@@ -29,6 +29,20 @@ from ray.tune import CLIReporter
 import datetime
 import argparse
 import gc
+import subprocess
+
+def finetune_model(cell_type, lr, layer_size, checkpoint_dir):
+    cmd = [
+        "python3", 
+        "finetune/test_finetune_model.py",
+        "--cell_type", cell_type,
+        "--lr", str(lr),
+        "--layer_size", str(layer_size),
+        "--checkpoint_dir", checkpoint_dir
+    ]
+
+    # Run the command and wait for it to complete
+    subprocess.run(cmd)
 
 
 class EnformerFineTuneModel(pl.LightningModule):
@@ -43,10 +57,8 @@ class EnformerFineTuneModel(pl.LightningModule):
             post_transformer_embed = False,
             auto_set_target_length = False,
             layer_size=config['layer_size'],
-            target_length = 200,
+            target_length = 128,
         )
-        # NOTE: output the shape at all layers
-        # self.example_input_array = torch.Tensor()
         # lr set (default value)
         self.lr = config['lr']
 
@@ -85,17 +97,14 @@ class EnformerFineTuneModel(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         seqs, targets = batch
         loss, logits = self(seqs, target=targets)
-        # print(f"seqs {seqs.shape} -> verifing the batch size para is set")
 
         preds = torch.argmax(logits, dim=1)
 
         correct_count = torch.sum(preds == targets).item()
         accuracy = correct_count / targets.size(0)
 
-        self.log("train_loss", loss)
-        self.log("train_accuracy", accuracy)
-        self.train_loss.append(torch.tensor(loss))
-        self.train_accuracy.append(torch.tensor(loss))
+        self.train_loss.append(loss.clone().detach())
+        self.train_accuracy.append(loss.clone().detach())
         return {'loss': loss}
 
     def on_train_epoch_end(self) -> None:
@@ -123,13 +132,13 @@ class EnformerFineTuneModel(pl.LightningModule):
 
         # Select the probabilities corresponding to class 1
         class_1_probs = probabilities[:, 1]
-        
-
-        self.test_loss.append(torch.tensor(loss))
-        self.test_accuracy.append(torch.tensor(accuracy))
-        self.test_probs.append(torch.tensor(class_1_probs))
-        self.test_target.append(torch.tensor(target.int()))
-        self.test_preds.append(preds)
+        print(f"test logits {logits}")
+        print(f"test probablities {class_1_probs}")
+        self.test_loss.append(loss.clone().detach())
+        self.test_accuracy.append(accuracy)
+        self.test_probs.append(class_1_probs.clone().detach())
+        self.test_target.append(target.int())
+        self.test_preds.append(preds.clone().detach())
 
     def on_test_epoch_end(self) -> None:
         avg_loss = torch.stack(self.test_loss).mean()
@@ -147,7 +156,7 @@ class EnformerFineTuneModel(pl.LightningModule):
 
         aupr = self.aupr(probs, targets.int())
         
-        mcc = self.matthews_corrcoef(probs, targets.int())
+        mcc = torch.tensor(self.matthews_corrcoef(probs, targets.int()), dtype=torch.float32)
 
         self.log("ptl/test_loss", avg_loss, sync_dist=True)
         self.log("ptl/test_accuracy", avg_acc, sync_dist=True)
@@ -179,38 +188,10 @@ class EnformerFineTuneModel(pl.LightningModule):
 
         # Select the probabilities corresponding to class 1
         class_1_probs = probabilities[:, 1]
-        
-
-        # auroc = self.auroc(class_1_probs, target.int())
-        # # TODO: add in F1 score, AUPR score precision and recall
-
-        # # TODO: need to check if this is correct
-        # f1_score = self.f1_score(preds, target.int())
-        
-        # precision = self.precision(preds, target.int())
-
-        # recall = self.recall(preds, target.int())
-
-        # # NOTE: AUPR needs the raw values
-        # aupr = self.aupr(class_1_probs, target.int())
-        
-        # mcc = self.matthews_corrcoef(class_1_probs, target)
-        # metrics = {
-        #     'val_loss': loss, 
-        #     'val_auroc': auroc, 
-        #     'val_mcc': mcc, 
-        #     'val_accuracy': accuracy,
-        #     'val_f1': f1_score,
-        #     'val_precision': precision,
-        #     'val_recall': recall,
-        #     'val_aupr': aupr
-        # }
-        # self.log_dict(metrics, sync_dist=True)
-
-        self.eval_loss.append(torch.tensor(loss))
+        self.eval_loss.append(loss.clone().detach())
         self.eval_accuracy.append(torch.tensor(accuracy))
-        self.eval_probs.append(torch.tensor(class_1_probs))
-        self.eval_target.append(torch.tensor(target.int()))
+        self.eval_probs.append(class_1_probs.clone().detach())
+        self.eval_target.append(target.int())
         self.eval_preds.append(preds)
         # return metrics
     
@@ -230,7 +211,7 @@ class EnformerFineTuneModel(pl.LightningModule):
 
         aupr = self.aupr(probs, targets.int())
         
-        mcc = self.matthews_corrcoef(probs, targets.int())
+        mcc = torch.tensor(self.matthews_corrcoef(probs, targets.int()), dtype=torch.float32)
 
         self.log("ptl/val_loss", avg_loss, sync_dist=True)
         self.log("ptl/val_accuracy", avg_acc, sync_dist=True)
@@ -248,155 +229,165 @@ class EnformerFineTuneModel(pl.LightningModule):
         self.eval_preds.clear()
 
     def configure_optimizers(self):
-        # print(f"this is the lr {self.lr} -> verifing the lr para is set")
         optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
         return optimizer
 
-torch.cuda.empty_cache()
-gc.collect()
-parser = argparse.ArgumentParser()
-parser.add_argument("--cell_type", type=str, required=True, help="Type of the cell")
+if __name__ == '__main__':
+    torch.cuda.empty_cache()
+    gc.collect()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cell_type", type=str, required=True, help="Type of the cell")
 
-# Parse the arguments
-args = parser.parse_args()
+    # Parse the arguments
+    args = parser.parse_args()
 
-# This is the cell type
-cell_type = args.cell_type
+    # This is the cell type
+    cell_type = args.cell_type
 
+    # Tidying up the environment variables
+    if os.environ.get('https_proxy'):
+        del os.environ['https_proxy']
+    if os.environ.get('http_proxy'):
+        del os.environ['http_proxy']
 
-# Tidying up the environment variables
-if os.environ.get('https_proxy'):
-    del os.environ['https_proxy']
-if os.environ.get('http_proxy'):
-    del os.environ['http_proxy']
+    # turn off watch to log faster
+    os.environ["WANDB_WATCH"] = "false"
+    os.environ["WANDB_MODE"] = "offline"
 
+    # set the staging dir
+    os.environ["WANDB_DATA_DIR"] = "/home/114/zl1943/data/z_li_hon/wandb_stage"
 
-# turn off watch to log faster
-os.environ["WANDB_WATCH"] = "false"
-os.environ["WANDB_MODE"] = "offline"
+    os.environ["WANDB_CACHE_DIR"] = "/home/114/zl1943/data/z_li_hon/wandb_stage_cache"
 
-# set the staging dir
-os.environ["WANDB_DATA_DIR"] = "/home/114/zl1943/data/z_li_hon/wandb_stage"
+    # Assume you have DataLoader setup
+    os.environ["WANDB_RUN_ID"] = f"{cell_type}_fine_tune_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
 
-os.environ["WANDB_CACHE_DIR"] = "/home/114/zl1943/data/z_li_hon/wandb_stage_cache"
+    # Add a parser in
+    pl.seed_everything(42)
 
-# Assume you have DataLoader setup
-os.environ["WANDB_RUN_ID"] = f"{cell_type}_fine_tune_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+    # Hyperparameter tuning
+    scaling_config = ScalingConfig(
+        num_workers=1, use_gpu=True, resources_per_worker={"CPU": 8, "GPU": 4}
+    )
 
+    storage_path_z = "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results"
 
-# Add a parser in
-pl.seed_everything(42)
+    reporter = CLIReporter(
+        parameter_columns=["layer_size", "lr", "batch_size"],
+        metric_columns=["ptl/training_accuracy", "ptl/training_loss", "training_iteration"],
+    )
 
-# Hyperparameter tuning
-scaling_config = ScalingConfig(
-    num_workers=1, use_gpu=True, resources_per_worker={"CPU": 8, "GPU": 4}
-)
+    run_config = RunConfig(
+        storage_path=storage_path_z,
+        local_dir = storage_path_z,
+        checkpoint_config=CheckpointConfig(
+            num_to_keep=2,
+            checkpoint_score_attribute="ptl/val_loss",
+            checkpoint_score_order="min",
+        ),
+        progress_reporter=reporter,
+        callbacks=[WandbLoggerCallback(project=f"{cell_type}_fine_tune")],
+    )
 
-storage_path_z = "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results"
+    search_space = {
+        "lr": tune.loguniform(1e-5, 1e-1),
+        "batch_size": tune.choice([4, 8]),
+        "layer_size": tune.choice([8, 16, 32]),
+    }
 
-reporter = CLIReporter(
-    parameter_columns=["layer_size", "lr", "batch_size"],
-    metric_columns=["ptl/training_accuracy", "ptl/training_loss", "training_iteration"],
-)
+    num_epochs = 1
 
-run_config = RunConfig(
-    storage_path=storage_path_z,
-    local_dir = storage_path_z,
-    checkpoint_config=CheckpointConfig(
-        num_to_keep=2,
-        checkpoint_score_attribute="ptl/val_auroc",
-        checkpoint_score_order="max",
-    ),
-    progress_reporter=reporter,
-    callbacks=[WandbLoggerCallback(project=f"{cell_type}_fine_tune")],
-)
+    num_samples = 1
 
-search_space = {
-    "lr": tune.loguniform(1e-5, 1e-1),
-    "batch_size": tune.choice([4, 8]),
-    "layer_size": tune.choice([8, 16, 32]),
-}
+    scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2, metric='ptl/val_loss', mode='min')
 
-num_epochs = 10
+    def train_func(config):
+        trainer = pl.Trainer(accelerator="auto", devices="auto", 
+                            strategy=RayDDPStrategy(find_unused_parameters=True), 
+                            callbacks=[RayTrainReportCallback()],
+                            plugins=[RayLightningEnvironment()],enable_progress_bar=False,
+                            log_every_n_steps=10, deterministic=True)  # Adjust settings as required
+        trainer = prepare_trainer(trainer)
+        train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+        val_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='val'), batch_size=config['batch_size'], num_workers=4)
+        model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+        trainer.fit(model, train_dataloader, val_dataloader)
 
-num_samples = 10
+    ray_trainer = TorchTrainer(
+        train_func,
+        scaling_config=scaling_config,
+        run_config=run_config,
+    )
 
-scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
-
-def train_func(config):
-
-    trainer = pl.Trainer(accelerator="auto", devices="auto", 
-                         strategy=RayDDPStrategy(find_unused_parameters=True), 
-                         callbacks=[RayTrainReportCallback()],
-                         plugins=[RayLightningEnvironment()],enable_progress_bar=False,
-                         log_every_n_steps=10, deterministic=True)  # Adjust settings as required
-    trainer = prepare_trainer(trainer)
-    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
-    val_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='val'), batch_size=config['batch_size'], num_workers=4)
-    test_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='test'), batch_size=config['batch_size'], num_workers=4)
-    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
-    print(f"======================Start Training======================")
-    trainer.fit(model, train_dataloader, val_dataloader)
-    print(f"======================End Training======================")
-
-
-
-
-ray_trainer = TorchTrainer(
-    train_func,
-    scaling_config=scaling_config,
-    run_config=run_config,
-)
-
-bohb_search = TuneBOHB(
-    metric="ptl/val_loss", mode="min"
-)
-
-
-def tune_func(num_samples=3):
     scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
 
-    tuner = tune.Tuner(
-        ray_trainer,
-
-        param_space={'train_loop_config': search_space},
-        tune_config=tune.TuneConfig(
-            metric="ptl/val_loss",
-            mode="min",
-            num_samples=num_samples,
-            scheduler=scheduler,
-            max_concurrent_trials=2,
-            search_alg=bohb_search,
-        ),
+    bohb_search = TuneBOHB(
+        metric="ptl/val_loss", mode="min"
     )
-    print("!!!!!!!!JUST wanted to check how many times this function is being CALLED!!!!!!!!")
-    return tuner.fit()
 
-ray.init()
-time.sleep(30)
-results = tune_func(num_samples=num_samples)
-end = results.get_best_result(metric="ptl/val_auroc", mode="max")
+    def tune_func(num_samples=3):
+        
 
-file_name = f"finetune/best_result/{cell_type}/{cell_type}_fine_tune_best_result.txt"
-os.makedirs(os.path.dirname(file_name), exist_ok=True)
-with open(file_name, "w") as f:
-    f.write(str(end))
-    f.write(str(end.config))
-    f.write(str(end.checkpoint))
-print("BEST END RESULT")
-print(end)
-print(end.config)
-# ray.shutdown()
-torch.cuda.empty_cache()
-gc.collect()
-# with end.checkpoint.as_directory() as checkpoint_dir:
-#     # The model state dict was saved under `model.pt` by the training function
-#     # imported from `ray.tune.examples.mnist_pytorch`
-#     print(f"|||||||||||||||||||||||Started Loading in the model|||||||||||||||||||||||")
-#     model = EnformerFineTuneModel.load_from_checkpoint(os.path.join(checkpoint_dir, "checkpoint.ckpt"), pretrained_model_name='EleutherAI/enformer-official-rough', config=end.config['train_loop_config'])
-#     print(f"|||||||||||||||||||||||End Loading in the model|||||||||||||||||||||||")
-#     trainer_2 = pl.Trainer(accelerator="gpu", devices="auto", deterministic=True)
-#     test_dataloader_2 = DataLoader(mouse_8_25(cell_type=cell_type, data_class='test'), batch_size=1)
-#     print(f"|||||||||||||||||||||||Started Testing|||||||||||||||||||||||")
-#     trainer_2.test(model, dataloaders=[test_dataloader_2])
-#     print(f"|||||||||||||||||||||||Started Testing|||||||||||||||||||||||")
+        tuner = tune.Tuner(
+            ray_trainer,
+            param_space={'train_loop_config': search_space},
+            tune_config=tune.TuneConfig(
+                metric="ptl/val_loss",
+                mode="min",
+                num_samples=num_samples,
+                scheduler=scheduler,
+                max_concurrent_trials=2,
+                search_alg=bohb_search,
+            ),
+        )
+        return tuner.fit()
+    results = tune_func(num_samples=num_samples)
+    end = results.get_best_result(metric="ptl/val_loss", mode="min")
+
+    file_name = f"finetune/best_result/{cell_type}/final_{cell_type}_fine_tune_best_result_with_activation_run_2.txt"
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
+    with open(file_name, "w") as f:
+        f.write(str(end))
+        f.write(str(end.config))
+        f.write(str(end.checkpoint))
+    print("BEST END RESULT")
+    print(end)
+    print(end.config)
+    torch.cuda.empty_cache()
+    gc.collect()
+    checkpoint_dir = end.checkpoint.path
+    checkpoint_config = end.config['train_loop_config']
+    lr = checkpoint_config['lr']
+    batch_size = checkpoint_config['batch_size']
+    layer_size = checkpoint_config['layer_size']
+
+
+    ray.shutdown()
+    print("Sleeping!")
+    time.sleep(5)
+    ray.shutdown()
+    print("Sleeping!")
+    time.sleep(5)
+    ray.shutdown()
+    print("Sleeping!")
+    time.sleep(5)
+    ray.shutdown()
+    print("Sleeping!")
+    time.sleep(5)
+    print("loading model")
+
+    finetune_model(
+        cell_type=cell_type,
+        lr=lr,
+        layer_size=layer_size,
+        checkpoint_dir=checkpoint_dir
+    )
+
+    # model = EnformerFineTuneModel.load_from_checkpoint(os.path.join(checkpoint_dir, "checkpoint.ckpt"), pretrained_model_name='EleutherAI/enformer-official-rough', config=checkpoint_config)
+    # print("Initiating Trainer")
+    # trainer_2 = pl.Trainer(accelerator="gpu", devices="auto", deterministic=True)
+    # print("Initiating Data Loader")
+    # test_dataloader_2 = DataLoader(mouse_8_25(cell_type=cell_type, data_class='test'), batch_size=4)
+    # print("Testing Model")
+    # trainer_2.test(model, dataloaders=[test_dataloader_2])
+    
