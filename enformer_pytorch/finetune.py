@@ -148,15 +148,16 @@ class BinaryAdapterWrapper(nn.Module):
 
         # NOTE: Output activation is removed since we are doing binary classification
          
-        # self.target_length = 200
         self.to_tracks = Sequential(
             # NOTE: ZELUN Added nn.Flatten()
             nn.Flatten(),
             nn.Linear(enformer_hidden_dim * target_length, layer_size),
+            # NOTE: ZELUN TRY adding activation function 
+            nn.GELU(),
             nn.Linear(layer_size, num_tracks)
         )
         # NOTE: ZELUN
-        print(f"this is the layer_size {layer_size} this is the enformer target length {target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * target_length}")
+        # print(f"this is the layer_size {layer_size} this is the enformer target length {target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * target_length}")
 
     def forward(
         self,
@@ -171,7 +172,6 @@ class BinaryAdapterWrapper(nn.Module):
 
         if exists(target) and self.auto_set_target_length:
             #NOTE: ZELUN DEBUG
-            print(f"========================== TARGET {target} ==========================")
             enformer_kwargs = dict(target_length = target.shape[-2])
 
             # NOTE: this is trying to set the target length to a fix value regardless of 
@@ -185,15 +185,10 @@ class BinaryAdapterWrapper(nn.Module):
             embeddings = get_enformer_embeddings(self.enformer, seq, freeze = freeze_enformer, train_layernorms_only = finetune_enformer_ln_only, train_last_n_layers_only = finetune_last_n_layers_only, enformer_kwargs = enformer_kwargs)
 
         # NOTE: ZELUN
-        # print(f"this is the final embeddings shape {embeddings.shape}")
         logits = self.to_tracks(embeddings)
 
         if not exists(target):
             return logits
-        # NOTE: Change to cross entropy loss
-        # print(f"!!!!!!!!!!!!!INSIDE ADAPTER!!!!!!!!!!!!!")
-        # print(f"preds shape {preds.shape}")
-        # print(f"target shape {target.shape}")
         return self.criterion(logits, target), logits
 
 

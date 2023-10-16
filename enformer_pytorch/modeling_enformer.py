@@ -186,7 +186,6 @@ class TargetLengthCrop(nn.Module):
         if trim == 0:
             return x
         #NOTE: ZELUN
-        # print(f"cropped length {x[:, -trim:trim].shape}")
         return x[:, -trim:trim]
 
 def ConvBlock(dim, dim_out = None, kernel_size = 1):
@@ -336,7 +335,6 @@ class Enformer(PreTrainedModel):
         # target cropping
         
         # NOTE: ZELUN here the Enformer is cropped down into the target length
-        # Might need to alter the target length into 1
         # NOTE: Change it back
         # config.target_length = 200
         self.target_length = config.target_length
