@@ -233,6 +233,13 @@ class EnformerFineTuneModel(pl.LightningModule):
         return optimizer
 
 if __name__ == '__main__':
+
+    ############# SETTING PARA #############
+    num_epochs = 1
+
+    num_samples = 1
+    ############# SETTING PARA #############
+    
     torch.cuda.empty_cache()
     gc.collect()
     parser = argparse.ArgumentParser()
@@ -295,9 +302,7 @@ if __name__ == '__main__':
         "layer_size": tune.choice([8, 16, 32]),
     }
 
-    num_epochs = 1
 
-    num_samples = 1
 
     scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2, metric='ptl/val_loss', mode='min')
 
@@ -326,8 +331,6 @@ if __name__ == '__main__':
     )
 
     def tune_func(num_samples=3):
-        
-
         tuner = tune.Tuner(
             ray_trainer,
             param_space={'train_loop_config': search_space},
