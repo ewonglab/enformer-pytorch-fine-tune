@@ -1,0 +1,6 @@
+Result(
+  metrics={'train_loss': 0.6419633626937866, 'train_accuracy': 1.0, 'ptl/val_loss': 0.4430617690086365, 'ptl/val_accuracy': 0.7981651425361633, 'ptl/val_auroc': 0.8851645588874817, 'ptl/val_f1_score': 0.8086956739425659, 'ptl/val_precision': 0.7351778745651245, 'ptl/val_recall': 0.8985507488250732, 'ptl/val_aupr': 0.8676223158836365, 'ptl/val_mcc': 0.6112253665924072, 'ptl/train_loss': 0.45484498143196106, 'ptl/train_accuracy': 0.45484498143196106, 'epoch': 9, 'step': 3260},
+  path='/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-37-57/TorchTrainer_94b93c6d_1_batch_size=4,layer_size=8,lr=0.0000_2023-09-30_14-37-57',
+  filesystem='local',
+  checkpoint=Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-37-57/TorchTrainer_94b93c6d_1_batch_size=4,layer_size=8,lr=0.0000_2023-09-30_14-37-57/checkpoint_000009)
+){'train_loop_config': {'lr': 1.18987731059969e-05, 'batch_size': 4, 'layer_size': 8}}Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-37-57/TorchTrainer_94b93c6d_1_batch_size=4,layer_size=8,lr=0.0000_2023-09-30_14-37-57/checkpoint_000009)

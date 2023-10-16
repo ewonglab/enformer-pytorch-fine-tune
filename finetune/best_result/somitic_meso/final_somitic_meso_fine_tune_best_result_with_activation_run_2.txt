@@ -1,0 +1,7 @@
+Result(
+  error='RayTaskError(AttributeError)',
+  metrics={},
+  path='/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-05_15-18-09/TorchTrainer_07ff5317_1_batch_size=8,layer_size=8,lr=0.0002_2023-10-05_15-18-09',
+  filesystem='local',
+  checkpoint=None
+){'train_loop_config': {'lr': 0.00020733792071127698, 'batch_size': 8, 'layer_size': 8}}None
