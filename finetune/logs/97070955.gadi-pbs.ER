@@ -1,0 +1,74 @@
+Global seed set to 42
+2023-10-04 23:29:01,716	INFO worker.py:1642 -- Started a local Ray instance.
+2023-10-04 23:29:12,794	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-10-04 23:29:12,796	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-10-04 23:29:12,811	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+2023-10-04 23:29:12,943	WARNING tune_controller.py:865 -- Trial controller checkpointing failed: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-28-58/.tmp_searcher_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-28-58/searcher-state-2023-10-04_23-29-12.pkl'
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 335, in <module>
+    results = tune_func(num_samples=num_samples)
+  File "finetune/fine_tune_tidy.py", line 333, in tune_func
+    return tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tuner.py", line 372, in fit
+    return self._local_tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 579, in fit
+    analysis = self._fit_internal(trainable, param_space)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 699, in _fit_internal
+    analysis = run(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tune.py", line 1103, in run
+    runner.step()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 866, in step
+    raise e
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 863, in step
+    self.checkpoint()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 596, in checkpoint
+    self._checkpoint_manager.checkpoint(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/experiment_state.py", line 257, in checkpoint
+    save_fn()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 483, in save_to_dir
+    self._search_alg.save_to_dir(experiment_dir, session_str=self._session_str)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/search/search_generator.py", line 192, in save_to_dir
+    base_searcher.save_to_dir(dirpath, session_str)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/search/searcher.py", line 393, in save_to_dir
+    os.replace(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-28-58/.tmp_searcher_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-28-58/searcher-state-2023-10-04_23-29-12.pkl'
+2023-10-04 23:29:13,063	ERROR worker.py:405 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+[2m[36m(bundle_reservation_check_func pid=167124)[0m 2023-10-04 23:29:13,038	ERROR worker.py:782 -- Worker exits with an exit code 1.
+[2m[36m(bundle_reservation_check_func pid=167124)[0m Traceback (most recent call last):
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1999, in ray._raylet.task_execution_handler
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1894, in ray._raylet.execute_task_with_cancellation_handler
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1558, in ray._raylet.execute_task
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1559, in ray._raylet.execute_task
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1562, in ray._raylet.execute_task
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1590, in ray._raylet.execute_task
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "python/ray/_raylet.pyx", line 1592, in ray._raylet.execute_task
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 727, in deserialize_objects
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     context = self.get_serialization_context()
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 615, in get_serialization_context
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     context_map[job_id] = serialization.SerializationContext(self)
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/serialization.py", line 153, in __init__
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     serialization_addons.apply(self)
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/util/serialization_addons.py", line 78, in apply
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     register_pydantic_serializer(serialization_context)
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/util/serialization_addons.py", line 19, in register_pydantic_serializer
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     from pydantic.v1 import fields as pydantic_v1_fields
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pydantic/v1/__init__.py", line 2, in <module>
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     from . import dataclasses
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pydantic/v1/dataclasses.py", line 43, in <module>
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     from .class_validators import gather_all_validators
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pydantic/v1/class_validators.py", line 8, in <module>
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     from .errors import ConfigError
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pydantic/v1/errors.py", line 5, in <module>
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     from .typing import display_as_type
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap>", line 971, in _find_and_load_unlocked
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap>", line 914, in _find_spec
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 1407, in find_spec
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 1379, in _get_spec
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 1539, in find_spec
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 156, in _path_isfile
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 148, in _path_is_mode_type
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "<frozen importlib._bootstrap_external>", line 142, in _path_stat
+[2m[36m(bundle_reservation_check_func pid=167124)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 779, in sigterm_handler
+[2m[36m(bundle_reservation_check_func pid=167124)[0m     sys.exit(1)
+[2m[36m(bundle_reservation_check_func pid=167124)[0m SystemExit: 1

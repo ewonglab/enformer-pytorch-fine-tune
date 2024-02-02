@@ -1,0 +1,315 @@
+╭─────────────────────────────────────────────────────────────────────╮
+│ Configuration for experiment     TorchTrainer_2023-10-04_23-31-11   │
+├─────────────────────────────────────────────────────────────────────┤
+│ Search algorithm                 SearchGenerator                    │
+│ Scheduler                        AsyncHyperBandScheduler            │
+│ Number of trials                 10                                 │
+╰─────────────────────────────────────────────────────────────────────╯
+
+View detailed results here: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11
+To visualize your results with TensorBoard, run: `tensorboard --logdir /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11`
+
+Trial status: 1 PENDING
+Current time: 2023-10-04 23:31:20. Total running time: 0s
+Logical resource usage: 0/96 CPUs, 0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_b04cec5c   PENDING                0.00125814                        8                        8 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_b04cec5c started with configuration:
+╭───────────────────────────────────────────────────╮
+│ Trial TorchTrainer_b04cec5c config                │
+├───────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                    8 │
+│ train_loop_config/layer_size                    8 │
+│ train_loop_config/lr                   0.00125814 │
+╰───────────────────────────────────────────────────╯
+
+Trial TorchTrainer_b04cec5c errored after 0 iterations at 2023-10-04 23:31:50. Total running time: 29s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_b04cec5c_1_batch_size=8,layer_size=8,lr=0.0013_2023-10-04_23-31-20/error.txt
+
+Trial status: 1 ERROR | 1 PENDING
+Current time: 2023-10-04 23:31:50. Total running time: 30s
+Logical resource usage: 0/96 CPUs, 0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_f3a71311   PENDING                0.0372066                         8                       32 │
+│ TorchTrainer_b04cec5c   ERROR                  0.00125814                        8                        8 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_f3a71311 started with configuration:
+╭──────────────────────────────────────────────────╮
+│ Trial TorchTrainer_f3a71311 config               │
+├──────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                   8 │
+│ train_loop_config/layer_size                  32 │
+│ train_loop_config/lr                   0.0372066 │
+╰──────────────────────────────────────────────────╯
+
+Trial TorchTrainer_f3a71311 errored after 0 iterations at 2023-10-04 23:32:20. Total running time: 1min 0s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_f3a71311_2_batch_size=8,layer_size=32,lr=0.0372_2023-10-04_23-31-34/error.txt
+
+Trial status: 2 ERROR | 1 PENDING
+Current time: 2023-10-04 23:32:20. Total running time: 1min 0s
+Logical resource usage: 0/96 CPUs, 0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_592eadb7   PENDING                0.001444                          4                       32 │
+│ TorchTrainer_b04cec5c   ERROR                  0.00125814                        8                        8 │
+│ TorchTrainer_f3a71311   ERROR                  0.0372066                         8                       32 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_592eadb7 started with configuration:
+╭─────────────────────────────────────────────────╮
+│ Trial TorchTrainer_592eadb7 config              │
+├─────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                  4 │
+│ train_loop_config/layer_size                 32 │
+│ train_loop_config/lr                   0.001444 │
+╰─────────────────────────────────────────────────╯
+
+Trial TorchTrainer_592eadb7 errored after 0 iterations at 2023-10-04 23:32:50. Total running time: 1min 29s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_592eadb7_3_batch_size=4,layer_size=32,lr=0.0014_2023-10-04_23-32-05/error.txt
+
+Trial status: 3 ERROR | 1 PENDING
+Current time: 2023-10-04 23:32:50. Total running time: 1min 30s
+Logical resource usage: 0/96 CPUs, 0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_143af08b   PENDING               0.000574533                        8                       16 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_143af08b started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_143af08b config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     8 │
+│ train_loop_config/layer_size                    16 │
+│ train_loop_config/lr                   0.000574533 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_143af08b errored after 0 iterations at 2023-10-04 23:33:19. Total running time: 1min 59s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_143af08b_4_batch_size=8,layer_size=16,lr=0.0006_2023-10-04_23-32-34/error.txt
+
+Trial status: 4 ERROR | 1 PENDING
+Current time: 2023-10-04 23:33:20. Total running time: 2min 0s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_6fb17ce5   PENDING               0.000615181                        8                        8 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_6fb17ce5 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_6fb17ce5 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     8 │
+│ train_loop_config/layer_size                     8 │
+│ train_loop_config/lr                   0.000615181 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_6fb17ce5 errored after 0 iterations at 2023-10-04 23:33:49. Total running time: 2min 28s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6fb17ce5_5_batch_size=8,layer_size=8,lr=0.0006_2023-10-04_23-33-04/error.txt
+
+Trial status: 5 ERROR | 1 PENDING
+Current time: 2023-10-04 23:33:50. Total running time: 2min 30s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_ca8eb5c5   PENDING               5.83466e-05                        4                       16 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_ca8eb5c5 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_ca8eb5c5 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     4 │
+│ train_loop_config/layer_size                    16 │
+│ train_loop_config/lr                   5.83466e-05 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_ca8eb5c5 errored after 0 iterations at 2023-10-04 23:34:19. Total running time: 2min 58s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ca8eb5c5_6_batch_size=4,layer_size=16,lr=0.0001_2023-10-04_23-33-33/error.txt
+
+Trial status: 6 ERROR | 1 PENDING
+Current time: 2023-10-04 23:34:21. Total running time: 3min 0s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_6e91041a   PENDING               0.00153533                         8                       32 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+│ TorchTrainer_ca8eb5c5   ERROR                 5.83466e-05                        4                       16 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_6e91041a started with configuration:
+╭───────────────────────────────────────────────────╮
+│ Trial TorchTrainer_6e91041a config                │
+├───────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                    8 │
+│ train_loop_config/layer_size                   32 │
+│ train_loop_config/lr                   0.00153533 │
+╰───────────────────────────────────────────────────╯
+
+Trial TorchTrainer_6e91041a errored after 0 iterations at 2023-10-04 23:34:49. Total running time: 3min 28s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6e91041a_7_batch_size=8,layer_size=32,lr=0.0015_2023-10-04_23-34-04/error.txt
+
+Trial status: 7 ERROR | 1 PENDING
+Current time: 2023-10-04 23:34:51. Total running time: 3min 30s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_ce4b8093   PENDING               0.000135434                        8                        8 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+│ TorchTrainer_ca8eb5c5   ERROR                 5.83466e-05                        4                       16 │
+│ TorchTrainer_6e91041a   ERROR                 0.00153533                         8                       32 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_ce4b8093 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_ce4b8093 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     8 │
+│ train_loop_config/layer_size                     8 │
+│ train_loop_config/lr                   0.000135434 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_ce4b8093 errored after 0 iterations at 2023-10-04 23:35:19. Total running time: 3min 59s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ce4b8093_8_batch_size=8,layer_size=8,lr=0.0001_2023-10-04_23-34-33/error.txt
+
+Trial status: 8 ERROR | 1 PENDING
+Current time: 2023-10-04 23:35:21. Total running time: 4min 0s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_d88a880d   PENDING               4.03715e-05                        8                       16 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+│ TorchTrainer_ca8eb5c5   ERROR                 5.83466e-05                        4                       16 │
+│ TorchTrainer_6e91041a   ERROR                 0.00153533                         8                       32 │
+│ TorchTrainer_ce4b8093   ERROR                 0.000135434                        8                        8 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_d88a880d started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_d88a880d config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     8 │
+│ train_loop_config/layer_size                    16 │
+│ train_loop_config/lr                   4.03715e-05 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_d88a880d errored after 0 iterations at 2023-10-04 23:35:48. Total running time: 4min 28s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_d88a880d_9_batch_size=8,layer_size=16,lr=0.0000_2023-10-04_23-35-04/error.txt
+
+Trial status: 9 ERROR | 1 PENDING
+Current time: 2023-10-04 23:35:51. Total running time: 4min 30s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e0f48e98   PENDING               0.000856199                        8                       16 │
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+│ TorchTrainer_ca8eb5c5   ERROR                 5.83466e-05                        4                       16 │
+│ TorchTrainer_6e91041a   ERROR                 0.00153533                         8                       32 │
+│ TorchTrainer_ce4b8093   ERROR                 0.000135434                        8                        8 │
+│ TorchTrainer_d88a880d   ERROR                 4.03715e-05                        8                       16 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_e0f48e98 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_e0f48e98 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/batch_size                     8 │
+│ train_loop_config/layer_size                    16 │
+│ train_loop_config/lr                   0.000856199 │
+╰────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_e0f48e98 errored after 0 iterations at 2023-10-04 23:36:18. Total running time: 4min 58s
+Error file: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_e0f48e98_10_batch_size=8,layer_size=16,lr=0.0009_2023-10-04_23-35-33/error.txt
+
+Trial status: 10 ERROR
+Current time: 2023-10-04 23:36:18. Total running time: 4min 58s
+Logical resource usage: 9.0/96 CPUs, 4.0/4 GPUs (0.0/1.0 accelerator_type:V100)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...config/batch_size     ...config/layer_size │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_b04cec5c   ERROR                 0.00125814                         8                        8 │
+│ TorchTrainer_f3a71311   ERROR                 0.0372066                          8                       32 │
+│ TorchTrainer_592eadb7   ERROR                 0.001444                           4                       32 │
+│ TorchTrainer_143af08b   ERROR                 0.000574533                        8                       16 │
+│ TorchTrainer_6fb17ce5   ERROR                 0.000615181                        8                        8 │
+│ TorchTrainer_ca8eb5c5   ERROR                 5.83466e-05                        4                       16 │
+│ TorchTrainer_6e91041a   ERROR                 0.00153533                         8                       32 │
+│ TorchTrainer_ce4b8093   ERROR                 0.000135434                        8                        8 │
+│ TorchTrainer_d88a880d   ERROR                 4.03715e-05                        8                       16 │
+│ TorchTrainer_e0f48e98   ERROR                 0.000856199                        8                       16 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Number of errored trials: 10
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name                # failures   error file                                                                                                                                                                                                     │
+├───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_b04cec5c              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_b04cec5c_1_batch_size=8,layer_size=8,lr=0.0013_2023-10-04_23-31-20/error.txt   │
+│ TorchTrainer_f3a71311              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_f3a71311_2_batch_size=8,layer_size=32,lr=0.0372_2023-10-04_23-31-34/error.txt  │
+│ TorchTrainer_592eadb7              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_592eadb7_3_batch_size=4,layer_size=32,lr=0.0014_2023-10-04_23-32-05/error.txt  │
+│ TorchTrainer_143af08b              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_143af08b_4_batch_size=8,layer_size=16,lr=0.0006_2023-10-04_23-32-34/error.txt  │
+│ TorchTrainer_6fb17ce5              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6fb17ce5_5_batch_size=8,layer_size=8,lr=0.0006_2023-10-04_23-33-04/error.txt   │
+│ TorchTrainer_ca8eb5c5              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ca8eb5c5_6_batch_size=4,layer_size=16,lr=0.0001_2023-10-04_23-33-33/error.txt  │
+│ TorchTrainer_6e91041a              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6e91041a_7_batch_size=8,layer_size=32,lr=0.0015_2023-10-04_23-34-04/error.txt  │
+│ TorchTrainer_ce4b8093              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ce4b8093_8_batch_size=8,layer_size=8,lr=0.0001_2023-10-04_23-34-33/error.txt   │
+│ TorchTrainer_d88a880d              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_d88a880d_9_batch_size=8,layer_size=16,lr=0.0000_2023-10-04_23-35-04/error.txt  │
+│ TorchTrainer_e0f48e98              1   /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_e0f48e98_10_batch_size=8,layer_size=16,lr=0.0009_2023-10-04_23-35-33/error.txt │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+======================================================================================
+                  Resource Usage on 2023-10-04 23:36:38:
+   Job Id:             97070962.gadi-pbs
+   Project:            zk16
+   Exit Status:        1
+   Service Units:      6.72
+   NCPUs Requested:    24                     NCPUs Used: 24              
+                                           CPU Time Used: 00:08:40        
+   Memory Requested:   128.0GB               Memory Used: 6.06GB          
+   NGPUs Requested:    2                 GPU Utilisation: 0%              
+                                         GPU Memory Used: 0B              
+   Walltime requested: 16:00:00            Walltime Used: 00:05:36        
+   JobFS requested:    128.0GB                JobFS used: 1.91MB          
+======================================================================================

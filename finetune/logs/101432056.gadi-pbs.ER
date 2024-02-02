@@ -1,0 +1,16 @@
+Global seed set to 42
+2023-11-16 14:56:15,662	ERROR services.py:1222 -- Failed to start the dashboard 
+2023-11-16 14:56:15,663	ERROR services.py:1247 -- Error should be written to 'dashboard.log' or 'dashboard.err'. We are printing the last 20 lines for you. See 'https://docs.ray.io/en/master/ray-observability/ray-logging.html#logging-directory-structure' to find where the log file is.
+2023-11-16 14:56:15,663	ERROR services.py:1291 -- 
+The last 20 lines of /jobfs/101432056.gadi-pbs/ray/session_2023-11-16_14-55-54_121805_2719789/logs/dashboard.log (it contains the error message from the dashboard): 
+2023-11-16 14:56:13,047	INFO utils.py:123 -- Module ray.dashboard.modules.actor.actor_head cannot be loaded because we cannot import all dependencies. Install this module using `pip install 'ray[default]'` for the full dashboard functionality. Error: No module named 'opencensus'
+2023-11-16 14:56:15,544	INFO utils.py:123 -- Module ray.dashboard.modules.event.event_head cannot be loaded because we cannot import all dependencies. Install this module using `pip install 'ray[default]'` for the full dashboard functionality. Error: No module named 'opencensus'
+
+2023-11-16 14:56:16,079	INFO worker.py:1642 -- Started a local Ray instance.
+=>> PBS: job killed: walltime 86461 exceeded limit 86400
+*** SIGTERM received at time=1700192975 on cpu 4 ***
+PC: @     0x152e7bcaed36  (unknown)  recv
+    @     0x152e7bcafcf0  (unknown)  (unknown)
+[2023-11-17 14:49:35,956 E 2719789 2719789] logging.cc:361: *** SIGTERM received at time=1700192975 on cpu 4 ***
+[2023-11-17 14:49:35,956 E 2719789 2719789] logging.cc:361: PC: @     0x152e7bcaed36  (unknown)  recv
+[2023-11-17 14:49:35,956 E 2719789 2719789] logging.cc:361:     @     0x152e7bcafcf0  (unknown)  (unknown)

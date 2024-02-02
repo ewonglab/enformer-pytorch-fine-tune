@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 7, in <module>
+    from enformer_pytorch.finetune import BinaryAdapterWrapper
+ImportError: cannot import name 'BinaryAdapterWrapper' from 'enformer_pytorch.finetune' (/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/enformer_pytorch/finetune.py)

@@ -1,0 +1,15 @@
+
+======================================================================================
+                  Resource Usage on 2023-11-19 10:37:14:
+   Job Id:             101793410.gadi-pbs
+   Project:            zk16
+   Exit Status:        271 (Linux Signal 15 SIGTERM Termination)
+   Service Units:      0.29
+   NCPUs Requested:    12                     NCPUs Used: 12              
+                                           CPU Time Used: 00:00:00        
+   Memory Requested:   128.0GB               Memory Used: 31.81MB         
+   NGPUs Requested:    1                 GPU Utilisation: 0%              
+                                         GPU Memory Used: 0B              
+   Walltime requested: 20:00:00            Walltime Used: 00:00:22        
+   JobFS requested:    128.0GB                JobFS used: 0B              
+======================================================================================

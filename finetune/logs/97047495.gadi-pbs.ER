@@ -1,0 +1,15 @@
+Global seed set to 42
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 336, in <module>
+    results = tune_func(num_samples=num_samples)
+  File "finetune/fine_tune_tidy.py", line 334, in tune_func
+    return tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tuner.py", line 372, in fit
+    return self._local_tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 579, in fit
+    analysis = self._fit_internal(trainable, param_space)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 688, in _fit_internal
+    **self._get_tune_run_arguments(trainable),
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 632, in _get_tune_run_arguments
+    raise ValueError(
+ValueError: You passed `checkpoint_at_end=True` to your CheckpointConfig, but this trainer does not support this argument. If you passed in a Trainer that takes in a custom training loop, you should include one last call to `ray.train.report(metrics=..., checkpoint=...)` at the end of your training loop to get this behavior.

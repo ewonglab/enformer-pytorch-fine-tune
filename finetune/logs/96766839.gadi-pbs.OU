@@ -1,0 +1,27 @@
+!!!!!!!!JUST wanted to check how many times this function is being CALLED!!!!!!!!
+╭─────────────────────────────────────────────────────────────────────╮
+│ Configuration for experiment     TorchTrainer_2023-10-02_12-53-30   │
+├─────────────────────────────────────────────────────────────────────┤
+│ Search algorithm                 SearchGenerator                    │
+│ Scheduler                        AsyncHyperBandScheduler            │
+│ Number of trials                 10                                 │
+╰─────────────────────────────────────────────────────────────────────╯
+
+View detailed results here: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-02_12-53-30
+To visualize your results with TensorBoard, run: `tensorboard --logdir /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-02_12-53-30`
+
+
+======================================================================================
+                  Resource Usage on 2023-10-02 12:53:40:
+   Job Id:             96766839.gadi-pbs
+   Project:            zk16
+   Exit Status:        1
+   Service Units:      3.92
+   NCPUs Requested:    24                     NCPUs Used: 24              
+                                           CPU Time Used: 00:02:22        
+   Memory Requested:   128.0GB               Memory Used: 6.32GB          
+   NGPUs Requested:    2                 GPU Utilisation: 0%              
+                                         GPU Memory Used: 0B              
+   Walltime requested: 08:00:00            Walltime Used: 00:03:16        
+   JobFS requested:    128.0GB                JobFS used: 459.93KB        
+======================================================================================

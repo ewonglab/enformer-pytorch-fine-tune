@@ -1,0 +1,15 @@
+
+======================================================================================
+                  Resource Usage on 2023-11-15 05:13:01:
+   Job Id:             101205059.gadi-pbs
+   Project:            zk16
+   Exit Status:        0
+   Service Units:      272.14
+   NCPUs Requested:    24                     NCPUs Used: 24              
+                                           CPU Time Used: 05:35:55        
+   Memory Requested:   128.0GB               Memory Used: 26.84GB         
+   NGPUs Requested:    2                 GPU Utilisation: 98%             
+                                         GPU Memory Used: 43.88GB         
+   Walltime requested: 24:00:00            Walltime Used: 03:46:47        
+   JobFS requested:    128.0GB                JobFS used: 47.61MB         
+======================================================================================

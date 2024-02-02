@@ -1,0 +1,6 @@
+Result(
+  metrics={'ptl/val_loss': 0.589461624622345, 'ptl/val_accuracy': 0.6974790096282959, 'ptl/val_auroc': 0.7615282535552979, 'ptl/val_f1_score': 0.7092198729515076, 'ptl/val_precision': 0.6666666865348816, 'ptl/val_recall': 0.7575757503509521, 'ptl/val_aupr': 0.707520604133606, 'ptl/val_mcc': 0.39762139320373535, 'ptl/train_loss': 0.5112394094467163, 'ptl/train_accuracy': 0.7460784316062927, 'epoch': 19, 'step': 1020},
+  path='/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_12-10-04/TorchTrainer_af2a92a2_6_batch_size=8,cell_type=pharyngeal_meso,layer_size=16,lr=0.0000_2023-11-19_14-55-17',
+  filesystem='local',
+  checkpoint=Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_12-10-04/TorchTrainer_af2a92a2_6_batch_size=8,cell_type=pharyngeal_meso,layer_size=16,lr=0.0000_2023-11-19_14-55-17/checkpoint_000019)
+){'train_loop_config': {'lr': 1.5337398044646257e-05, 'batch_size': 8, 'layer_size': 16, 'cell_type': 'pharyngeal_meso'}}Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_12-10-04/TorchTrainer_af2a92a2_6_batch_size=8,cell_type=pharyngeal_meso,layer_size=16,lr=0.0000_2023-11-19_14-55-17/checkpoint_000019)

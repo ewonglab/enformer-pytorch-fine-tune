@@ -1,0 +1,18 @@
+Global seed set to 42
+2023-11-15 22:30:01,351	INFO worker.py:1642 -- Started a local Ray instance.
+2023-11-15 22:30:07,981	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-11-15 22:30:08,011	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 367, in <module>
+    results = tune_func(num_samples=num_samples)
+  File "finetune/fine_tune_tidy.py", line 366, in tune_func
+    return tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tuner.py", line 372, in fit
+    return self._local_tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 579, in fit
+    analysis = self._fit_internal(trainable, param_space)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 699, in _fit_internal
+    analysis = run(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tune.py", line 945, in run
+    raise ValueError(
+ValueError: You passed a `metric` or `mode` argument to `Tuner(...)`, but the scheduler you are using was already instantiated with their own `metric` and `mode` parameters. Either remove the arguments from your scheduler or from `Tuner(...)` args.

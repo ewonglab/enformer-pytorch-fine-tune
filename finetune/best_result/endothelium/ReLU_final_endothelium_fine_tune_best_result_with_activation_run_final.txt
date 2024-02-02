@@ -1,0 +1,6 @@
+Result(
+  metrics={'ptl/val_loss': 0.21072053909301758, 'ptl/val_accuracy': 0.925561785697937, 'ptl/val_auroc': 0.9760161638259888, 'ptl/val_f1_score': 0.9224011898040771, 'ptl/val_precision': 0.9402984976768494, 'ptl/val_recall': 0.9051724076271057, 'ptl/val_aupr': 0.9773384928703308, 'ptl/val_mcc': 0.8503274917602539, 'ptl/train_loss': 0.1806294322013855, 'ptl/train_accuracy': 0.9273585081100464, 'epoch': 19, 'step': 5300},
+  path='/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_11-46-25/TorchTrainer_776c17fb_1_batch_size=8,cell_type=endothelium,layer_size=32,lr=0.0001_2023-11-19_11-46-36',
+  filesystem='local',
+  checkpoint=Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_11-46-25/TorchTrainer_776c17fb_1_batch_size=8,cell_type=endothelium,layer_size=32,lr=0.0001_2023-11-19_11-46-36/checkpoint_000019)
+){'train_loop_config': {'lr': 0.00011983489498363675, 'batch_size': 8, 'layer_size': 32, 'cell_type': 'endothelium'}}Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-19_11-46-25/TorchTrainer_776c17fb_1_batch_size=8,cell_type=endothelium,layer_size=32,lr=0.0001_2023-11-19_11-46-36/checkpoint_000019)

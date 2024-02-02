@@ -1,0 +1,136 @@
+Global seed set to 42
+2023-10-04 23:55:01,267	INFO worker.py:1642 -- Started a local Ray instance.
+2023-10-04 23:55:13,164	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-10-04 23:55:13,173	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-10-04 23:55:13,232	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+[2m[36m(TorchTrainer pid=1109733)[0m Starting distributed worker processes: ['1111006 (10.6.10.20)']
+[2m[36m(RayTrainWorker pid=1111006)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=1111006)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=1111006)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=1111006)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=1111006)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=1110996)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=1110996)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=1110996)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=1111006)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=1111006)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=1111006)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=1111006)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-54-57/TorchTrainer_716a343c_1_batch_size=4,layer_size=16,lr=0.0370_2023-10-04_23-55-13/lightning_logs
+[2m[36m(RayTrainWorker pid=1111006)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=1111006)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=1111006)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=1111006)[0m 1 | model             | BinaryAdapterWrapper   | 261 M 
+[2m[36m(RayTrainWorker pid=1111006)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=1111006)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=1111006)[0m 261 M     Trainable params
+[2m[36m(RayTrainWorker pid=1111006)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=1111006)[0m 261 M     Total params
+[2m[36m(RayTrainWorker pid=1111006)[0m 1,044.207 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=1111006)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=1111006)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=1111006)[0m finetune/fine_tune_tidy.py:181: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=1111006)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=1111006)[0m finetune/fine_tune_tidy.py:183: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=1111006)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=1111006)[0m finetune/fine_tune_tidy.py:184: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=1111006)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=1111006)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=1111006)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=1111006)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=1111006)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=1111006)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=1111006)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=1111006)[0m finetune/fine_tune_tidy.py:96: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=1111006)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=1111006)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=1111006)[0m   self.train_accuracy.append(torch.tensor(loss))
+2023-10-04 23:59:45,575	WARNING tune_controller.py:865 -- Trial controller checkpointing failed: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-54-57/.tmp_search_generator_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-54-57/search_gen_state-2023-10-04_23-55-13.json'
+[2m[36m(RayTrainWorker pid=1111006)[0m Traceback (most recent call last):
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1556, in ray._raylet.execute_task.function_executor
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/function_manager.py", line 726, in actor_method_executor
+[2m[36m(RayTrainWorker pid=1111006)[0m     return method(__ray_actor, *args, **kwargs)
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/util/tracing/tracing_helper.py", line 467, in _resume_span
+[2m[36m(RayTrainWorker pid=1111006)[0m     return method(self, *_args, **_kwargs)
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 30, in __execute
+[2m[36m(RayTrainWorker pid=1111006)[0m     return func(*args, **kwargs)
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/backend_executor.py", line 482, in get_next
+[2m[36m(RayTrainWorker pid=1111006)[0m     result = session.get_next()
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/session.py", line 323, in get_next
+[2m[36m(RayTrainWorker pid=1111006)[0m     result = self.result_queue.get(
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/queue.py", line 179, in get
+[2m[36m(RayTrainWorker pid=1111006)[0m     self.not_empty.wait(remaining)
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/threading.py", line 306, in wait
+[2m[36m(RayTrainWorker pid=1111006)[0m     gotit = waiter.acquire(True, timeout)
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 779, in sigterm_handler
+[2m[36m(RayTrainWorker pid=1111006)[0m     sys.exit(1)
+[2m[36m(RayTrainWorker pid=1111006)[0m SystemExit: 1
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m During handling of the above exception, another exception occurred:
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m Traceback (most recent call last):
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1610, in ray._raylet.execute_task
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1707, in ray._raylet.execute_task
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 572, in record_task_log_end
+[2m[36m(RayTrainWorker pid=1111006)[0m     self.core_worker.record_task_log_end(
+[2m[36m(RayTrainWorker pid=1111006)[0m AttributeError: 'Worker' object has no attribute 'core_worker'
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m During handling of the above exception, another exception occurred:
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m Traceback (most recent call last):
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1999, in ray._raylet.task_execution_handler
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1894, in ray._raylet.execute_task_with_cancellation_handler
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1558, in ray._raylet.execute_task
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1559, in ray._raylet.execute_task
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 1791, in ray._raylet.execute_task
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 858, in ray._raylet.store_task_errors
+[2m[36m(RayTrainWorker pid=1111006)[0m AttributeError: 'Worker' object has no attribute 'core_worker'
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m During handling of the above exception, another exception occurred:
+[2m[36m(RayTrainWorker pid=1111006)[0m 
+[2m[36m(RayTrainWorker pid=1111006)[0m Traceback (most recent call last):
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 2037, in ray._raylet.task_execution_handler
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/utils.py", line 178, in push_error_to_driver
+[2m[36m(RayTrainWorker pid=1111006)[0m     worker.core_worker.push_error(job_id, error_type, message, time.time())
+[2m[36m(RayTrainWorker pid=1111006)[0m AttributeError: 'Worker' object has no attribute 'core_worker'
+[2m[36m(RayTrainWorker pid=1111006)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(RayTrainWorker pid=1111006)[0m Traceback (most recent call last):
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "python/ray/_raylet.pyx", line 2037, in ray._raylet.task_execution_handler
+[2m[36m(RayTrainWorker pid=1111006)[0m   File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/utils.py", line 178, in push_error_to_driver
+[2m[36m(RayTrainWorker pid=1111006)[0m     worker.core_worker.push_error(job_id, error_type, message, time.time())
+[2m[36m(RayTrainWorker pid=1111006)[0m AttributeError: 'Worker' object has no attribute 'core_worker'
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 335, in <module>
+    results = tune_func(num_samples=num_samples)
+  File "finetune/fine_tune_tidy.py", line 333, in tune_func
+    return tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tuner.py", line 372, in fit
+    return self._local_tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 579, in fit
+    analysis = self._fit_internal(trainable, param_space)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 699, in _fit_internal
+    analysis = run(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tune.py", line 1103, in run
+    runner.step()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 866, in step
+    raise e
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 863, in step
+    self.checkpoint()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 596, in checkpoint
+    self._checkpoint_manager.checkpoint(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/experiment_state.py", line 257, in checkpoint
+    save_fn()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 483, in save_to_dir
+    self._search_alg.save_to_dir(experiment_dir, session_str=self._session_str)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/search/search_generator.py", line 193, in save_to_dir
+    _atomic_save(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/utils/util.py", line 529, in _atomic_save
+    os.replace(tmp_search_ckpt_path, os.path.join(checkpoint_dir, file_name))
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-54-57/.tmp_search_generator_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-54-57/search_gen_state-2023-10-04_23-55-13.json'

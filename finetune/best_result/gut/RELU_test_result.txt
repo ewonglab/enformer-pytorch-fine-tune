@@ -1,0 +1,780 @@
+this is self.crop_final TargetLengthCrop() and this is config.target_length 896
+this is enformer hidden_dim 3072
+Testing: 0it [00:00, ?it/s]Testing:   0%|          | 0/255 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/255 [00:00<?, ?it/s]Sequences are not all different.
+test logits tensor([[0.6637, 1.3051]], device='cuda:0')
+test probablities tensor([0.6551], device='cuda:0')
+Testing DataLoader 0:   0%|          | 1/255 [00:02<09:02,  2.13s/it]Sequences are not all different.
+test logits tensor([[ 2.5514, -0.4545]], device='cuda:0')
+test probablities tensor([0.0472], device='cuda:0')
+Testing DataLoader 0:   1%|          | 2/255 [00:02<05:08,  1.22s/it]Sequences are not all different.
+test logits tensor([[ 2.5110, -0.6930]], device='cuda:0')
+test probablities tensor([0.0390], device='cuda:0')
+Testing DataLoader 0:   1%|          | 3/255 [00:02<03:51,  1.09it/s]Sequences are not all different.
+test logits tensor([[ 2.5292, -0.8146]], device='cuda:0')
+test probablities tensor([0.0341], device='cuda:0')
+Testing DataLoader 0:   2%|▏         | 4/255 [00:03<03:11,  1.31it/s]Sequences are not all different.
+test logits tensor([[0.7343, 1.1652]], device='cuda:0')
+test probablities tensor([0.6061], device='cuda:0')
+Testing DataLoader 0:   2%|▏         | 5/255 [00:03<02:48,  1.49it/s]Sequences are not all different.
+test logits tensor([[ 2.1902, -0.1622]], device='cuda:0')
+test probablities tensor([0.0869], device='cuda:0')
+Testing DataLoader 0:   2%|▏         | 6/255 [00:03<02:32,  1.63it/s]Sequences are not all different.
+test logits tensor([[ 3.3740, -1.4571]], device='cuda:0')
+test probablities tensor([0.0079], device='cuda:0')
+Testing DataLoader 0:   3%|▎         | 7/255 [00:03<02:20,  1.76it/s]Sequences are not all different.
+test logits tensor([[ 3.1647, -1.2678]], device='cuda:0')
+test probablities tensor([0.0117], device='cuda:0')
+Testing DataLoader 0:   3%|▎         | 8/255 [00:04<02:12,  1.87it/s]Sequences are not all different.
+test logits tensor([[0.8108, 1.0313]], device='cuda:0')
+test probablities tensor([0.5549], device='cuda:0')
+Testing DataLoader 0:   4%|▎         | 9/255 [00:04<02:05,  1.96it/s]Sequences are not all different.
+test logits tensor([[ 2.0891, -0.1066]], device='cuda:0')
+test probablities tensor([0.1001], device='cuda:0')
+Testing DataLoader 0:   4%|▍         | 10/255 [00:04<02:00,  2.04it/s]Sequences are not all different.
+test logits tensor([[ 2.7108, -0.8210]], device='cuda:0')
+test probablities tensor([0.0284], device='cuda:0')
+Testing DataLoader 0:   4%|▍         | 11/255 [00:05<01:55,  2.11it/s]Sequences are not all different.
+test logits tensor([[0.2789, 1.6957]], device='cuda:0')
+test probablities tensor([0.8048], device='cuda:0')
+Testing DataLoader 0:   5%|▍         | 12/255 [00:05<01:51,  2.18it/s]Sequences are not all different.
+test logits tensor([[ 1.9844, -0.1405]], device='cuda:0')
+test probablities tensor([0.1067], device='cuda:0')
+Testing DataLoader 0:   5%|▌         | 13/255 [00:05<01:48,  2.24it/s]Sequences are not all different.
+test logits tensor([[ 3.5345, -1.5363]], device='cuda:0')
+test probablities tensor([0.0062], device='cuda:0')
+Testing DataLoader 0:   5%|▌         | 14/255 [00:06<01:45,  2.29it/s]Sequences are not all different.
+test logits tensor([[0.7792, 1.1096]], device='cuda:0')
+test probablities tensor([0.5819], device='cuda:0')
+Testing DataLoader 0:   6%|▌         | 15/255 [00:06<01:42,  2.33it/s]Sequences are not all different.
+test logits tensor([[0.0797, 1.7840]], device='cuda:0')
+test probablities tensor([0.8461], device='cuda:0')
+Testing DataLoader 0:   6%|▋         | 16/255 [00:06<01:40,  2.38it/s]Sequences are not all different.
+test logits tensor([[1.7772, 0.1803]], device='cuda:0')
+test probablities tensor([0.1684], device='cuda:0')
+Testing DataLoader 0:   7%|▋         | 17/255 [00:07<01:38,  2.41it/s]Sequences are not all different.
+test logits tensor([[0.3205, 1.5630]], device='cuda:0')
+test probablities tensor([0.7760], device='cuda:0')
+Testing DataLoader 0:   7%|▋         | 18/255 [00:07<01:36,  2.45it/s]Sequences are not all different.
+test logits tensor([[ 3.0790, -1.0983]], device='cuda:0')
+test probablities tensor([0.0151], device='cuda:0')
+Testing DataLoader 0:   7%|▋         | 19/255 [00:07<01:35,  2.48it/s]Sequences are not all different.
+test logits tensor([[ 2.1591, -0.2128]], device='cuda:0')
+test probablities tensor([0.0853], device='cuda:0')
+Testing DataLoader 0:   8%|▊         | 20/255 [00:07<01:33,  2.51it/s]Sequences are not all different.
+test logits tensor([[ 3.8328, -1.6603]], device='cuda:0')
+test probablities tensor([0.0041], device='cuda:0')
+Testing DataLoader 0:   8%|▊         | 21/255 [00:08<01:32,  2.54it/s]Sequences are not all different.
+test logits tensor([[-0.0493,  1.9653]], device='cuda:0')
+test probablities tensor([0.8823], device='cuda:0')
+Testing DataLoader 0:   9%|▊         | 22/255 [00:08<01:30,  2.57it/s]Sequences are not all different.
+test logits tensor([[ 2.1080, -0.2332]], device='cuda:0')
+test probablities tensor([0.0878], device='cuda:0')
+Testing DataLoader 0:   9%|▉         | 23/255 [00:08<01:29,  2.59it/s]Sequences are not all different.
+test logits tensor([[0.4733, 1.3482]], device='cuda:0')
+test probablities tensor([0.7058], device='cuda:0')
+Testing DataLoader 0:   9%|▉         | 24/255 [00:09<01:28,  2.61it/s]Sequences are not all different.
+test logits tensor([[ 2.1145, -0.3349]], device='cuda:0')
+test probablities tensor([0.0795], device='cuda:0')
+Testing DataLoader 0:  10%|▉         | 25/255 [00:09<01:27,  2.63it/s]Sequences are not all different.
+test logits tensor([[0.2199, 1.5976]], device='cuda:0')
+test probablities tensor([0.7986], device='cuda:0')
+Testing DataLoader 0:  10%|█         | 26/255 [00:09<01:26,  2.65it/s]Sequences are not all different.
+test logits tensor([[ 2.0752, -0.2470]], device='cuda:0')
+test probablities tensor([0.0893], device='cuda:0')
+Testing DataLoader 0:  11%|█         | 27/255 [00:10<01:25,  2.67it/s]Sequences are not all different.
+test logits tensor([[ 2.7981, -0.9056]], device='cuda:0')
+test probablities tensor([0.0240], device='cuda:0')
+Testing DataLoader 0:  11%|█         | 28/255 [00:10<01:24,  2.69it/s]Sequences are not all different.
+test logits tensor([[0.5558, 1.3376]], device='cuda:0')
+test probablities tensor([0.6861], device='cuda:0')
+Testing DataLoader 0:  11%|█▏        | 29/255 [00:10<01:23,  2.71it/s]Sequences are not all different.
+test logits tensor([[ 3.2691, -1.3054]], device='cuda:0')
+test probablities tensor([0.0102], device='cuda:0')
+Testing DataLoader 0:  12%|█▏        | 30/255 [00:11<01:22,  2.72it/s]Sequences are not all different.
+test logits tensor([[1.5684, 0.4734]], device='cuda:0')
+test probablities tensor([0.2507], device='cuda:0')
+Testing DataLoader 0:  12%|█▏        | 31/255 [00:11<01:21,  2.74it/s]Sequences are not all different.
+test logits tensor([[ 2.9132, -1.0358]], device='cuda:0')
+test probablities tensor([0.0189], device='cuda:0')
+Testing DataLoader 0:  13%|█▎        | 32/255 [00:11<01:21,  2.75it/s]Sequences are not all different.
+test logits tensor([[ 2.2477, -0.3880]], device='cuda:0')
+test probablities tensor([0.0669], device='cuda:0')
+Testing DataLoader 0:  13%|█▎        | 33/255 [00:11<01:20,  2.76it/s]Sequences are not all different.
+test logits tensor([[1.8694, 0.0420]], device='cuda:0')
+test probablities tensor([0.1386], device='cuda:0')
+Testing DataLoader 0:  13%|█▎        | 34/255 [00:12<01:19,  2.78it/s]Sequences are not all different.
+test logits tensor([[ 2.9734, -1.0970]], device='cuda:0')
+test probablities tensor([0.0168], device='cuda:0')
+Testing DataLoader 0:  14%|█▎        | 35/255 [00:12<01:18,  2.79it/s]Sequences are not all different.
+test logits tensor([[1.4152, 0.4666]], device='cuda:0')
+test probablities tensor([0.2792], device='cuda:0')
+Testing DataLoader 0:  14%|█▍        | 36/255 [00:12<01:18,  2.80it/s]Sequences are not all different.
+test logits tensor([[ 2.5683, -0.6110]], device='cuda:0')
+test probablities tensor([0.0400], device='cuda:0')
+Testing DataLoader 0:  15%|█▍        | 37/255 [00:13<01:17,  2.81it/s]Sequences are not all different.
+test logits tensor([[0.2585, 1.5633]], device='cuda:0')
+test probablities tensor([0.7866], device='cuda:0')
+Testing DataLoader 0:  15%|█▍        | 38/255 [00:13<01:16,  2.82it/s]Sequences are not all different.
+test logits tensor([[1.0802, 0.8270]], device='cuda:0')
+test probablities tensor([0.4370], device='cuda:0')
+Testing DataLoader 0:  15%|█▌        | 39/255 [00:13<01:16,  2.83it/s]Sequences are not all different.
+test logits tensor([[ 2.8018, -0.9959]], device='cuda:0')
+test probablities tensor([0.0219], device='cuda:0')
+Testing DataLoader 0:  16%|█▌        | 40/255 [00:14<01:15,  2.84it/s]Sequences are not all different.
+test logits tensor([[1.3844, 0.4531]], device='cuda:0')
+test probablities tensor([0.2827], device='cuda:0')
+Testing DataLoader 0:  16%|█▌        | 41/255 [00:14<01:15,  2.85it/s]Sequences are not all different.
+test logits tensor([[0.8202, 1.0844]], device='cuda:0')
+test probablities tensor([0.5657], device='cuda:0')
+Testing DataLoader 0:  16%|█▋        | 42/255 [00:14<01:14,  2.86it/s]Sequences are not all different.
+test logits tensor([[-0.5913,  2.4748]], device='cuda:0')
+test probablities tensor([0.9555], device='cuda:0')
+Testing DataLoader 0:  17%|█▋        | 43/255 [00:15<01:13,  2.87it/s]Sequences are not all different.
+test logits tensor([[1.8283, 0.0207]], device='cuda:0')
+test probablities tensor([0.1409], device='cuda:0')
+Testing DataLoader 0:  17%|█▋        | 44/255 [00:15<01:13,  2.87it/s]Sequences are not all different.
+test logits tensor([[0.4458, 1.6318]], device='cuda:0')
+test probablities tensor([0.7660], device='cuda:0')
+Testing DataLoader 0:  18%|█▊        | 45/255 [00:15<01:12,  2.88it/s]Sequences are not all different.
+test logits tensor([[ 2.2417, -0.3643]], device='cuda:0')
+test probablities tensor([0.0688], device='cuda:0')
+Testing DataLoader 0:  18%|█▊        | 46/255 [00:15<01:12,  2.89it/s]Sequences are not all different.
+test logits tensor([[ 1.9361, -0.0333]], device='cuda:0')
+test probablities tensor([0.1224], device='cuda:0')
+Testing DataLoader 0:  18%|█▊        | 47/255 [00:16<01:11,  2.89it/s]Sequences are not all different.
+test logits tensor([[1.2133, 0.6495]], device='cuda:0')
+test probablities tensor([0.3627], device='cuda:0')
+Testing DataLoader 0:  19%|█▉        | 48/255 [00:16<01:11,  2.90it/s]Sequences are not all different.
+test logits tensor([[0.8419, 1.0263]], device='cuda:0')
+test probablities tensor([0.5460], device='cuda:0')
+Testing DataLoader 0:  19%|█▉        | 49/255 [00:16<01:10,  2.91it/s]Sequences are not all different.
+test logits tensor([[ 2.6488, -0.8596]], device='cuda:0')
+test probablities tensor([0.0291], device='cuda:0')
+Testing DataLoader 0:  20%|█▉        | 50/255 [00:17<01:10,  2.91it/s]Sequences are not all different.
+test logits tensor([[ 3.4044, -1.4823]], device='cuda:0')
+test probablities tensor([0.0075], device='cuda:0')
+Testing DataLoader 0:  20%|██        | 51/255 [00:17<01:09,  2.92it/s]Sequences are not all different.
+test logits tensor([[ 3.6504, -1.5845]], device='cuda:0')
+test probablities tensor([0.0053], device='cuda:0')
+Testing DataLoader 0:  20%|██        | 52/255 [00:17<01:09,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 2.0038, -0.1046]], device='cuda:0')
+test probablities tensor([0.1083], device='cuda:0')
+Testing DataLoader 0:  21%|██        | 53/255 [00:18<01:08,  2.93it/s]Sequences are not all different.
+test logits tensor([[-2.2513,  4.0493]], device='cuda:0')
+test probablities tensor([0.9982], device='cuda:0')
+Testing DataLoader 0:  21%|██        | 54/255 [00:18<01:08,  2.94it/s]Sequences are not all different.
+test logits tensor([[1.0491, 0.8104]], device='cuda:0')
+test probablities tensor([0.4406], device='cuda:0')
+Testing DataLoader 0:  22%|██▏       | 55/255 [00:18<01:07,  2.94it/s]Sequences are not all different.
+test logits tensor([[ 2.3151, -0.3067]], device='cuda:0')
+test probablities tensor([0.0678], device='cuda:0')
+Testing DataLoader 0:  22%|██▏       | 56/255 [00:18<01:07,  2.95it/s]Sequences are not all different.
+test logits tensor([[0.9294, 1.0070]], device='cuda:0')
+test probablities tensor([0.5194], device='cuda:0')
+Testing DataLoader 0:  22%|██▏       | 57/255 [00:19<01:07,  2.95it/s]Sequences are not all different.
+test logits tensor([[1.0721, 0.8106]], device='cuda:0')
+test probablities tensor([0.4350], device='cuda:0')
+Testing DataLoader 0:  23%|██▎       | 58/255 [00:19<01:07,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 2.9151, -0.9817]], device='cuda:0')
+test probablities tensor([0.0199], device='cuda:0')
+Testing DataLoader 0:  23%|██▎       | 59/255 [00:20<01:06,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 2.9553, -1.0975]], device='cuda:0')
+test probablities tensor([0.0171], device='cuda:0')
+Testing DataLoader 0:  24%|██▎       | 60/255 [00:20<01:06,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 2.7651, -0.9614]], device='cuda:0')
+test probablities tensor([0.0235], device='cuda:0')
+Testing DataLoader 0:  24%|██▍       | 61/255 [00:20<01:06,  2.91it/s]Sequences are not all different.
+test logits tensor([[ 1.9292, -0.1062]], device='cuda:0')
+test probablities tensor([0.1155], device='cuda:0')
+Testing DataLoader 0:  24%|██▍       | 62/255 [00:21<01:06,  2.90it/s]Sequences are not all different.
+test logits tensor([[1.9001, 0.0669]], device='cuda:0')
+test probablities tensor([0.1379], device='cuda:0')
+Testing DataLoader 0:  25%|██▍       | 63/255 [00:22<01:07,  2.85it/s]Sequences are not all different.
+test logits tensor([[1.8359, 0.0115]], device='cuda:0')
+test probablities tensor([0.1389], device='cuda:0')
+Testing DataLoader 0:  25%|██▌       | 64/255 [00:22<01:07,  2.85it/s]Sequences are not all different.
+test logits tensor([[ 3.4297, -1.4928]], device='cuda:0')
+test probablities tensor([0.0072], device='cuda:0')
+Testing DataLoader 0:  25%|██▌       | 65/255 [00:22<01:06,  2.86it/s]Sequences are not all different.
+test logits tensor([[ 2.6292, -0.7364]], device='cuda:0')
+test probablities tensor([0.0334], device='cuda:0')
+Testing DataLoader 0:  26%|██▌       | 66/255 [00:23<01:06,  2.86it/s]Sequences are not all different.
+test logits tensor([[1.3126, 0.5458]], device='cuda:0')
+test probablities tensor([0.3172], device='cuda:0')
+Testing DataLoader 0:  26%|██▋       | 67/255 [00:23<01:05,  2.87it/s]Sequences are not all different.
+test logits tensor([[0.1896, 1.6342]], device='cuda:0')
+test probablities tensor([0.8092], device='cuda:0')
+Testing DataLoader 0:  27%|██▋       | 68/255 [00:23<01:05,  2.87it/s]Sequences are not all different.
+test logits tensor([[ 2.2898, -0.4674]], device='cuda:0')
+test probablities tensor([0.0597], device='cuda:0')
+Testing DataLoader 0:  27%|██▋       | 69/255 [00:23<01:04,  2.88it/s]Sequences are not all different.
+test logits tensor([[ 2.0410, -0.1263]], device='cuda:0')
+test probablities tensor([0.1027], device='cuda:0')
+Testing DataLoader 0:  27%|██▋       | 70/255 [00:24<01:04,  2.88it/s]Sequences are not all different.
+test logits tensor([[1.7657, 0.0548]], device='cuda:0')
+test probablities tensor([0.1530], device='cuda:0')
+Testing DataLoader 0:  28%|██▊       | 71/255 [00:24<01:03,  2.89it/s]Sequences are not all different.
+test logits tensor([[0.5598, 1.3285]], device='cuda:0')
+test probablities tensor([0.6832], device='cuda:0')
+Testing DataLoader 0:  28%|██▊       | 72/255 [00:24<01:03,  2.89it/s]Sequences are not all different.
+test logits tensor([[ 3.0711, -1.1608]], device='cuda:0')
+test probablities tensor([0.0143], device='cuda:0')
+Testing DataLoader 0:  29%|██▊       | 73/255 [00:25<01:02,  2.90it/s]Sequences are not all different.
+test logits tensor([[1.2170, 0.5693]], device='cuda:0')
+test probablities tensor([0.3435], device='cuda:0')
+Testing DataLoader 0:  29%|██▉       | 74/255 [00:25<01:02,  2.90it/s]Sequences are not all different.
+test logits tensor([[ 2.7248, -1.1013]], device='cuda:0')
+test probablities tensor([0.0213], device='cuda:0')
+Testing DataLoader 0:  29%|██▉       | 75/255 [00:25<01:01,  2.90it/s]Sequences are not all different.
+test logits tensor([[1.3681, 0.4569]], device='cuda:0')
+test probablities tensor([0.2867], device='cuda:0')
+Testing DataLoader 0:  30%|██▉       | 76/255 [00:26<01:01,  2.91it/s]Sequences are not all different.
+test logits tensor([[1.6718, 0.2324]], device='cuda:0')
+test probablities tensor([0.1916], device='cuda:0')
+Testing DataLoader 0:  30%|███       | 77/255 [00:26<01:01,  2.91it/s]Sequences are not all different.
+test logits tensor([[-1.1529,  2.9862]], device='cuda:0')
+test probablities tensor([0.9843], device='cuda:0')
+Testing DataLoader 0:  31%|███       | 78/255 [00:26<01:00,  2.92it/s]Sequences are not all different.
+test logits tensor([[1.7802, 0.0770]], device='cuda:0')
+test probablities tensor([0.1541], device='cuda:0')
+Testing DataLoader 0:  31%|███       | 79/255 [00:27<01:00,  2.92it/s]Sequences are not all different.
+test logits tensor([[ 3.5687, -1.5505]], device='cuda:0')
+test probablities tensor([0.0059], device='cuda:0')
+Testing DataLoader 0:  31%|███▏      | 80/255 [00:27<00:59,  2.92it/s]Sequences are not all different.
+test logits tensor([[ 2.7064, -0.7228]], device='cuda:0')
+test probablities tensor([0.0314], device='cuda:0')
+Testing DataLoader 0:  32%|███▏      | 81/255 [00:27<00:59,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 2.8634, -0.8075]], device='cuda:0')
+test probablities tensor([0.0248], device='cuda:0')
+Testing DataLoader 0:  32%|███▏      | 82/255 [00:27<00:59,  2.93it/s]Sequences are not all different.
+test logits tensor([[ 3.0739, -1.1666]], device='cuda:0')
+test probablities tensor([0.0142], device='cuda:0')
+Testing DataLoader 0:  33%|███▎      | 83/255 [00:28<00:58,  2.94it/s]Sequences are not all different.
+test logits tensor([[ 3.8716, -1.6764]], device='cuda:0')
+test probablities tensor([0.0039], device='cuda:0')
+Testing DataLoader 0:  33%|███▎      | 84/255 [00:28<00:58,  2.94it/s]Sequences are not all different.
+test logits tensor([[ 2.3892, -0.4547]], device='cuda:0')
+test probablities tensor([0.0550], device='cuda:0')
+Testing DataLoader 0:  33%|███▎      | 85/255 [00:28<00:57,  2.94it/s]Sequences are not all different.
+test logits tensor([[1.6965, 0.2470]], device='cuda:0')
+test probablities tensor([0.1901], device='cuda:0')
+Testing DataLoader 0:  34%|███▎      | 86/255 [00:29<00:57,  2.95it/s]Sequences are not all different.
+test logits tensor([[0.4391, 1.2874]], device='cuda:0')
+test probablities tensor([0.7002], device='cuda:0')
+Testing DataLoader 0:  34%|███▍      | 87/255 [00:29<00:56,  2.95it/s]Sequences are not all different.
+test logits tensor([[ 3.5252, -1.5325]], device='cuda:0')
+test probablities tensor([0.0063], device='cuda:0')
+Testing DataLoader 0:  35%|███▍      | 88/255 [00:29<00:56,  2.95it/s]Sequences are not all different.
+test logits tensor([[ 1.8866, -0.1405]], device='cuda:0')
+test probablities tensor([0.1164], device='cuda:0')
+Testing DataLoader 0:  35%|███▍      | 89/255 [00:30<00:56,  2.96it/s]Sequences are not all different.
+test logits tensor([[1.5322, 0.3666]], device='cuda:0')
+test probablities tensor([0.2376], device='cuda:0')
+Testing DataLoader 0:  35%|███▌      | 90/255 [00:30<00:55,  2.96it/s]Sequences are not all different.
+test logits tensor([[1.6004, 0.2759]], device='cuda:0')
+test probablities tensor([0.2101], device='cuda:0')
+Testing DataLoader 0:  36%|███▌      | 91/255 [00:30<00:55,  2.96it/s]Sequences are not all different.
+test logits tensor([[1.6552, 0.2804]], device='cuda:0')
+test probablities tensor([0.2019], device='cuda:0')
+Testing DataLoader 0:  36%|███▌      | 92/255 [00:31<00:54,  2.96it/s]Sequences are not all different.
+test logits tensor([[ 2.5903, -0.7943]], device='cuda:0')
+test probablities tensor([0.0328], device='cuda:0')
+Testing DataLoader 0:  36%|███▋      | 93/255 [00:31<00:54,  2.97it/s]Sequences are not all different.
+test logits tensor([[ 2.2286, -0.3418]], device='cuda:0')
+test probablities tensor([0.0711], device='cuda:0')
+Testing DataLoader 0:  37%|███▋      | 94/255 [00:31<00:54,  2.97it/s]Sequences are not all different.
+test logits tensor([[1.0266, 0.8574]], device='cuda:0')
+test probablities tensor([0.4578], device='cuda:0')
+Testing DataLoader 0:  37%|███▋      | 95/255 [00:31<00:53,  2.97it/s]Sequences are not all different.
+test logits tensor([[ 2.6959, -0.8759]], device='cuda:0')
+test probablities tensor([0.0273], device='cuda:0')
+Testing DataLoader 0:  38%|███▊      | 96/255 [00:32<00:53,  2.98it/s]Sequences are not all different.
+test logits tensor([[0.1723, 1.5774]], device='cuda:0')
+test probablities tensor([0.8030], device='cuda:0')
+Testing DataLoader 0:  38%|███▊      | 97/255 [00:32<00:53,  2.98it/s]Sequences are not all different.
+test logits tensor([[ 3.6187, -1.5713]], device='cuda:0')
+test probablities tensor([0.0055], device='cuda:0')
+Testing DataLoader 0:  38%|███▊      | 98/255 [00:32<00:52,  2.98it/s]Sequences are not all different.
+test logits tensor([[ 2.2784, -0.4804]], device='cuda:0')
+test probablities tensor([0.0596], device='cuda:0')
+Testing DataLoader 0:  39%|███▉      | 99/255 [00:33<00:52,  2.98it/s]Sequences are not all different.
+test logits tensor([[0.5655, 1.3033]], device='cuda:0')
+test probablities tensor([0.6765], device='cuda:0')
+Testing DataLoader 0:  39%|███▉      | 100/255 [00:33<00:51,  2.99it/s]Sequences are not all different.
+test logits tensor([[ 2.2247, -0.4415]], device='cuda:0')
+test probablities tensor([0.0650], device='cuda:0')
+Testing DataLoader 0:  40%|███▉      | 101/255 [00:33<00:51,  2.99it/s]Sequences are not all different.
+test logits tensor([[ 2.7165, -0.8853]], device='cuda:0')
+test probablities tensor([0.0266], device='cuda:0')
+Testing DataLoader 0:  40%|████      | 102/255 [00:34<00:51,  2.99it/s]Sequences are not all different.
+test logits tensor([[ 3.6130, -1.5689]], device='cuda:0')
+test probablities tensor([0.0056], device='cuda:0')
+Testing DataLoader 0:  40%|████      | 103/255 [00:34<00:50,  2.99it/s]Sequences are not all different.
+test logits tensor([[1.7992, 0.1047]], device='cuda:0')
+test probablities tensor([0.1552], device='cuda:0')
+Testing DataLoader 0:  41%|████      | 104/255 [00:34<00:50,  3.00it/s]Sequences are not all different.
+test logits tensor([[ 2.3974, -0.5677]], device='cuda:0')
+test probablities tensor([0.0490], device='cuda:0')
+Testing DataLoader 0:  41%|████      | 105/255 [00:35<00:50,  3.00it/s]Sequences are not all different.
+test logits tensor([[ 2.2265, -0.3467]], device='cuda:0')
+test probablities tensor([0.0709], device='cuda:0')
+Testing DataLoader 0:  42%|████▏     | 106/255 [00:35<00:49,  3.00it/s]Sequences are not all different.
+test logits tensor([[ 2.4132, -0.4153]], device='cuda:0')
+test probablities tensor([0.0558], device='cuda:0')
+Testing DataLoader 0:  42%|████▏     | 107/255 [00:35<00:49,  3.00it/s]Sequences are not all different.
+test logits tensor([[ 3.1588, -1.3240]], device='cuda:0')
+test probablities tensor([0.0112], device='cuda:0')
+Testing DataLoader 0:  42%|████▏     | 108/255 [00:35<00:48,  3.01it/s]Sequences are not all different.
+test logits tensor([[0.9109, 0.8781]], device='cuda:0')
+test probablities tensor([0.4918], device='cuda:0')
+Testing DataLoader 0:  43%|████▎     | 109/255 [00:36<00:48,  3.01it/s]Sequences are not all different.
+test logits tensor([[0.9419, 0.8830]], device='cuda:0')
+test probablities tensor([0.4853], device='cuda:0')
+Testing DataLoader 0:  43%|████▎     | 110/255 [00:36<00:48,  3.01it/s]Sequences are not all different.
+test logits tensor([[-1.0100,  2.7661]], device='cuda:0')
+test probablities tensor([0.9776], device='cuda:0')
+Testing DataLoader 0:  44%|████▎     | 111/255 [00:36<00:47,  3.01it/s]Sequences are not all different.
+test logits tensor([[0.0034, 1.7637]], device='cuda:0')
+test probablities tensor([0.8532], device='cuda:0')
+Testing DataLoader 0:  44%|████▍     | 112/255 [00:37<00:47,  3.01it/s]Sequences are not all different.
+test logits tensor([[1.2428, 0.5969]], device='cuda:0')
+test probablities tensor([0.3439], device='cuda:0')
+Testing DataLoader 0:  44%|████▍     | 113/255 [00:37<00:47,  3.02it/s]Sequences are not all different.
+test logits tensor([[ 2.4318, -0.5675]], device='cuda:0')
+test probablities tensor([0.0475], device='cuda:0')
+Testing DataLoader 0:  45%|████▍     | 114/255 [00:37<00:46,  3.02it/s]Sequences are not all different.
+test logits tensor([[ 2.8858, -1.0404]], device='cuda:0')
+test probablities tensor([0.0193], device='cuda:0')
+Testing DataLoader 0:  45%|████▌     | 115/255 [00:38<00:46,  3.02it/s]Sequences are not all different.
+test logits tensor([[1.8176, 0.0520]], device='cuda:0')
+test probablities tensor([0.1461], device='cuda:0')
+Testing DataLoader 0:  45%|████▌     | 116/255 [00:38<00:46,  3.02it/s]Sequences are not all different.
+test logits tensor([[1.9258, 0.0248]], device='cuda:0')
+test probablities tensor([0.1300], device='cuda:0')
+Testing DataLoader 0:  46%|████▌     | 117/255 [00:38<00:45,  3.02it/s]Sequences are not all different.
+test logits tensor([[1.1827, 0.7156]], device='cuda:0')
+test probablities tensor([0.3853], device='cuda:0')
+Testing DataLoader 0:  46%|████▋     | 118/255 [00:39<00:45,  3.03it/s]Sequences are not all different.
+test logits tensor([[1.6394, 0.1669]], device='cuda:0')
+test probablities tensor([0.1866], device='cuda:0')
+Testing DataLoader 0:  47%|████▋     | 119/255 [00:39<00:44,  3.03it/s]Sequences are not all different.
+test logits tensor([[ 1.8863, -0.0729]], device='cuda:0')
+test probablities tensor([0.1236], device='cuda:0')
+Testing DataLoader 0:  47%|████▋     | 120/255 [00:39<00:44,  3.03it/s]Sequences are not all different.
+test logits tensor([[-2.0127,  3.9551]], device='cuda:0')
+test probablities tensor([0.9974], device='cuda:0')
+Testing DataLoader 0:  47%|████▋     | 121/255 [00:39<00:44,  3.03it/s]Sequences are not all different.
+test logits tensor([[-3.1954,  4.9544]], device='cuda:0')
+test probablities tensor([0.9997], device='cuda:0')
+Testing DataLoader 0:  48%|████▊     | 122/255 [00:40<00:43,  3.03it/s]Sequences are not all different.
+test logits tensor([[-1.2412,  3.1173]], device='cuda:0')
+test probablities tensor([0.9874], device='cuda:0')
+Testing DataLoader 0:  48%|████▊     | 123/255 [00:40<00:43,  3.03it/s]Sequences are not all different.
+test logits tensor([[-2.9191,  4.6961]], device='cuda:0')
+test probablities tensor([0.9995], device='cuda:0')
+Testing DataLoader 0:  49%|████▊     | 124/255 [00:40<00:43,  3.04it/s]Sequences are not all different.
+test logits tensor([[-3.8920,  5.6398]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  49%|████▉     | 125/255 [00:41<00:42,  3.04it/s]Sequences are not all different.
+test logits tensor([[-2.5737,  4.4234]], device='cuda:0')
+test probablities tensor([0.9991], device='cuda:0')
+Testing DataLoader 0:  49%|████▉     | 126/255 [00:41<00:42,  3.04it/s]Sequences are not all different.
+test logits tensor([[-4.5260,  6.3100]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  50%|████▉     | 127/255 [00:41<00:42,  3.04it/s]Sequences are not all different.
+test logits tensor([[-3.7034,  5.5704]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  50%|█████     | 128/255 [00:42<00:41,  3.04it/s]Sequences are not all different.
+test logits tensor([[1.1094, 0.6806]], device='cuda:0')
+test probablities tensor([0.3944], device='cuda:0')
+Testing DataLoader 0:  51%|█████     | 129/255 [00:42<00:41,  3.04it/s]Sequences are not all different.
+test logits tensor([[0.8692, 0.9451]], device='cuda:0')
+test probablities tensor([0.5190], device='cuda:0')
+Testing DataLoader 0:  51%|█████     | 130/255 [00:42<00:41,  3.05it/s]Sequences are not all different.
+test logits tensor([[-5.1490,  6.9255]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  51%|█████▏    | 131/255 [00:42<00:40,  3.05it/s]Sequences are not all different.
+test logits tensor([[0.5236, 1.3644]], device='cuda:0')
+test probablities tensor([0.6986], device='cuda:0')
+Testing DataLoader 0:  52%|█████▏    | 132/255 [00:43<00:40,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.4289,  2.2225]], device='cuda:0')
+test probablities tensor([0.9341], device='cuda:0')
+Testing DataLoader 0:  52%|█████▏    | 133/255 [00:43<00:39,  3.05it/s]Sequences are not all different.
+test logits tensor([[1.7572, 0.0170]], device='cuda:0')
+test probablities tensor([0.1493], device='cuda:0')
+Testing DataLoader 0:  53%|█████▎    | 134/255 [00:43<00:39,  3.05it/s]Sequences are not all different.
+test logits tensor([[-2.3658,  4.1220]], device='cuda:0')
+test probablities tensor([0.9985], device='cuda:0')
+Testing DataLoader 0:  53%|█████▎    | 135/255 [00:44<00:39,  3.05it/s]Sequences are not all different.
+test logits tensor([[0.3932, 1.4275]], device='cuda:0')
+test probablities tensor([0.7377], device='cuda:0')
+Testing DataLoader 0:  53%|█████▎    | 136/255 [00:44<00:38,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.8262,  2.6648]], device='cuda:0')
+test probablities tensor([0.9704], device='cuda:0')
+Testing DataLoader 0:  54%|█████▎    | 137/255 [00:44<00:38,  3.06it/s]Sequences are not all different.
+test logits tensor([[-1.5635,  3.4335]], device='cuda:0')
+test probablities tensor([0.9933], device='cuda:0')
+Testing DataLoader 0:  54%|█████▍    | 138/255 [00:45<00:38,  3.06it/s]Sequences are not all different.
+test logits tensor([[0.7246, 1.1368]], device='cuda:0')
+test probablities tensor([0.6016], device='cuda:0')
+Testing DataLoader 0:  55%|█████▍    | 139/255 [00:45<00:37,  3.06it/s]Sequences are not all different.
+test logits tensor([[-2.5241,  4.3703]], device='cuda:0')
+test probablities tensor([0.9990], device='cuda:0')
+Testing DataLoader 0:  55%|█████▍    | 140/255 [00:45<00:37,  3.06it/s]Sequences are not all different.
+test logits tensor([[-4.4377,  6.2420]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  55%|█████▌    | 141/255 [00:46<00:37,  3.06it/s]Sequences are not all different.
+test logits tensor([[0.7873, 1.1356]], device='cuda:0')
+test probablities tensor([0.5862], device='cuda:0')
+Testing DataLoader 0:  56%|█████▌    | 142/255 [00:46<00:36,  3.06it/s]Sequences are not all different.
+test logits tensor([[-0.0583,  2.0191]], device='cuda:0')
+test probablities tensor([0.8887], device='cuda:0')
+Testing DataLoader 0:  56%|█████▌    | 143/255 [00:46<00:36,  3.06it/s]Sequences are not all different.
+test logits tensor([[0.5403, 1.3153]], device='cuda:0')
+test probablities tensor([0.6846], device='cuda:0')
+Testing DataLoader 0:  56%|█████▋    | 144/255 [00:46<00:36,  3.07it/s]Sequences are not all different.
+test logits tensor([[-4.2826,  6.0258]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  57%|█████▋    | 145/255 [00:47<00:35,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.0874,  2.9146]], device='cuda:0')
+test probablities tensor([0.9820], device='cuda:0')
+Testing DataLoader 0:  57%|█████▋    | 146/255 [00:47<00:35,  3.07it/s]Sequences are not all different.
+test logits tensor([[1.2736, 0.5538]], device='cuda:0')
+test probablities tensor([0.3274], device='cuda:0')
+Testing DataLoader 0:  58%|█████▊    | 147/255 [00:47<00:35,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.5003,  2.3096]], device='cuda:0')
+test probablities tensor([0.9432], device='cuda:0')
+Testing DataLoader 0:  58%|█████▊    | 148/255 [00:48<00:34,  3.07it/s]Sequences are not all different.
+test logits tensor([[-2.2238,  3.9551]], device='cuda:0')
+test probablities tensor([0.9979], device='cuda:0')
+Testing DataLoader 0:  58%|█████▊    | 149/255 [00:48<00:34,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.4703,  3.4452]], device='cuda:0')
+test probablities tensor([0.9927], device='cuda:0')
+Testing DataLoader 0:  59%|█████▉    | 150/255 [00:48<00:34,  3.07it/s]Sequences are not all different.
+test logits tensor([[-2.6854,  4.4173]], device='cuda:0')
+test probablities tensor([0.9992], device='cuda:0')
+Testing DataLoader 0:  59%|█████▉    | 151/255 [00:49<00:33,  3.07it/s]Sequences are not all different.
+test logits tensor([[-3.0160,  4.7678]], device='cuda:0')
+test probablities tensor([0.9996], device='cuda:0')
+Testing DataLoader 0:  60%|█████▉    | 152/255 [00:49<00:33,  3.08it/s]Sequences are not all different.
+test logits tensor([[-0.7259,  2.4849]], device='cuda:0')
+test probablities tensor([0.9612], device='cuda:0')
+Testing DataLoader 0:  60%|██████    | 153/255 [00:49<00:33,  3.08it/s]Sequences are not all different.
+test logits tensor([[-4.0623,  5.8677]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  60%|██████    | 154/255 [00:50<00:32,  3.08it/s]Sequences are not all different.
+test logits tensor([[-0.8393,  2.7169]], device='cuda:0')
+test probablities tensor([0.9722], device='cuda:0')
+Testing DataLoader 0:  61%|██████    | 155/255 [00:50<00:32,  3.08it/s]Sequences are not all different.
+test logits tensor([[-0.6659,  2.3818]], device='cuda:0')
+test probablities tensor([0.9547], device='cuda:0')
+Testing DataLoader 0:  61%|██████    | 156/255 [00:50<00:32,  3.08it/s]Sequences are not all different.
+test logits tensor([[-2.8264,  4.6749]], device='cuda:0')
+test probablities tensor([0.9994], device='cuda:0')
+Testing DataLoader 0:  62%|██████▏   | 157/255 [00:50<00:31,  3.08it/s]Sequences are not all different.
+test logits tensor([[-2.6196,  4.4203]], device='cuda:0')
+test probablities tensor([0.9991], device='cuda:0')
+Testing DataLoader 0:  62%|██████▏   | 158/255 [00:51<00:31,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.4801, 1.3230]], device='cuda:0')
+test probablities tensor([0.6991], device='cuda:0')
+Testing DataLoader 0:  62%|██████▏   | 159/255 [00:51<00:31,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.9285, 0.9467]], device='cuda:0')
+test probablities tensor([0.5045], device='cuda:0')
+Testing DataLoader 0:  63%|██████▎   | 160/255 [00:51<00:30,  3.08it/s]Sequences are not all different.
+test logits tensor([[-1.1280,  2.9489]], device='cuda:0')
+test probablities tensor([0.9833], device='cuda:0')
+Testing DataLoader 0:  63%|██████▎   | 161/255 [00:52<00:30,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.9220,  4.6701]], device='cuda:0')
+test probablities tensor([0.9995], device='cuda:0')
+Testing DataLoader 0:  64%|██████▎   | 162/255 [00:52<00:30,  3.09it/s]Sequences are not all different.
+test logits tensor([[-0.2888,  2.1193]], device='cuda:0')
+test probablities tensor([0.9174], device='cuda:0')
+Testing DataLoader 0:  64%|██████▍   | 163/255 [00:52<00:29,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.0918,  3.7316]], device='cuda:0')
+test probablities tensor([0.9971], device='cuda:0')
+Testing DataLoader 0:  64%|██████▍   | 164/255 [00:53<00:29,  3.09it/s]Sequences are not all different.
+test logits tensor([[-3.9233,  5.8759]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  65%|██████▍   | 165/255 [00:53<00:29,  3.09it/s]Sequences are not all different.
+test logits tensor([[-1.3986,  3.2310]], device='cuda:0')
+test probablities tensor([0.9903], device='cuda:0')
+Testing DataLoader 0:  65%|██████▌   | 166/255 [00:53<00:28,  3.09it/s]Sequences are not all different.
+test logits tensor([[-1.2627,  3.1878]], device='cuda:0')
+test probablities tensor([0.9885], device='cuda:0')
+Testing DataLoader 0:  65%|██████▌   | 167/255 [00:54<00:28,  3.09it/s]Sequences are not all different.
+test logits tensor([[0.9722, 0.9110]], device='cuda:0')
+test probablities tensor([0.4847], device='cuda:0')
+Testing DataLoader 0:  66%|██████▌   | 168/255 [00:54<00:28,  3.09it/s]Sequences are not all different.
+test logits tensor([[1.3302, 0.5432]], device='cuda:0')
+test probablities tensor([0.3128], device='cuda:0')
+Testing DataLoader 0:  66%|██████▋   | 169/255 [00:54<00:27,  3.09it/s]Sequences are not all different.
+test logits tensor([[-5.2204,  7.0419]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  67%|██████▋   | 170/255 [00:54<00:27,  3.09it/s]Sequences are not all different.
+test logits tensor([[-3.6365,  5.3415]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  67%|██████▋   | 171/255 [00:55<00:27,  3.10it/s]Sequences are not all different.
+test logits tensor([[-0.1193,  1.9552]], device='cuda:0')
+test probablities tensor([0.8884], device='cuda:0')
+Testing DataLoader 0:  67%|██████▋   | 172/255 [00:55<00:26,  3.10it/s]Sequences are not all different.
+test logits tensor([[-2.2315,  3.9563]], device='cuda:0')
+test probablities tensor([0.9979], device='cuda:0')
+Testing DataLoader 0:  68%|██████▊   | 173/255 [00:55<00:26,  3.10it/s]Sequences are not all different.
+test logits tensor([[-0.3939,  2.3801]], device='cuda:0')
+test probablities tensor([0.9413], device='cuda:0')
+Testing DataLoader 0:  68%|██████▊   | 174/255 [00:56<00:26,  3.10it/s]Sequences are not all different.
+test logits tensor([[-0.4860,  2.4689]], device='cuda:0')
+test probablities tensor([0.9505], device='cuda:0')
+Testing DataLoader 0:  69%|██████▊   | 175/255 [00:56<00:25,  3.10it/s]Sequences are not all different.
+test logits tensor([[-4.7242,  6.4568]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  69%|██████▉   | 176/255 [00:56<00:25,  3.10it/s]Sequences are not all different.
+test logits tensor([[-1.1294,  2.9558]], device='cuda:0')
+test probablities tensor([0.9835], device='cuda:0')
+Testing DataLoader 0:  69%|██████▉   | 177/255 [00:57<00:25,  3.10it/s]Sequences are not all different.
+test logits tensor([[-3.2634,  5.0414]], device='cuda:0')
+test probablities tensor([0.9998], device='cuda:0')
+Testing DataLoader 0:  70%|██████▉   | 178/255 [00:57<00:24,  3.10it/s]Sequences are not all different.
+test logits tensor([[-0.1190,  1.9321]], device='cuda:0')
+test probablities tensor([0.8861], device='cuda:0')
+Testing DataLoader 0:  70%|███████   | 179/255 [00:57<00:24,  3.10it/s]Sequences are not all different.
+test logits tensor([[-4.9887,  6.8249]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  71%|███████   | 180/255 [00:58<00:24,  3.10it/s]Sequences are not all different.
+test logits tensor([[0.5920, 1.2923]], device='cuda:0')
+test probablities tensor([0.6683], device='cuda:0')
+Testing DataLoader 0:  71%|███████   | 181/255 [00:58<00:23,  3.10it/s]Sequences are not all different.
+test logits tensor([[-3.6169,  5.4140]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  71%|███████▏  | 182/255 [00:58<00:23,  3.10it/s]Sequences are not all different.
+test logits tensor([[0.9778, 0.9314]], device='cuda:0')
+test probablities tensor([0.4884], device='cuda:0')
+Testing DataLoader 0:  72%|███████▏  | 183/255 [00:58<00:23,  3.11it/s]Sequences are not all different.
+test logits tensor([[-5.0292,  6.9181]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  72%|███████▏  | 184/255 [00:59<00:22,  3.11it/s]Sequences are not all different.
+test logits tensor([[-3.2835,  5.1582]], device='cuda:0')
+test probablities tensor([0.9998], device='cuda:0')
+Testing DataLoader 0:  73%|███████▎  | 185/255 [00:59<00:22,  3.11it/s]Sequences are not all different.
+test logits tensor([[1.4712, 0.3488]], device='cuda:0')
+test probablities tensor([0.2456], device='cuda:0')
+Testing DataLoader 0:  73%|███████▎  | 186/255 [01:00<00:22,  3.10it/s]Sequences are not all different.
+test logits tensor([[0.1089, 1.7517]], device='cuda:0')
+test probablities tensor([0.8379], device='cuda:0')
+Testing DataLoader 0:  73%|███████▎  | 187/255 [01:00<00:21,  3.10it/s]Sequences are not all different.
+test logits tensor([[0.0346, 1.7511]], device='cuda:0')
+test probablities tensor([0.8477], device='cuda:0')
+Testing DataLoader 0:  74%|███████▎  | 188/255 [01:00<00:21,  3.10it/s]Sequences are not all different.
+test logits tensor([[-1.6764,  3.4043]], device='cuda:0')
+test probablities tensor([0.9938], device='cuda:0')
+Testing DataLoader 0:  74%|███████▍  | 189/255 [01:01<00:21,  3.10it/s]Sequences are not all different.
+test logits tensor([[-1.0026,  2.9104]], device='cuda:0')
+test probablities tensor([0.9804], device='cuda:0')
+Testing DataLoader 0:  75%|███████▍  | 190/255 [01:01<00:21,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.1479, 1.7319]], device='cuda:0')
+test probablities tensor([0.8298], device='cuda:0')
+Testing DataLoader 0:  75%|███████▍  | 191/255 [01:02<00:21,  3.05it/s]Sequences are not all different.
+test logits tensor([[-1.0054,  2.8438]], device='cuda:0')
+test probablities tensor([0.9791], device='cuda:0')
+Testing DataLoader 0:  75%|███████▌  | 192/255 [01:03<00:20,  3.04it/s]Sequences are not all different.
+test logits tensor([[-1.9424,  3.7002]], device='cuda:0')
+test probablities tensor([0.9965], device='cuda:0')
+Testing DataLoader 0:  76%|███████▌  | 193/255 [01:03<00:20,  3.04it/s]Sequences are not all different.
+test logits tensor([[0.2845, 1.5348]], device='cuda:0')
+test probablities tensor([0.7773], device='cuda:0')
+Testing DataLoader 0:  76%|███████▌  | 194/255 [01:03<00:20,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.0024,  1.7586]], device='cuda:0')
+test probablities tensor([0.8533], device='cuda:0')
+Testing DataLoader 0:  76%|███████▋  | 195/255 [01:04<00:19,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.5413,  2.3867]], device='cuda:0')
+test probablities tensor([0.9492], device='cuda:0')
+Testing DataLoader 0:  77%|███████▋  | 196/255 [01:04<00:19,  3.05it/s]Sequences are not all different.
+test logits tensor([[1.3813, 0.5782]], device='cuda:0')
+test probablities tensor([0.3094], device='cuda:0')
+Testing DataLoader 0:  77%|███████▋  | 197/255 [01:04<00:19,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.0668,  2.1121]], device='cuda:0')
+test probablities tensor([0.8983], device='cuda:0')
+Testing DataLoader 0:  78%|███████▊  | 198/255 [01:04<00:18,  3.05it/s]Sequences are not all different.
+test logits tensor([[-1.2613,  3.0129]], device='cuda:0')
+test probablities tensor([0.9863], device='cuda:0')
+Testing DataLoader 0:  78%|███████▊  | 199/255 [01:05<00:18,  3.05it/s]Sequences are not all different.
+test logits tensor([[-5.2567,  7.1043]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  78%|███████▊  | 200/255 [01:05<00:18,  3.05it/s]Sequences are not all different.
+test logits tensor([[-4.1668,  5.8985]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  79%|███████▉  | 201/255 [01:05<00:17,  3.05it/s]Sequences are not all different.
+test logits tensor([[-1.2041,  2.9396]], device='cuda:0')
+test probablities tensor([0.9844], device='cuda:0')
+Testing DataLoader 0:  79%|███████▉  | 202/255 [01:06<00:17,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.9040,  2.8492]], device='cuda:0')
+test probablities tensor([0.9771], device='cuda:0')
+Testing DataLoader 0:  80%|███████▉  | 203/255 [01:06<00:17,  3.05it/s]Sequences are not all different.
+test logits tensor([[-0.7653,  2.5845]], device='cuda:0')
+test probablities tensor([0.9661], device='cuda:0')
+Testing DataLoader 0:  80%|████████  | 204/255 [01:06<00:16,  3.05it/s]Sequences are not all different.
+test logits tensor([[-2.9961,  4.8365]], device='cuda:0')
+test probablities tensor([0.9996], device='cuda:0')
+Testing DataLoader 0:  80%|████████  | 205/255 [01:07<00:16,  3.06it/s]Sequences are not all different.
+test logits tensor([[1.3098, 0.5012]], device='cuda:0')
+test probablities tensor([0.3082], device='cuda:0')
+Testing DataLoader 0:  81%|████████  | 206/255 [01:07<00:16,  3.06it/s]Sequences are not all different.
+test logits tensor([[-3.1403,  5.0013]], device='cuda:0')
+test probablities tensor([0.9997], device='cuda:0')
+Testing DataLoader 0:  81%|████████  | 207/255 [01:07<00:15,  3.06it/s]Sequences are not all different.
+test logits tensor([[-3.9654,  5.8008]], device='cuda:0')
+test probablities tensor([0.9999], device='cuda:0')
+Testing DataLoader 0:  82%|████████▏ | 208/255 [01:08<00:15,  3.06it/s]Sequences are not all different.
+test logits tensor([[-0.0793,  1.8902]], device='cuda:0')
+test probablities tensor([0.8776], device='cuda:0')
+Testing DataLoader 0:  82%|████████▏ | 209/255 [01:08<00:15,  3.06it/s]Sequences are not all different.
+test logits tensor([[-2.7367,  4.4894]], device='cuda:0')
+test probablities tensor([0.9993], device='cuda:0')
+Testing DataLoader 0:  82%|████████▏ | 210/255 [01:08<00:14,  3.06it/s]Sequences are not all different.
+test logits tensor([[0.9155, 1.0512]], device='cuda:0')
+test probablities tensor([0.5339], device='cuda:0')
+Testing DataLoader 0:  83%|████████▎ | 211/255 [01:08<00:14,  3.06it/s]Sequences are not all different.
+test logits tensor([[-0.3912,  2.3255]], device='cuda:0')
+test probablities tensor([0.9380], device='cuda:0')
+Testing DataLoader 0:  83%|████████▎ | 212/255 [01:09<00:14,  3.06it/s]Sequences are not all different.
+test logits tensor([[-2.4381,  4.3237]], device='cuda:0')
+test probablities tensor([0.9988], device='cuda:0')
+Testing DataLoader 0:  84%|████████▎ | 213/255 [01:09<00:13,  3.06it/s]Sequences are not all different.
+test logits tensor([[-0.6772,  2.6395]], device='cuda:0')
+test probablities tensor([0.9650], device='cuda:0')
+Testing DataLoader 0:  84%|████████▍ | 214/255 [01:09<00:13,  3.06it/s]Sequences are not all different.
+test logits tensor([[-0.9910,  2.8598]], device='cuda:0')
+test probablities tensor([0.9792], device='cuda:0')
+Testing DataLoader 0:  84%|████████▍ | 215/255 [01:10<00:13,  3.06it/s]Sequences are not all different.
+test logits tensor([[-2.4569,  4.4142]], device='cuda:0')
+test probablities tensor([0.9990], device='cuda:0')
+Testing DataLoader 0:  85%|████████▍ | 216/255 [01:10<00:12,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.0646,  2.0054]], device='cuda:0')
+test probablities tensor([0.8879], device='cuda:0')
+Testing DataLoader 0:  85%|████████▌ | 217/255 [01:10<00:12,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.4783,  2.3432]], device='cuda:0')
+test probablities tensor([0.9438], device='cuda:0')
+Testing DataLoader 0:  85%|████████▌ | 218/255 [01:11<00:12,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.2547,  2.0541]], device='cuda:0')
+test probablities tensor([0.9096], device='cuda:0')
+Testing DataLoader 0:  86%|████████▌ | 219/255 [01:11<00:11,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.0898,  3.0952]], device='cuda:0')
+test probablities tensor([0.9850], device='cuda:0')
+Testing DataLoader 0:  86%|████████▋ | 220/255 [01:11<00:11,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.8764,  2.7182]], device='cuda:0')
+test probablities tensor([0.9733], device='cuda:0')
+Testing DataLoader 0:  87%|████████▋ | 221/255 [01:11<00:11,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.5680,  3.3728]], device='cuda:0')
+test probablities tensor([0.9929], device='cuda:0')
+Testing DataLoader 0:  87%|████████▋ | 222/255 [01:12<00:10,  3.07it/s]Sequences are not all different.
+test logits tensor([[-4.3693,  6.0354]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  87%|████████▋ | 223/255 [01:12<00:10,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.6066,  3.5717]], device='cuda:0')
+test probablities tensor([0.9944], device='cuda:0')
+Testing DataLoader 0:  88%|████████▊ | 224/255 [01:12<00:10,  3.07it/s]Sequences are not all different.
+test logits tensor([[-0.4574,  2.3048]], device='cuda:0')
+test probablities tensor([0.9406], device='cuda:0')
+Testing DataLoader 0:  88%|████████▊ | 225/255 [01:13<00:09,  3.07it/s]Sequences are not all different.
+test logits tensor([[-2.5711,  4.4875]], device='cuda:0')
+test probablities tensor([0.9991], device='cuda:0')
+Testing DataLoader 0:  89%|████████▊ | 226/255 [01:13<00:09,  3.07it/s]Sequences are not all different.
+test logits tensor([[-1.7879,  3.5824]], device='cuda:0')
+test probablities tensor([0.9954], device='cuda:0')
+Testing DataLoader 0:  89%|████████▉ | 227/255 [01:13<00:09,  3.07it/s]Sequences are not all different.
+test logits tensor([[0.4642, 1.3370]], device='cuda:0')
+test probablities tensor([0.7053], device='cuda:0')
+Testing DataLoader 0:  89%|████████▉ | 228/255 [01:14<00:08,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.4258, 1.4941]], device='cuda:0')
+test probablities tensor([0.7443], device='cuda:0')
+Testing DataLoader 0:  90%|████████▉ | 229/255 [01:14<00:08,  3.08it/s]Sequences are not all different.
+test logits tensor([[ 2.1215, -0.0642]], device='cuda:0')
+test probablities tensor([0.1010], device='cuda:0')
+Testing DataLoader 0:  90%|█████████ | 230/255 [01:14<00:08,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.3756, 1.4983]], device='cuda:0')
+test probablities tensor([0.7545], device='cuda:0')
+Testing DataLoader 0:  91%|█████████ | 231/255 [01:15<00:07,  3.08it/s]Sequences are not all different.
+test logits tensor([[-1.7288,  3.6104]], device='cuda:0')
+test probablities tensor([0.9952], device='cuda:0')
+Testing DataLoader 0:  91%|█████████ | 232/255 [01:15<00:07,  3.08it/s]Sequences are not all different.
+test logits tensor([[-1.9548,  3.8976]], device='cuda:0')
+test probablities tensor([0.9971], device='cuda:0')
+Testing DataLoader 0:  91%|█████████▏| 233/255 [01:15<00:07,  3.08it/s]Sequences are not all different.
+test logits tensor([[-3.1441,  4.9108]], device='cuda:0')
+test probablities tensor([0.9997], device='cuda:0')
+Testing DataLoader 0:  92%|█████████▏| 234/255 [01:15<00:06,  3.08it/s]Sequences are not all different.
+test logits tensor([[-0.1457,  2.0116]], device='cuda:0')
+test probablities tensor([0.8963], device='cuda:0')
+Testing DataLoader 0:  92%|█████████▏| 235/255 [01:16<00:06,  3.08it/s]Sequences are not all different.
+test logits tensor([[0.6248, 1.2043]], device='cuda:0')
+test probablities tensor([0.6409], device='cuda:0')
+Testing DataLoader 0:  93%|█████████▎| 236/255 [01:16<00:06,  3.08it/s]Sequences are not all different.
+test logits tensor([[-2.7224,  4.4969]], device='cuda:0')
+test probablities tensor([0.9993], device='cuda:0')
+Testing DataLoader 0:  93%|█████████▎| 237/255 [01:16<00:05,  3.08it/s]Sequences are not all different.
+test logits tensor([[-1.3334,  3.2474]], device='cuda:0')
+test probablities tensor([0.9899], device='cuda:0')
+Testing DataLoader 0:  93%|█████████▎| 238/255 [01:17<00:05,  3.08it/s]Sequences are not all different.
+test logits tensor([[-1.0802,  2.7407]], device='cuda:0')
+test probablities tensor([0.9786], device='cuda:0')
+Testing DataLoader 0:  94%|█████████▎| 239/255 [01:17<00:05,  3.08it/s]Sequences are not all different.
+test logits tensor([[-0.1113,  2.0116]], device='cuda:0')
+test probablities tensor([0.8931], device='cuda:0')
+Testing DataLoader 0:  94%|█████████▍| 240/255 [01:17<00:04,  3.08it/s]Sequences are not all different.
+test logits tensor([[-2.2254,  3.9215]], device='cuda:0')
+test probablities tensor([0.9979], device='cuda:0')
+Testing DataLoader 0:  95%|█████████▍| 241/255 [01:18<00:04,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.6154,  4.3443]], device='cuda:0')
+test probablities tensor([0.9991], device='cuda:0')
+Testing DataLoader 0:  95%|█████████▍| 242/255 [01:18<00:04,  3.09it/s]Sequences are not all different.
+test logits tensor([[0.0175, 1.7426]], device='cuda:0')
+test probablities tensor([0.8488], device='cuda:0')
+Testing DataLoader 0:  95%|█████████▌| 243/255 [01:18<00:03,  3.09it/s]Sequences are not all different.
+test logits tensor([[-3.2015,  4.8803]], device='cuda:0')
+test probablities tensor([0.9997], device='cuda:0')
+Testing DataLoader 0:  96%|█████████▌| 244/255 [01:19<00:03,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.2075,  3.9640]], device='cuda:0')
+test probablities tensor([0.9979], device='cuda:0')
+Testing DataLoader 0:  96%|█████████▌| 245/255 [01:19<00:03,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.6257,  4.4890]], device='cuda:0')
+test probablities tensor([0.9992], device='cuda:0')
+Testing DataLoader 0:  96%|█████████▋| 246/255 [01:19<00:02,  3.09it/s]Sequences are not all different.
+test logits tensor([[-3.3681,  5.0618]], device='cuda:0')
+test probablities tensor([0.9998], device='cuda:0')
+Testing DataLoader 0:  97%|█████████▋| 247/255 [01:19<00:02,  3.09it/s]Sequences are not all different.
+test logits tensor([[1.0583, 0.9363]], device='cuda:0')
+test probablities tensor([0.4695], device='cuda:0')
+Testing DataLoader 0:  97%|█████████▋| 248/255 [01:20<00:02,  3.09it/s]Sequences are not all different.
+test logits tensor([[-0.1397,  1.9731]], device='cuda:0')
+test probablities tensor([0.8921], device='cuda:0')
+Testing DataLoader 0:  98%|█████████▊| 249/255 [01:20<00:01,  3.09it/s]Sequences are not all different.
+test logits tensor([[-0.6162,  2.4979]], device='cuda:0')
+test probablities tensor([0.9575], device='cuda:0')
+Testing DataLoader 0:  98%|█████████▊| 250/255 [01:20<00:01,  3.09it/s]Sequences are not all different.
+test logits tensor([[1.0498, 0.7968]], device='cuda:0')
+test probablities tensor([0.4371], device='cuda:0')
+Testing DataLoader 0:  98%|█████████▊| 251/255 [01:21<00:01,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.3175,  4.2229]], device='cuda:0')
+test probablities tensor([0.9986], device='cuda:0')
+Testing DataLoader 0:  99%|█████████▉| 252/255 [01:21<00:00,  3.09it/s]Sequences are not all different.
+test logits tensor([[-4.2490,  5.9905]], device='cuda:0')
+test probablities tensor([1.0000], device='cuda:0')
+Testing DataLoader 0:  99%|█████████▉| 253/255 [01:21<00:00,  3.09it/s]Sequences are not all different.
+test logits tensor([[-2.2730,  4.0458]], device='cuda:0')
+test probablities tensor([0.9982], device='cuda:0')
+Testing DataLoader 0: 100%|█████████▉| 254/255 [01:22<00:00,  3.09it/s]Sequences are not all different.
+test logits tensor([[-3.1238,  4.9349]], device='cuda:0')
+test probablities tensor([0.9997], device='cuda:0')
+Testing DataLoader 0: 100%|██████████| 255/255 [01:22<00:00,  3.09it/s]Testing DataLoader 0: 100%|██████████| 255/255 [01:22<00:00,  3.09it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│     ptl/test_accuracy     │    0.8509804010391235     │
+│       ptl/test_aupr       │    0.9507699608802795     │
+│      ptl/test_auroc       │    0.9446914196014404     │
+│     ptl/test_f1_score     │    0.8661971688270569     │
+│       ptl/test_loss       │    0.32531437277793884    │
+│       ptl/test_mcc        │    0.7033134698867798     │
+│    ptl/test_precision     │    0.8255033493041992     │
+│      ptl/test_recall      │    0.9111111164093018     │
+└───────────────────────────┴───────────────────────────┘

@@ -1,0 +1,511 @@
+Global seed set to 42
+2023-10-04 23:31:15,153	INFO worker.py:1642 -- Started a local Ray instance.
+2023-10-04 23:31:20,506	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-10-04 23:31:20,509	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-10-04 23:31:20,544	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+[2m[36m(TorchTrainer pid=179472)[0m Starting distributed worker processes: ['180198 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=180198)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=180198)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=180198)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=180198)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=180198)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-10-04 23:31:47,619	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_b04cec5c
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=179472, ip=10.6.9.16, actor_id=715ddd62cf9d0f4228f7d28701000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=180198, ip=10.6.9.16, actor_id=22a1922b98bfec803db84dd501000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14655a7998e0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_b04cec5c_1_batch_size=8,layer_size=8,lr=0.0013_2023-10-04_23-31-20/wandb/offline-run-20231004_233141-b04cec5c
+[2m[36m(_WandbLoggingActor pid=180193)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233141-b04cec5c/logs
+[2m[36m(TorchTrainer pid=180586)[0m Starting distributed worker processes: ['180716 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=180716)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=180716)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=180716)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=180716)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=180716)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-10-04 23:32:17,819	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_f3a71311
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=180586, ip=10.6.9.16, actor_id=116a8fc9393019fa5065a3e201000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=180716, ip=10.6.9.16, actor_id=6c529dd8f86652f0885d1c2801000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14def46ca970>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_f3a71311_2_batch_size=8,layer_size=32,lr=0.0372_2023-10-04_23-31-34/wandb/offline-run-20231004_233211-f3a71311
+[2m[36m(_WandbLoggingActor pid=180713)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233211-f3a71311/logs
+[2m[36m(TorchTrainer pid=181105)[0m Starting distributed worker processes: ['181505 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=181505)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=181505)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=181505)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=181505)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=181505)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:32:47,393	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_592eadb7
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=181105, ip=10.6.9.16, actor_id=afa8459979af78a3e3d2405201000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=181505, ip=10.6.9.16, actor_id=aab92f7e66174a1de8b5e2f701000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x1534c6d1c970>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_592eadb7_3_batch_size=4,layer_size=32,lr=0.0014_2023-10-04_23-32-05/wandb/offline-run-20231004_233241-592eadb7
+[2m[36m(_WandbLoggingActor pid=181502)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233241-592eadb7/logs
+[2m[36m(TorchTrainer pid=181896)[0m Starting distributed worker processes: ['182025 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=182025)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=182025)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=182025)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=182025)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=182025)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:33:17,435	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_143af08b
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=181896, ip=10.6.9.16, actor_id=7edc2f43f3f57fde204e291b01000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=182025, ip=10.6.9.16, actor_id=bfeeb1f6b0486d497b40934e01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x152d0bce49d0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_143af08b_4_batch_size=8,layer_size=16,lr=0.0006_2023-10-04_23-32-34/wandb/offline-run-20231004_233311-143af08b
+[2m[36m(_WandbLoggingActor pid=182022)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233311-143af08b/logs
+[2m[36m(TorchTrainer pid=182726)[0m Starting distributed worker processes: ['182866 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=182866)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=182866)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=182866)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=182866)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=182866)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:33:46,401	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_6fb17ce5
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=182726, ip=10.6.9.16, actor_id=d718ca62f44779e6b7dfd14501000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=182866, ip=10.6.9.16, actor_id=e9d1947be1fff67e51102f1701000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14c472659850>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6fb17ce5_5_batch_size=8,layer_size=8,lr=0.0006_2023-10-04_23-33-04/wandb/offline-run-20231004_233340-6fb17ce5
+[2m[36m(_WandbLoggingActor pid=182862)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233340-6fb17ce5/logs
+2023-10-04 23:34:06,718	WARNING worker.py:2058 -- Traceback (most recent call last):
+  File "python/ray/_raylet.pyx", line 2355, in ray._raylet._auto_reconnect.wrapper
+  File "python/ray/_raylet.pyx", line 2453, in ray._raylet.GcsClient.internal_kv_get
+  File "python/ray/_raylet.pyx", line 455, in ray._raylet.check_status
+ray.exceptions.RpcError: failed to connect to all addresses; last error: UNKNOWN: ipv4:10.6.9.16:54417: connection attempt timed out before receiving SETTINGS frame
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2165, in connect
+    node.check_version_info()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/node.py", line 382, in check_version_info
+    cluster_metadata = ray_usage_lib.get_cluster_metadata(self.get_gcs_client())
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/usage/usage_lib.py", line 719, in get_cluster_metadata
+    gcs_client.internal_kv_get(
+  File "python/ray/_raylet.pyx", line 2357, in ray._raylet._auto_reconnect.wrapper
+ModuleNotFoundError: No module named 'grpc'
+
+[2m[36m(TorchTrainer pid=183254)[0m Starting distributed worker processes: ['183384 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=183384)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=183384)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=183384)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=183384)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=183384)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:34:16,777	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_ca8eb5c5
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=183254, ip=10.6.9.16, actor_id=91fea8eb5b8f5c53dbc0b0ef01000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=183384, ip=10.6.9.16, actor_id=9bcefe7bbbd19b7d9288494a01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x145f56c9b940>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ca8eb5c5_6_batch_size=4,layer_size=16,lr=0.0001_2023-10-04_23-33-33/wandb/offline-run-20231004_233410-ca8eb5c5
+[2m[36m(_WandbLoggingActor pid=183381)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233410-ca8eb5c5/logs
+[2m[36m(TorchTrainer pid=183780)[0m Starting distributed worker processes: ['183916 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=183916)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=183916)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=183916)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=183916)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=183916)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:34:46,455	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_6e91041a
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=183780, ip=10.6.9.16, actor_id=f3bbc005a195a5b12530b10101000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=183916, ip=10.6.9.16, actor_id=5638e3c506c34f38ab06c6ae01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x15207f8e2940>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_6e91041a_7_batch_size=8,layer_size=32,lr=0.0015_2023-10-04_23-34-04/wandb/offline-run-20231004_233440-6e91041a
+[2m[36m(_WandbLoggingActor pid=183913)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233440-6e91041a/logs
+[2m[36m(TorchTrainer pid=184308)[0m Starting distributed worker processes: ['184438 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=184438)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=184438)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=184438)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=184438)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=184438)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-10-04 23:35:17,050	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_ce4b8093
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=184308, ip=10.6.9.16, actor_id=8e48b95da9ea03dc5019985801000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=184438, ip=10.6.9.16, actor_id=40a51bb17a7803656157395101000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x144751d54940>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_ce4b8093_8_batch_size=8,layer_size=8,lr=0.0001_2023-10-04_23-34-33/wandb/offline-run-20231004_233511-ce4b8093
+[2m[36m(_WandbLoggingActor pid=184435)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233511-ce4b8093/logs
+[2m[36m(TorchTrainer pid=184826)[0m Starting distributed worker processes: ['184956 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=184956)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=184956)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=184956)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=184956)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=184956)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:35:46,200	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_d88a880d
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=184826, ip=10.6.9.16, actor_id=992bf77b447c5696d64d445501000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=184956, ip=10.6.9.16, actor_id=7e8c557b12056a54a05c951b01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x1473cb3df910>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_d88a880d_9_batch_size=8,layer_size=16,lr=0.0000_2023-10-04_23-35-04/wandb/offline-run-20231004_233540-d88a880d
+[2m[36m(_WandbLoggingActor pid=184953)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233540-d88a880d/logs
+[2m[36m(TorchTrainer pid=185610)[0m Starting distributed worker processes: ['185739 (10.6.9.16)']
+[2m[36m(RayTrainWorker pid=185739)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=185739)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=185739)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=185739)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=185739)[0m HPU available: False, using: 0 HPUs
+2023-10-04 23:36:15,953	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_e0f48e98
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_Inner.train()[39m (pid=185610, ip=10.6.9.16, actor_id=3a7e703820d820c706a8086901000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(FileNotFoundError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=185739, ip=10.6.9.16, actor_id=d65a0774bc74a8a338fef73d01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14fd48b8c970>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 301, in train_func
+    train_dataloader = DataLoader(mouse_8_25(cell_type=cell_type, data_class='train'), shuffle=True, batch_size=config['batch_size'], num_workers=4)
+  File "/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/data_sets/mouse_8_25.py", line 17, in __init__
+    self.data = pd.read_csv(os.path.join(self.base_dir, cell_type, f"{data_class}.csv"))
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/DNABERT_2/data_prep/somitic_mesosurface_ecto/train.csv'
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-10-04_23-31-11/TorchTrainer_e0f48e98_10_batch_size=8,layer_size=16,lr=0.0009_2023-10-04_23-35-33/wandb/offline-run-20231004_233610-e0f48e98
+[2m[36m(_WandbLoggingActor pid=185736)[0m wandb: Find logs at: ./wandb/offline-run-20231004_233610-e0f48e98/logs
+2023-10-04 23:36:21,853	ERROR tune.py:1139 -- Trials did not complete: [TorchTrainer_b04cec5c, TorchTrainer_f3a71311, TorchTrainer_592eadb7, TorchTrainer_143af08b, TorchTrainer_6fb17ce5, TorchTrainer_ca8eb5c5, TorchTrainer_6e91041a, TorchTrainer_ce4b8093, TorchTrainer_d88a880d, TorchTrainer_e0f48e98]
+2023-10-04 23:36:21,899	WARNING experiment_analysis.py:596 -- Could not find best trial. Did you pass the correct `metric` parameter?
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 336, in <module>
+    end = results.get_best_result(metric="ptl/val_loss", mode="min")
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/result_grid.py", line 165, in get_best_result
+    raise RuntimeError(error_msg)
+RuntimeError: No best trial found for the given metric: ptl/val_loss. This means that no trial has reported this metric, or all values reported for this metric are NaN. To not ignore NaN values, you can set the `filter_nan_and_inf` arg to False.

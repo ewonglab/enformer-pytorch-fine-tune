@@ -1,0 +1,1058 @@
+Global seed set to 42
+2023-09-30 14:15:34,099	INFO worker.py:1642 -- Started a local Ray instance.
+2023-09-30 14:16:10,353	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-09-30 14:16:10,409	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+[2m[36m(TorchTrainer pid=962306)[0m Starting distributed worker processes: ['962457 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=962457)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=962457)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=962457)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=962457)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=962457)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=962457)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=962457)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=962457)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=962457)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/lightning_logs
+[2m[36m(RayTrainWorker pid=962457)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=962457)[0m 
+[2m[36m(RayTrainWorker pid=962457)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=962457)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=962457)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=962457)[0m 1 | model             | BinaryAdapterWrapper   | 270 M 
+[2m[36m(RayTrainWorker pid=962457)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=962457)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=962457)[0m 270 M     Trainable params
+[2m[36m(RayTrainWorker pid=962457)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=962457)[0m 270 M     Total params
+[2m[36m(RayTrainWorker pid=962457)[0m 1,083.529 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=962457)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=962457)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=962457)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=962457)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=962457)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=962457)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=962457)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=962457)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=962457)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=962457)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=962457)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=962457)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=962457)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=962457)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=962457)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=962457)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=962457)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=962457)[0m   self.train_accuracy.append(torch.tensor(loss))
+2023-09-30 14:24:04,609	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000000)
+2023-09-30 14:24:07,539	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.930 s, which may be a performance bottleneck.
+2023-09-30 14:24:07,540	WARNING util.py:315 -- The `process_trial_result` operation took 2.932 s, which may be a performance bottleneck.
+2023-09-30 14:24:07,540	WARNING util.py:315 -- Processing trial results took 2.932 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 14:24:07,540	WARNING util.py:315 -- The `process_trial_result` operation took 2.932 s, which may be a performance bottleneck.
+2023-09-30 14:31:14,836	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000001)
+2023-09-30 14:38:23,881	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000002)
+2023-09-30 14:45:32,260	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000003)
+2023-09-30 14:52:40,830	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000004)
+2023-09-30 14:59:49,311	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000005)
+2023-09-30 15:06:58,013	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000006)
+2023-09-30 15:14:06,476	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000007)
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000008)
+2023-09-30 15:21:15,462	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=962457)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/checkpoint_000009)
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                    epoch ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: iterations_since_restore ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       ptl/train_accuracy █▄▃▄▂▁▂▂▁
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           ptl/train_loss █▄▃▄▂▁▂▂▁
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         ptl/val_accuracy ▃▆▂▁▄▇▃███
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             ptl/val_aupr ▁▄▆▅▇▆██▇▇
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:            ptl/val_auroc ▁▄▆▆▇▇█▇██
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         ptl/val_f1_score ▁▆▄▃▅▇▅███
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             ptl/val_loss ▄▂▆█▄▁▄▁▁▁
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:              ptl/val_mcc ▃▆▂▁▃▇▃███
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:        ptl/val_precision █▇▂▁▃█▂▇▇▇
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           ptl/val_recall ▁▅██▇▆█▇▇▆
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                     step ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       time_since_restore ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         time_this_iter_s █▁▁▁▁▁▁▁▁▂
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             time_total_s ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                timestamp ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           train_accuracy ▃▆▁██▃▁▆▁▆
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:               train_loss ▅▄█▁▄▆▅▄▇▅
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       training_iteration ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                    epoch 9
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: iterations_since_restore 10
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       ptl/train_accuracy 0.32178
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           ptl/train_loss 0.32178
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         ptl/val_accuracy 0.88542
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             ptl/val_aupr 0.92523
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:            ptl/val_auroc 0.93352
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         ptl/val_f1_score 0.89459
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             ptl/val_loss 0.35291
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:              ptl/val_mcc 0.78709
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:        ptl/val_precision 0.90751
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           ptl/val_recall 0.88202
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                     step 1300
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       time_since_restore 4313.36313
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:         time_this_iter_s 429.76045
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:             time_total_s 4313.36313
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:                timestamp 1696051705
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:           train_accuracy 0.85714
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:               train_loss 0.46377
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb:       training_iteration 10
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_a8fd624e_1_batch_size=8,layer_size=32,lr=0.0001_2023-09-30_14-16-10/wandb/offline-run-20230930_141635-a8fd624e
+[2m[36m(_WandbLoggingActor pid=962452)[0m wandb: Find logs at: ./wandb/offline-run-20230930_141635-a8fd624e/logs
+[2m[36m(TrainTrainable pid=970858)[0m Trainable.setup took 17.370 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+[2m[36m(TorchTrainer pid=970858)[0m Starting distributed worker processes: ['970992 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=970992)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=970992)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=970992)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=970992)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=970992)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=970992)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=970992)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=970992)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=970992)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_15584090_2_batch_size=8,layer_size=32,lr=0.0058_2023-09-30_14-16-27/lightning_logs
+[2m[36m(RayTrainWorker pid=970992)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=970992)[0m 
+[2m[36m(RayTrainWorker pid=970992)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=970992)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=970992)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=970992)[0m 1 | model             | BinaryAdapterWrapper   | 270 M 
+[2m[36m(RayTrainWorker pid=970992)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=970992)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=970992)[0m 270 M     Trainable params
+[2m[36m(RayTrainWorker pid=970992)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=970992)[0m 270 M     Total params
+[2m[36m(RayTrainWorker pid=970992)[0m 1,083.529 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=970992)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=970992)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=970992)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=970992)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=970992)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=970992)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=970992)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=970992)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=970992)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=970992)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=970992)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=970992)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=970992)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=970992)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=970992)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=970992)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=970992)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=970992)[0m   self.train_accuracy.append(torch.tensor(loss))
+2023-09-30 15:36:55,419	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=970992)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_15584090_2_batch_size=8,layer_size=32,lr=0.0058_2023-09-30_14-16-27/checkpoint_000000)
+2023-09-30 15:37:00,445	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 5.026 s, which may be a performance bottleneck.
+2023-09-30 15:37:00,447	WARNING util.py:315 -- The `process_trial_result` operation took 5.031 s, which may be a performance bottleneck.
+2023-09-30 15:37:00,447	WARNING util.py:315 -- Processing trial results took 5.031 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 15:37:00,447	WARNING util.py:315 -- The `process_trial_result` operation took 5.032 s, which may be a performance bottleneck.
+[2m[36m(RayTrainWorker pid=970992)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_15584090_2_batch_size=8,layer_size=32,lr=0.0058_2023-09-30_14-16-27/checkpoint_000001)
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                    epoch ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: iterations_since_restore ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       ptl/train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           ptl/train_loss ▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         ptl/val_accuracy ▁▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             ptl/val_aupr ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:            ptl/val_auroc ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         ptl/val_f1_score █▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             ptl/val_loss ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:              ptl/val_mcc ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:        ptl/val_precision ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           ptl/val_recall █▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                     step ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       time_since_restore ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         time_this_iter_s █▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             time_total_s ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                timestamp ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           train_accuracy ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:               train_loss █▁
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       training_iteration ▁█
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                    epoch 1
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: iterations_since_restore 2
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       ptl/train_accuracy 9.47928
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           ptl/train_loss 9.47928
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         ptl/val_accuracy 0.79356
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             ptl/val_aupr 0.89724
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:            ptl/val_auroc 0.89908
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         ptl/val_f1_score 0.78679
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             ptl/val_loss 0.58088
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:              ptl/val_mcc 0.59715
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:        ptl/val_precision 0.84516
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           ptl/val_recall 0.73596
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                     step 260
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       time_since_restore 885.87944
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:         time_this_iter_s 423.14174
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:             time_total_s 885.87944
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:                timestamp 1696052643
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:           train_accuracy 0.85714
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:               train_loss 0.57585
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb:       training_iteration 2
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_15584090_2_batch_size=8,layer_size=32,lr=0.0058_2023-09-30_14-16-27/wandb/offline-run-20230930_152924-15584090
+[2m[36m(_WandbLoggingActor pid=970987)[0m wandb: Find logs at: ./wandb/offline-run-20230930_152924-15584090/logs
+[2m[36m(TorchTrainer pid=972796)[0m Starting distributed worker processes: ['972928 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=972928)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=972928)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=972928)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=972928)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=972928)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=972928)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=972928)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=972928)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=972928)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_5e6bffc3_3_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_15-29-12/lightning_logs
+[2m[36m(RayTrainWorker pid=972928)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=972928)[0m 
+[2m[36m(RayTrainWorker pid=972928)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=972928)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=972928)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=972928)[0m 1 | model             | BinaryAdapterWrapper   | 261 M 
+[2m[36m(RayTrainWorker pid=972928)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=972928)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=972928)[0m 261 M     Trainable params
+[2m[36m(RayTrainWorker pid=972928)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=972928)[0m 261 M     Total params
+[2m[36m(RayTrainWorker pid=972928)[0m 1,044.207 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=972928)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=972928)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=972928)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=972928)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=972928)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=972928)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=972928)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=972928)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=972928)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=972928)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=972928)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=972928)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=972928)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=972928)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=972928)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=972928)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=972928)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=972928)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=972928)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_5e6bffc3_3_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_15-29-12/checkpoint_000000)
+2023-09-30 15:52:01,623	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.759 s, which may be a performance bottleneck.
+2023-09-30 15:52:01,625	WARNING util.py:315 -- The `process_trial_result` operation took 2.764 s, which may be a performance bottleneck.
+2023-09-30 15:52:01,625	WARNING util.py:315 -- Processing trial results took 2.765 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 15:52:01,625	WARNING util.py:315 -- The `process_trial_result` operation took 2.765 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         ptl/val_accuracy 0.67529
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             ptl/val_aupr 0.90876
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:            ptl/val_auroc 0.90875
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         ptl/val_f1_score 0.55906
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             ptl/val_loss 0.77372
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:              ptl/val_mcc 0.4463
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:        ptl/val_precision 0.93421
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:           ptl/val_recall 0.39888
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                     step 260
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:       time_since_restore 458.83649
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:         time_this_iter_s 458.83649
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:             time_total_s 458.83649
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:                timestamp 1696053118
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:           train_accuracy 1.0
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:               train_loss 0.17199
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_5e6bffc3_3_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_15-29-12/wandb/offline-run-20230930_154428-5e6bffc3
+[2m[36m(_WandbLoggingActor pid=972925)[0m wandb: Find logs at: ./wandb/offline-run-20230930_154428-5e6bffc3/logs
+[2m[36m(TorchTrainer pid=974432)[0m Starting distributed worker processes: ['974563 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=974563)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=974563)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=974563)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=974563)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=974563)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=974563)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=974563)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=974563)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=974563)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d606ffa0_4_batch_size=4,layer_size=8,lr=0.0071_2023-09-30_15-44-20/lightning_logs
+[2m[36m(RayTrainWorker pid=974563)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=974563)[0m 
+[2m[36m(RayTrainWorker pid=974563)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=974563)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=974563)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=974563)[0m 1 | model             | BinaryAdapterWrapper   | 256 M 
+[2m[36m(RayTrainWorker pid=974563)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=974563)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=974563)[0m 256 M     Trainable params
+[2m[36m(RayTrainWorker pid=974563)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=974563)[0m 256 M     Total params
+[2m[36m(RayTrainWorker pid=974563)[0m 1,024.546 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=974563)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=974563)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=974563)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=974563)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=974563)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=974563)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=974563)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=974563)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=974563)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=974563)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=974563)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=974563)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=974563)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=974563)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=974563)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=974563)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=974563)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d606ffa0_4_batch_size=4,layer_size=8,lr=0.0071_2023-09-30_15-44-20/checkpoint_000000)
+2023-09-30 15:59:57,813	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 3.009 s, which may be a performance bottleneck.
+2023-09-30 15:59:57,814	WARNING util.py:315 -- The `process_trial_result` operation took 3.013 s, which may be a performance bottleneck.
+2023-09-30 15:59:57,814	WARNING util.py:315 -- Processing trial results took 3.013 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 15:59:57,815	WARNING util.py:315 -- The `process_trial_result` operation took 3.013 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         ptl/val_accuracy 0.66954
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             ptl/val_aupr 0.89788
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:            ptl/val_auroc 0.90287
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         ptl/val_f1_score 0.544
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             ptl/val_loss 0.78753
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:              ptl/val_mcc 0.44171
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:        ptl/val_precision 0.94444
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:           ptl/val_recall 0.38202
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                     step 260
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:       time_since_restore 457.02333
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:         time_this_iter_s 457.02333
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:             time_total_s 457.02333
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:                timestamp 1696053594
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:           train_accuracy 1.0
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:               train_loss 0.22736
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d606ffa0_4_batch_size=4,layer_size=8,lr=0.0071_2023-09-30_15-44-20/wandb/offline-run-20230930_155225-d606ffa0
+[2m[36m(_WandbLoggingActor pid=974559)[0m wandb: Find logs at: ./wandb/offline-run-20230930_155225-d606ffa0/logs
+[2m[36m(TorchTrainer pid=976066)[0m Starting distributed worker processes: ['976384 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=976384)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=976384)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=976384)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=976384)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=976384)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=976384)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=976384)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=976384)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=976384)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/lightning_logs
+[2m[36m(RayTrainWorker pid=976384)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=976384)[0m 
+[2m[36m(RayTrainWorker pid=976384)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=976384)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=976384)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=976384)[0m 1 | model             | BinaryAdapterWrapper   | 270 M 
+[2m[36m(RayTrainWorker pid=976384)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=976384)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=976384)[0m 270 M     Trainable params
+[2m[36m(RayTrainWorker pid=976384)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=976384)[0m 270 M     Total params
+[2m[36m(RayTrainWorker pid=976384)[0m 1,083.529 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=976384)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=976384)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=976384)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=976384)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=976384)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=976384)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=976384)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=976384)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=976384)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=976384)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=976384)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=976384)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=976384)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=976384)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=976384)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=976384)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=976384)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=976384)[0m   self.train_accuracy.append(torch.tensor(loss))
+2023-09-30 16:07:44,596	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000000)
+2023-09-30 16:07:47,513	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.917 s, which may be a performance bottleneck.
+2023-09-30 16:07:47,515	WARNING util.py:315 -- The `process_trial_result` operation took 2.920 s, which may be a performance bottleneck.
+2023-09-30 16:07:47,515	WARNING util.py:315 -- Processing trial results took 2.920 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 16:07:47,515	WARNING util.py:315 -- The `process_trial_result` operation took 2.920 s, which may be a performance bottleneck.
+2023-09-30 16:14:52,968	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000001)
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000002)
+2023-09-30 16:22:01,717	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000003)
+2023-09-30 16:29:10,545	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+2023-09-30 16:36:19,156	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000004)
+2023-09-30 16:43:27,785	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000005)
+2023-09-30 16:50:36,687	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000006)
+[2m[36m(RayTrainWorker pid=976384)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/checkpoint_000007)
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                    epoch ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: iterations_since_restore ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       ptl/train_accuracy █▄▃▂▃▁▂
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           ptl/train_loss █▄▃▂▃▁▂
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         ptl/val_accuracy ▄▇▅▁█▆▂▇
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             ptl/val_aupr ▁▄▄▆▆▆██
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:            ptl/val_auroc ▁▄▅▇▇▇██
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         ptl/val_f1_score ▁▆▂▂█▃▃█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             ptl/val_loss ▅▂▄▇▁▃█▂
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:              ptl/val_mcc ▃▆▅▁█▆▂▇
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:        ptl/val_precision ▆▅█▁▆█▁▅
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           ptl/val_recall ▂▅▁█▆▂█▇
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                     step ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       time_since_restore ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         time_this_iter_s █▁▂▂▂▂▂▂
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             time_total_s ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                timestamp ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           train_accuracy ████▁▁█▁
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:               train_loss ▆▆▇▁██▁▆
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       training_iteration ▁▂▃▄▅▆▇█
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                    epoch 7
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: iterations_since_restore 8
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       ptl/train_accuracy 0.39065
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           ptl/train_loss 0.39065
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         ptl/val_accuracy 0.84754
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             ptl/val_aupr 0.92578
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:            ptl/val_auroc 0.92873
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         ptl/val_f1_score 0.86243
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             ptl/val_loss 0.37714
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:              ptl/val_mcc 0.70483
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:        ptl/val_precision 0.815
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           ptl/val_recall 0.91573
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                     step 1040
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       time_since_restore 3447.72073
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:         time_this_iter_s 428.64346
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:             time_total_s 3447.72073
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:                timestamp 1696057065
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:           train_accuracy 0.71429
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:               train_loss 0.49431
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb:       training_iteration 8
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_93368ce7_5_batch_size=8,layer_size=32,lr=0.0000_2023-09-30_15-52-17/wandb/offline-run-20230930_160021-93368ce7
+[2m[36m(_WandbLoggingActor pid=976381)[0m wandb: Find logs at: ./wandb/offline-run-20230930_160021-93368ce7/logs
+[2m[36m(TorchTrainer pid=981606)[0m Starting distributed worker processes: ['981736 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=981736)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=981736)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=981736)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=981736)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=981736)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=981736)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=981736)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=981736)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=981736)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_05981d1b_6_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_16-00-13/lightning_logs
+[2m[36m(RayTrainWorker pid=981736)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=981736)[0m 
+[2m[36m(RayTrainWorker pid=981736)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=981736)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=981736)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=981736)[0m 1 | model             | BinaryAdapterWrapper   | 261 M 
+[2m[36m(RayTrainWorker pid=981736)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=981736)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=981736)[0m 261 M     Trainable params
+[2m[36m(RayTrainWorker pid=981736)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=981736)[0m 261 M     Total params
+[2m[36m(RayTrainWorker pid=981736)[0m 1,044.207 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=981736)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=981736)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=981736)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=981736)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=981736)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=981736)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=981736)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=981736)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=981736)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=981736)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=981736)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=981736)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=981736)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=981736)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=981736)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=981736)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=981736)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=981736)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=981736)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_05981d1b_6_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_16-00-13/checkpoint_000000)
+2023-09-30 17:05:43,856	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.888 s, which may be a performance bottleneck.
+2023-09-30 17:05:43,858	WARNING util.py:315 -- The `process_trial_result` operation took 2.891 s, which may be a performance bottleneck.
+2023-09-30 17:05:43,858	WARNING util.py:315 -- Processing trial results took 2.891 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 17:05:43,858	WARNING util.py:315 -- The `process_trial_result` operation took 2.891 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         ptl/val_accuracy 0.68103
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             ptl/val_aupr 0.90906
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:            ptl/val_auroc 0.90908
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         ptl/val_f1_score 0.57031
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             ptl/val_loss 0.7599
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:              ptl/val_mcc 0.45563
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:        ptl/val_precision 0.9359
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:           ptl/val_recall 0.41011
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                     step 260
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:       time_since_restore 457.94239
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:         time_this_iter_s 457.94239
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:             time_total_s 457.94239
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:                timestamp 1696057540
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:           train_accuracy 1.0
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:               train_loss 0.15785
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_05981d1b_6_batch_size=4,layer_size=16,lr=0.0001_2023-09-30_16-00-13/wandb/offline-run-20230930_165810-05981d1b
+[2m[36m(_WandbLoggingActor pid=981733)[0m wandb: Find logs at: ./wandb/offline-run-20230930_165810-05981d1b/logs
+[2m[36m(TorchTrainer pid=983239)[0m Starting distributed worker processes: ['983370 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=983370)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=983370)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=983370)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=983370)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=983370)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=983370)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=983370)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=983370)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=983370)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_9467bd18_7_batch_size=4,layer_size=32,lr=0.0041_2023-09-30_16-58-03/lightning_logs
+[2m[36m(RayTrainWorker pid=983370)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=983370)[0m 
+[2m[36m(RayTrainWorker pid=983370)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=983370)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=983370)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=983370)[0m 1 | model             | BinaryAdapterWrapper   | 270 M 
+[2m[36m(RayTrainWorker pid=983370)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=983370)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=983370)[0m 270 M     Trainable params
+[2m[36m(RayTrainWorker pid=983370)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=983370)[0m 270 M     Total params
+[2m[36m(RayTrainWorker pid=983370)[0m 1,083.529 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=983370)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=983370)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=983370)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=983370)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=983370)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=983370)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=983370)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=983370)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=983370)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=983370)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=983370)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=983370)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=983370)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=983370)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=983370)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=983370)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=983370)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=983370)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=983370)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_9467bd18_7_batch_size=4,layer_size=32,lr=0.0041_2023-09-30_16-58-03/checkpoint_000000)
+2023-09-30 17:13:40,320	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.816 s, which may be a performance bottleneck.
+2023-09-30 17:13:40,321	WARNING util.py:315 -- The `process_trial_result` operation took 2.819 s, which may be a performance bottleneck.
+2023-09-30 17:13:40,321	WARNING util.py:315 -- Processing trial results took 2.820 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 17:13:40,321	WARNING util.py:315 -- The `process_trial_result` operation took 2.820 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         ptl/val_accuracy 0.7069
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             ptl/val_aupr 0.88856
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:            ptl/val_auroc 0.88877
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         ptl/val_f1_score 0.62172
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             ptl/val_loss 0.69906
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:              ptl/val_mcc 0.49308
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:        ptl/val_precision 0.93258
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:           ptl/val_recall 0.46629
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                     step 260
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:       time_since_restore 457.33122
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:         time_this_iter_s 457.33122
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:             time_total_s 457.33122
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:                timestamp 1696058017
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:           train_accuracy 1.0
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:               train_loss 0.18928
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_9467bd18_7_batch_size=4,layer_size=32,lr=0.0041_2023-09-30_16-58-03/wandb/offline-run-20230930_170608-9467bd18
+[2m[36m(_WandbLoggingActor pid=983367)[0m wandb: Find logs at: ./wandb/offline-run-20230930_170608-9467bd18/logs
+[2m[36m(TorchTrainer pid=984840)[0m Starting distributed worker processes: ['984970 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=984970)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=984970)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=984970)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=984970)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=984970)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=984970)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=984970)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=984970)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=984970)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d405b19e_8_batch_size=8,layer_size=32,lr=0.0594_2023-09-30_17-06-00/lightning_logs
+[2m[36m(RayTrainWorker pid=984970)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=984970)[0m 
+[2m[36m(RayTrainWorker pid=984970)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=984970)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=984970)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=984970)[0m 1 | model             | BinaryAdapterWrapper   | 270 M 
+[2m[36m(RayTrainWorker pid=984970)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=984970)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=984970)[0m 270 M     Trainable params
+[2m[36m(RayTrainWorker pid=984970)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=984970)[0m 270 M     Total params
+[2m[36m(RayTrainWorker pid=984970)[0m 1,083.529 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=984970)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=984970)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=984970)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=984970)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=984970)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=984970)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=984970)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=984970)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=984970)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=984970)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=984970)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=984970)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=984970)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=984970)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=984970)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=984970)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=984970)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d405b19e_8_batch_size=8,layer_size=32,lr=0.0594_2023-09-30_17-06-00/checkpoint_000000)
+2023-09-30 17:21:29,408	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.857 s, which may be a performance bottleneck.
+2023-09-30 17:21:29,410	WARNING util.py:315 -- The `process_trial_result` operation took 2.861 s, which may be a performance bottleneck.
+2023-09-30 17:21:29,410	WARNING util.py:315 -- Processing trial results took 2.861 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 17:21:29,410	WARNING util.py:315 -- The `process_trial_result` operation took 2.861 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         ptl/val_accuracy 0.47348
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             ptl/val_aupr 0.51831
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:            ptl/val_auroc 0.55176
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         ptl/val_f1_score 0.2087
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             ptl/val_loss 4.31711
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:              ptl/val_mcc -0.0432
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:        ptl/val_precision 0.46154
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:           ptl/val_recall 0.13483
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                     step 130
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:       time_since_restore 450.47675
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:         time_this_iter_s 450.47675
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:             time_total_s 450.47675
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:                timestamp 1696058486
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:           train_accuracy 0.42857
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:               train_loss 6.65508
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d405b19e_8_batch_size=8,layer_size=32,lr=0.0594_2023-09-30_17-06-00/wandb/offline-run-20230930_171403-d405b19e
+[2m[36m(_WandbLoggingActor pid=984967)[0m wandb: Find logs at: ./wandb/offline-run-20230930_171403-d405b19e/logs
+[2m[36m(TorchTrainer pid=986478)[0m Starting distributed worker processes: ['986608 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=986608)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=986608)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=986608)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=986608)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=986608)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=986608)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=986608)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=986608)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=986608)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/lightning_logs
+[2m[36m(RayTrainWorker pid=986608)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=986608)[0m 
+[2m[36m(RayTrainWorker pid=986608)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=986608)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=986608)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=986608)[0m 1 | model             | BinaryAdapterWrapper   | 261 M 
+[2m[36m(RayTrainWorker pid=986608)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=986608)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=986608)[0m 261 M     Trainable params
+[2m[36m(RayTrainWorker pid=986608)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=986608)[0m 261 M     Total params
+[2m[36m(RayTrainWorker pid=986608)[0m 1,044.207 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=986608)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=986608)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=986608)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=986608)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=986608)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=986608)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=986608)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=986608)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(RayTrainWorker pid=986608)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=986608)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=986608)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=986608)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=986608)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=986608)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=986608)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=986608)[0m   self.train_accuracy.append(torch.tensor(loss))
+2023-09-30 17:29:15,208	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000000)
+2023-09-30 17:29:18,141	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 2.933 s, which may be a performance bottleneck.
+2023-09-30 17:29:18,143	WARNING util.py:315 -- The `process_trial_result` operation took 2.937 s, which may be a performance bottleneck.
+2023-09-30 17:29:18,143	WARNING util.py:315 -- Processing trial results took 2.938 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 17:29:18,143	WARNING util.py:315 -- The `process_trial_result` operation took 2.938 s, which may be a performance bottleneck.
+2023-09-30 17:36:22,983	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000001)
+2023-09-30 17:43:30,852	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000002)
+2023-09-30 17:50:38,882	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000003)
+2023-09-30 17:57:47,154	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000004)
+2023-09-30 18:04:55,156	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000005)
+2023-09-30 18:12:03,051	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000006)
+2023-09-30 18:19:10,937	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000007)
+2023-09-30 18:26:19,078	WARNING bohb_search.py:249 -- BOHB Info not detected in result. Are you using HyperBandForBOHB as a scheduler?
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000008)
+[2m[36m(RayTrainWorker pid=986608)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/checkpoint_000009)
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                    epoch ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: iterations_since_restore ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       ptl/train_accuracy █▄▄▂▃▂▂▂▁
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           ptl/train_loss █▄▄▂▃▂▂▂▁
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         ptl/val_accuracy ▁██▅▇███▇▆
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             ptl/val_aupr ▁▃▄▅▆▆▇██▇
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:            ptl/val_auroc ▁▄▅▆▆▇████
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         ptl/val_f1_score ▁██▇█████▇
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             ptl/val_loss █▂▂▃▁▁▁▁▃▃
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:              ptl/val_mcc ▁▇▇▅▇███▆▆
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:        ptl/val_precision █▅▅▁▅▆▅▆▃▂
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           ptl/val_recall ▁▇▇█▇▇█▇██
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                     step ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       time_since_restore ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         time_this_iter_s █▁▂▂▂▂▂▂▂▃
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             time_total_s ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                timestamp ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           train_accuracy █▅▁▅▁▁█▁▁▅
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:               train_loss ▄▄▅▃▆▆▁▅██
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       training_iteration ▁▂▃▃▄▅▆▆▇█
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                    epoch 9
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: iterations_since_restore 10
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       ptl/train_accuracy 0.34501
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           ptl/train_loss 0.34501
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         ptl/val_accuracy 0.8125
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             ptl/val_aupr 0.92133
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:            ptl/val_auroc 0.9281
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         ptl/val_f1_score 0.83582
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             ptl/val_loss 0.45166
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:              ptl/val_mcc 0.63996
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:        ptl/val_precision 0.75
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           ptl/val_recall 0.94382
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                     step 1300
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       time_since_restore 4301.36171
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:         time_this_iter_s 432.07707
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:             time_total_s 4301.36171
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:                timestamp 1696062811
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:           train_accuracy 0.85714
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:               train_loss 0.70268
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb:       training_iteration 10
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_d8347e97_9_batch_size=8,layer_size=16,lr=0.0000_2023-09-30_17-13-56/wandb/offline-run-20230930_172153-d8347e97
+[2m[36m(_WandbLoggingActor pid=986605)[0m wandb: Find logs at: ./wandb/offline-run-20230930_172153-d8347e97/logs
+[2m[36m(TrainTrainable pid=992983)[0m Trainable.setup took 27.569 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+[2m[36m(TorchTrainer pid=992983)[0m Starting distributed worker processes: ['993116 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=993116)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=993116)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=993116)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=993116)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=993116)[0m HPU available: False, using: 0 HPUs
+[2m[36m(RayTrainWorker pid=993116)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py:72: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+[2m[36m(RayTrainWorker pid=993116)[0m   rank_zero_warn(
+[2m[36m(RayTrainWorker pid=993116)[0m [rank: 0] Global seed set to 42
+[2m[36m(RayTrainWorker pid=993116)[0m Missing logger folder: /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_2d73231c_10_batch_size=8,layer_size=8,lr=0.0004_2023-09-30_17-21-45/lightning_logs
+[2m[36m(RayTrainWorker pid=993116)[0m LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+[2m[36m(RayTrainWorker pid=993116)[0m 
+[2m[36m(RayTrainWorker pid=993116)[0m   | Name              | Type                   | Params
+[2m[36m(RayTrainWorker pid=993116)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=993116)[0m 0 | enformer          | Enformer               | 251 M 
+[2m[36m(RayTrainWorker pid=993116)[0m 1 | model             | BinaryAdapterWrapper   | 256 M 
+[2m[36m(RayTrainWorker pid=993116)[0m 2 | matthews_corrcoef | BinaryMatthewsCorrCoef | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 3 | f1_score          | BinaryF1Score          | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 4 | precision         | BinaryPrecision        | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 5 | recall            | BinaryRecall           | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 6 | aupr              | BinaryAveragePrecision | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 7 | cfm               | BinaryConfusionMatrix  | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m 8 | auroc             | BinaryAUROC            | 0     
+[2m[36m(RayTrainWorker pid=993116)[0m -------------------------------------------------------------
+[2m[36m(RayTrainWorker pid=993116)[0m 256 M     Trainable params
+[2m[36m(RayTrainWorker pid=993116)[0m 0         Non-trainable params
+[2m[36m(RayTrainWorker pid=993116)[0m 256 M     Total params
+[2m[36m(RayTrainWorker pid=993116)[0m 1,024.546 Total estimated model params size (MB)
+[2m[36m(RayTrainWorker pid=993116)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+[2m[36m(RayTrainWorker pid=993116)[0m   warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+[2m[36m(RayTrainWorker pid=993116)[0m finetune/fine_tune_tidy.py:210: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=993116)[0m   self.eval_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=993116)[0m finetune/fine_tune_tidy.py:212: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=993116)[0m   self.eval_probs.append(torch.tensor(class_1_probs))
+[2m[36m(RayTrainWorker pid=993116)[0m finetune/fine_tune_tidy.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=993116)[0m   self.eval_target.append(torch.tensor(target.int()))
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=993116)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: TorchMetricsUserWarning: You are trying to use a metric in deterministic mode on GPU that uses `torch.cumsum`, which is currently not supported. The tensor will be copied to the CPU memory to compute it and then copied back to GPU. Expect some slowdowns.
+[2m[36m(RayTrainWorker pid=993116)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=993116)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+[2m[36m(RayTrainWorker pid=993116)[0m   warnings.warn(*args, **kwargs)  # noqa: B028
+[2m[36m(RayTrainWorker pid=993116)[0m /g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:212: UserWarning: You called `self.log('ptl/val_mcc', ...)` in your `on_validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+[2m[36m(RayTrainWorker pid=993116)[0m   warning_cache.warn(
+[2m[36m(RayTrainWorker pid=993116)[0m finetune/fine_tune_tidy.py:97: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=993116)[0m   self.train_loss.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=993116)[0m finetune/fine_tune_tidy.py:98: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+[2m[36m(RayTrainWorker pid=993116)[0m   self.train_accuracy.append(torch.tensor(loss))
+[2m[36m(RayTrainWorker pid=993116)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_2d73231c_10_batch_size=8,layer_size=8,lr=0.0004_2023-09-30_17-21-45/checkpoint_000000)
+2023-09-30 18:42:24,385	WARNING util.py:315 -- The `callbacks.on_trial_result` operation took 3.104 s, which may be a performance bottleneck.
+2023-09-30 18:42:24,387	WARNING util.py:315 -- The `process_trial_result` operation took 3.108 s, which may be a performance bottleneck.
+2023-09-30 18:42:24,387	WARNING util.py:315 -- Processing trial results took 3.108 s, which may be a performance bottleneck. Please consider reporting results less frequently to Ray Tune.
+2023-09-30 18:42:24,387	WARNING util.py:315 -- The `process_trial_result` operation took 3.108 s, which may be a performance bottleneck.
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Run history:
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                    epoch ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: iterations_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         ptl/val_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             ptl/val_aupr ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:            ptl/val_auroc ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         ptl/val_f1_score ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             ptl/val_loss ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:              ptl/val_mcc ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:        ptl/val_precision ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:           ptl/val_recall ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                     step ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:       time_since_restore ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         time_this_iter_s ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             time_total_s ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                timestamp ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:           train_accuracy ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:               train_loss ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:       training_iteration ▁
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Run summary:
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                    epoch 0
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: iterations_since_restore 1
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         ptl/val_accuracy 0.65625
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             ptl/val_aupr 0.91168
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:            ptl/val_auroc 0.91533
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         ptl/val_f1_score 0.52846
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             ptl/val_loss 1.53279
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:              ptl/val_mcc 0.43747
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:        ptl/val_precision 0.95588
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:           ptl/val_recall 0.36517
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                     step 130
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:       time_since_restore 458.32495
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:         time_this_iter_s 458.32495
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:             time_total_s 458.32495
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:                timestamp 1696063341
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:           train_accuracy 1.0
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:               train_loss 0.06294
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb:       training_iteration 1
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: 
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-09-30_14-16-10/TorchTrainer_2d73231c_10_batch_size=8,layer_size=8,lr=0.0004_2023-09-30_17-21-45/wandb/offline-run-20230930_183451-2d73231c
+[2m[36m(_WandbLoggingActor pid=993113)[0m wandb: Find logs at: ./wandb/offline-run-20230930_183451-2d73231c/logs

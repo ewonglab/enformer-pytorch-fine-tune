@@ -1,0 +1,393 @@
+Global seed set to 42
+2023-11-18 00:48:42,169	INFO worker.py:1642 -- Started a local Ray instance.
+2023-11-18 00:48:52,088	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-11-18 00:48:52,091	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-11-18 00:48:52,180	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+[2m[36m(TorchTrainer pid=660128)[0m Starting distributed worker processes: ['660847 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=660847)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=660847)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=660847)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=660847)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=660847)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:49:24,206	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_7f303bef
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=660128, ip=10.6.9.1, actor_id=bead12e8f96ac51829b9f9bb01000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=660847, ip=10.6.9.1, actor_id=2951deafcaaf11f58475da7001000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14c9d5017250>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_7f303bef_1_batch_size=4,cell_type=neuralcrest,layer_size=16,lr=0.0027_2023-11-18_00-48-52/wandb/offline-run-20231118_004914-7f303bef
+[2m[36m(_WandbLoggingActor pid=660842)[0m wandb: Find logs at: ./wandb/offline-run-20231118_004914-7f303bef/logs
+[2m[36m(TorchTrainer pid=661237)[0m Starting distributed worker processes: ['661367 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=661367)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=661367)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=661367)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=661367)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=661367)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-11-18 00:49:58,211	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_3cd41e33
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=661237, ip=10.6.9.1, actor_id=3630b0066a10fccb02d32ef401000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=661367, ip=10.6.9.1, actor_id=f31302ea2cc0e57d07d8d0f601000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14589bfed1f0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_3cd41e33_2_batch_size=8,cell_type=neuralcrest,layer_size=8,lr=0.0001_2023-11-18_00-49-07/wandb/offline-run-20231118_004948-3cd41e33
+[2m[36m(_WandbLoggingActor pid=661362)[0m wandb: Find logs at: ./wandb/offline-run-20231118_004948-3cd41e33/logs
+[2m[36m(TorchTrainer pid=661757)[0m Starting distributed worker processes: ['661887 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=661887)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=661887)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=661887)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=661887)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=661887)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-11-18 00:50:33,672	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_e299a005
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=661757, ip=10.6.9.1, actor_id=9b6bd4cadbe92eeac899616201000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=661887, ip=10.6.9.1, actor_id=be715573acc123b8d9375ec101000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x150821a5b250>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_e299a005_3_batch_size=4,cell_type=neuralcrest,layer_size=16,lr=0.0001_2023-11-18_00-49-41/wandb/offline-run-20231118_005024-e299a005
+[2m[36m(_WandbLoggingActor pid=661882)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005024-e299a005/logs
+[2m[36m(TorchTrainer pid=662277)[0m Starting distributed worker processes: ['662415 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=662415)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=662415)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=662415)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=662415)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=662415)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-11-18 00:51:10,158	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_478e6dd4
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=662277, ip=10.6.9.1, actor_id=928ce7444fbeb64dac3c0c3701000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=662415, ip=10.6.9.1, actor_id=5c5ec9dda89f5acc93b8697901000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x147c92ee42b0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_478e6dd4_4_batch_size=8,cell_type=neuralcrest,layer_size=16,lr=0.0000_2023-11-18_00-50-17/wandb/offline-run-20231118_005101-478e6dd4
+[2m[36m(_WandbLoggingActor pid=662411)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005101-478e6dd4/logs
+[2m[36m(TorchTrainer pid=662808)[0m Starting distributed worker processes: ['662937 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=662937)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(RayTrainWorker pid=662937)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=662937)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=662937)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=662937)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2023-11-18 00:51:42,840	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_5895a67e
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=662808, ip=10.6.9.1, actor_id=fe490144cdaef6de3e91f8c201000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=662937, ip=10.6.9.1, actor_id=4516e319fcf9988ff711000501000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x1463cb0a52e0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_5895a67e_5_batch_size=4,cell_type=neuralcrest,layer_size=8,lr=0.0001_2023-11-18_00-50-53/wandb/offline-run-20231118_005133-5895a67e
+[2m[36m(_WandbLoggingActor pid=662934)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005133-5895a67e/logs
+[2m[36m(TorchTrainer pid=663327)[0m Starting distributed worker processes: ['663458 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=663458)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=663458)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=663458)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=663458)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=663458)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:52:21,038	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_e5f24b56
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=663327, ip=10.6.9.1, actor_id=aa9a3e4e2795d33698aeb61801000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=663458, ip=10.6.9.1, actor_id=63f1c264265927abd237601601000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14fa6a862220>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_e5f24b56_6_batch_size=4,cell_type=neuralcrest,layer_size=8,lr=0.0011_2023-11-18_00-51-26/wandb/offline-run-20231118_005209-e5f24b56
+[2m[36m(_WandbLoggingActor pid=663453)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005209-e5f24b56/logs
+[2m[36m(TorchTrainer pid=663847)[0m Starting distributed worker processes: ['663985 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=663985)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=663985)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=663985)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=663985)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=663985)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:53:18,535	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_1a6626e2
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=663847, ip=10.6.9.1, actor_id=207e4f619d925fa46265574101000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=663985, ip=10.6.9.1, actor_id=16d0d825befe159c90f63e0401000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14741c4d1220>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_1a6626e2_7_batch_size=8,cell_type=neuralcrest,layer_size=8,lr=0.0002_2023-11-18_00-52-00/wandb/offline-run-20231118_005308-1a6626e2
+[2m[36m(_WandbLoggingActor pid=663980)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005308-1a6626e2/logs
+[2m[36m(TorchTrainer pid=664375)[0m Starting distributed worker processes: ['664505 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=664505)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=664505)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=664505)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=664505)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=664505)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:53:55,056	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_af410176
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=664375, ip=10.6.9.1, actor_id=83f4fc4cb5bfb683e20a0bc801000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=664505, ip=10.6.9.1, actor_id=8385625072ef963fa57b693e01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x1487682901f0>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_af410176_8_batch_size=8,cell_type=neuralcrest,layer_size=8,lr=0.0001_2023-11-18_00-52-57/wandb/offline-run-20231118_005345-af410176
+[2m[36m(_WandbLoggingActor pid=664501)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005345-af410176/logs
+[2m[36m(TorchTrainer pid=664895)[0m Starting distributed worker processes: ['665025 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=665025)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=665025)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=665025)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=665025)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=665025)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:54:38,965	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_aeb04660
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=664895, ip=10.6.9.1, actor_id=6f727417a2d0a618f7cac9e101000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=665025, ip=10.6.9.1, actor_id=202b6405f009c346d056f16c01000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x1494d40cd250>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_aeb04660_9_batch_size=4,cell_type=neuralcrest,layer_size=32,lr=0.0000_2023-11-18_00-53-37/wandb/offline-run-20231118_005424-aeb04660
+[2m[36m(_WandbLoggingActor pid=665021)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005424-aeb04660/logs
+[2m[36m(TorchTrainer pid=665414)[0m Starting distributed worker processes: ['665552 (10.6.9.1)']
+[2m[36m(RayTrainWorker pid=665552)[0m Setting up process group for: env:// [rank=0, world_size=1]
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[2m[36m(RayTrainWorker pid=665552)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=665552)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=665552)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=665552)[0m HPU available: False, using: 0 HPUs
+2023-11-18 00:55:36,926	ERROR tune_controller.py:1502 -- Trial task failed for trial TorchTrainer_cdfce2a9
+Traceback (most recent call last):
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/air/execution/_internal/event_manager.py", line 110, in resolve_future
+    result = ray.get(future)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/_private/worker.py", line 2547, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TypeError): [36mray::_Inner.train()[39m (pid=665414, ip=10.6.9.1, actor_id=4c113989f9ee93a12200bbb601000000, repr=TorchTrainer)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/trainable/trainable.py", line 400, in train
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 54, in check_for_failure
+    ray.get(object_ref)
+ray.exceptions.RayTaskError(TypeError): [36mray::_RayTrainWorker__execute.get_next()[39m (pid=665552, ip=10.6.9.1, actor_id=319bb2cb3b0f76368b44dc6801000000, repr=<ray.train._internal.worker_group.RayTrainWorker object at 0x14ef5dc5c220>)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/worker_group.py", line 33, in __execute
+    raise skipped from exception_cause(skipped)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/train/_internal/utils.py", line 129, in discard_return_wrapper
+    train_func(*args, **kwargs)
+  File "finetune/fine_tune_tidy.py", line 340, in train_func
+    model = EnformerFineTuneModel('EleutherAI/enformer-official-rough', config)
+  File "finetune/fine_tune_tidy.py", line 66, in __init__
+    self.model = BinaryAdapterWrapper(
+TypeError: __init__() got an unexpected keyword argument 'num_tracks'
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: Waiting for W&B process to finish... (success).
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: You can sync this run to the cloud by running:
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: wandb sync /g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-18_00-48-38/TorchTrainer_cdfce2a9_10_batch_size=8,cell_type=neuralcrest,layer_size=16,lr=0.0000_2023-11-18_00-54-14/wandb/offline-run-20231118_005524-cdfce2a9
+[2m[36m(_WandbLoggingActor pid=665548)[0m wandb: Find logs at: ./wandb/offline-run-20231118_005524-cdfce2a9/logs
+2023-11-18 00:55:43,280	ERROR tune.py:1139 -- Trials did not complete: [TorchTrainer_7f303bef, TorchTrainer_3cd41e33, TorchTrainer_e299a005, TorchTrainer_478e6dd4, TorchTrainer_5895a67e, TorchTrainer_e5f24b56, TorchTrainer_1a6626e2, TorchTrainer_af410176, TorchTrainer_aeb04660, TorchTrainer_cdfce2a9]
+2023-11-18 00:55:43,328	WARNING experiment_analysis.py:596 -- Could not find best trial. Did you pass the correct `metric` parameter?
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 368, in <module>
+    end = results.get_best_result(metric="ptl/val_loss", mode="min")
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/result_grid.py", line 165, in get_best_result
+    raise RuntimeError(error_msg)
+RuntimeError: No best trial found for the given metric: ptl/val_loss. This means that no trial has reported this metric, or all values reported for this metric are NaN. To not ignore NaN values, you can set the `filter_nan_and_inf` arg to False.

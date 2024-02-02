@@ -1,0 +1,43 @@
+Global seed set to 42
+2023-11-15 00:53:40,946	INFO worker.py:1642 -- Started a local Ray instance.
+2023-11-15 00:54:04,547	INFO tune.py:228 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `Tuner(...)`.
+2023-11-15 00:54:04,553	INFO tune.py:654 -- [output] This will use the new output engine with verbosity 1. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+2023-11-15 00:54:04,611	WARNING tune.py:997 -- AIR_VERBOSITY is set, ignoring passed-in ProgressReporter for now.
+[2m[36m(TorchTrainer pid=3738486)[0m Starting distributed worker processes: ['3738992 (10.6.10.8)']
+[2m[36m(RayTrainWorker pid=3738992)[0m Setting up process group for: env:// [rank=0, world_size=1]
+2023-11-15 00:54:35,085	WARNING tune_controller.py:865 -- Trial controller checkpointing failed: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-15_00-53-33/.tmp_search_generator_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-15_00-53-33/search_gen_state-2023-11-15_00-54-04.json'
+[2m[36m(RayTrainWorker pid=3738992)[0m GPU available: True (cuda), used: True
+[2m[36m(RayTrainWorker pid=3738992)[0m TPU available: False, using: 0 TPU cores
+[2m[36m(RayTrainWorker pid=3738992)[0m IPU available: False, using: 0 IPUs
+[2m[36m(RayTrainWorker pid=3738992)[0m HPU available: False, using: 0 HPUs
+[2m[36m(_WandbLoggingActor pid=3738987)[0m wandb: Tracking run with wandb version 0.15.10
+[2m[36m(_WandbLoggingActor pid=3738987)[0m wandb: W&B syncing is set to `offline` in this directory.  
+[2m[36m(_WandbLoggingActor pid=3738987)[0m wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+Traceback (most recent call last):
+  File "finetune/fine_tune_tidy.py", line 364, in <module>
+    results = tune_func(num_samples=num_samples)
+  File "finetune/fine_tune_tidy.py", line 363, in tune_func
+    return tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tuner.py", line 372, in fit
+    return self._local_tuner.fit()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 579, in fit
+    analysis = self._fit_internal(trainable, param_space)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/impl/tuner_internal.py", line 699, in _fit_internal
+    analysis = run(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/tune.py", line 1103, in run
+    runner.step()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 866, in step
+    raise e
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 863, in step
+    self.checkpoint()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 596, in checkpoint
+    self._checkpoint_manager.checkpoint(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/experiment_state.py", line 257, in checkpoint
+    save_fn()
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/execution/tune_controller.py", line 483, in save_to_dir
+    self._search_alg.save_to_dir(experiment_dir, session_str=self._session_str)
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/search/search_generator.py", line 193, in save_to_dir
+    _atomic_save(
+  File "/g/data/zk16/zelun/miniconda3/envs/enformer-fine-tune/lib/python3.8/site-packages/ray/tune/utils/util.py", line 529, in _atomic_save
+    os.replace(tmp_search_ckpt_path, os.path.join(checkpoint_dir, file_name))
+FileNotFoundError: [Errno 2] No such file or directory: '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-15_00-53-33/.tmp_search_generator_ckpt' -> '/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/ray_results/TorchTrainer_2023-11-15_00-53-33/search_gen_state-2023-11-15_00-54-04.json'
