@@ -98,7 +98,7 @@ class BinaryAdapterWrapper(nn.Module):
         self,
         *,
         enformer,
-        num_tracks=2,
+        num_class=2,
         post_transformer_embed = False, # whether to take the embeddings from right after the transformer, instead of after the final pointwise convolutional - this would add another layernorm
         discrete_key_value_bottleneck = False,
         bottleneck_num_memories = 256,
@@ -107,6 +107,7 @@ class BinaryAdapterWrapper(nn.Module):
         transformer_embed_fn: nn.Module = nn.Identity(),
         auto_set_target_length = True,
         layer_size=16,
+        tanh=False,
         target_length=200,
     ):
         super().__init__()
@@ -147,15 +148,22 @@ class BinaryAdapterWrapper(nn.Module):
         )
 
         # NOTE: Output activation is removed since we are doing binary classification
-         
-        self.to_tracks = Sequential(
-            # NOTE: ZELUN Added nn.Flatten()
-            nn.Flatten(),
-            nn.Linear(enformer_hidden_dim * target_length, layer_size),
-            # NOTE: ZELUN TRY adding activation function 
-            nn.GELU(),
-            nn.Linear(layer_size, num_tracks)
-        )
+        if tanh:
+            self.to_tracks = Sequential(
+                nn.Flatten(),
+                nn.Linear(enformer_hidden_dim * target_length, layer_size),
+                # NOTE: ZELUN TRY adding activation function 
+                nn.Tanh(),
+                nn.Linear(layer_size, num_class)
+            )
+        else:
+            self.to_tracks = Sequential(
+                nn.Flatten(),
+                nn.Linear(enformer_hidden_dim * target_length, layer_size),
+                # NOTE: ZELUN TRY adding activation function 
+                nn.ReLU(),
+                nn.Linear(layer_size, num_class)
+            )
         # NOTE: ZELUN
         # print(f"this is the layer_size {layer_size} this is the enformer target length {target_length} and this is the enformer hidden dim {enformer_hidden_dim} this is the product {enformer_hidden_dim * target_length}")
 

@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 from enformer_pytorch.finetune import BinaryAdapterWrapper
 import time
 import pytorch_lightning as pl
@@ -43,7 +44,18 @@ def finetune_model(cell_type, lr, layer_size, checkpoint_dir):
 
     # Run the command and wait for it to complete
     subprocess.run(cmd)
+    out_file = f'/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/finetune/best_result/{cell_type}/RELU_test_result.txt'
+    # TODO: 
+    # Open the file where you want to redirect the output
+    with open(out_file, 'w') as file:
+        subprocess.run(cmd, stdout=file)
 
+def are_all_sequences_different(seqs, batch_size=8):
+    # Convert the list of sequences into a set
+    unique_seqs = set(seqs)
+
+    # If the size of the set is 1, all sequences are the same
+    return len(unique_seqs) == batch_size
 
 class EnformerFineTuneModel(pl.LightningModule):
     def __init__(self, pretrained_model_name, config):
@@ -53,7 +65,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         self.enformer = Enformer.from_pretrained(pretrained_model_name, use_checkpointing = True)
         self.model = BinaryAdapterWrapper(
             enformer = self.enformer,
-            num_tracks = 2,
+            num_class = 2,
             post_transformer_embed = False,
             auto_set_target_length = False,
             layer_size=config['layer_size'],
@@ -61,6 +73,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         )
         # lr set (default value)
         self.lr = config['lr']
+        self.cell_type = config['cell_type']
 
         # logging the metric used
         self.matthews_corrcoef = BinaryMatthewsCorrCoef()
@@ -104,7 +117,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         accuracy = correct_count / targets.size(0)
 
         self.train_loss.append(loss.clone().detach())
-        self.train_accuracy.append(loss.clone().detach())
+        self.train_accuracy.append(torch.tensor(accuracy))
         return {'loss': loss}
 
     def on_train_epoch_end(self) -> None:
@@ -121,6 +134,9 @@ class EnformerFineTuneModel(pl.LightningModule):
         seqs, target = batch
         loss, logits = self(seqs, target=target)
 
+        result = are_all_sequences_different(seqs)
+
+        print("All sequences are different:" if result else "Sequences are not all different.")
         preds = torch.argmax(logits, dim=1)
 
         # Calculate accuracy
@@ -135,7 +151,7 @@ class EnformerFineTuneModel(pl.LightningModule):
         print(f"test logits {logits}")
         print(f"test probablities {class_1_probs}")
         self.test_loss.append(loss.clone().detach())
-        self.test_accuracy.append(accuracy)
+        self.test_accuracy.append(torch.tensor(accuracy))
         self.test_probs.append(class_1_probs.clone().detach())
         self.test_target.append(target.int())
         self.test_preds.append(preds.clone().detach())
@@ -157,6 +173,13 @@ class EnformerFineTuneModel(pl.LightningModule):
         aupr = self.aupr(probs, targets.int())
         
         mcc = torch.tensor(self.matthews_corrcoef(probs, targets.int()), dtype=torch.float32)
+
+        # Creating a DataFrame from the arrays
+        df = pd.DataFrame({'predicted_probs': probs.cpu(), 'target': targets.cpu()})
+
+        # Outputting to a file in table format (CSV format as an example)
+        file_path = f"/g/data/zk16/zelun/z_li_hon/wonglab_github/enformer-pytorch-fine-tune/finetune/best_result/{self.cell_type}/AUROC_PLOT.csv"
+        df.to_csv(file_path, index=False)
 
         self.log("ptl/test_loss", avg_loss, sync_dist=True)
         self.log("ptl/test_accuracy", avg_acc, sync_dist=True)
@@ -235,9 +258,9 @@ class EnformerFineTuneModel(pl.LightningModule):
 if __name__ == '__main__':
 
     ############# SETTING PARA #############
-    num_epochs = 1
+    num_epochs = 20
 
-    num_samples = 1
+    num_samples = 10
     ############# SETTING PARA #############
     
     torch.cuda.empty_cache()
@@ -300,11 +323,10 @@ if __name__ == '__main__':
         "lr": tune.loguniform(1e-5, 1e-1),
         "batch_size": tune.choice([4, 8]),
         "layer_size": tune.choice([8, 16, 32]),
+        "cell_type": cell_type
     }
 
-
-
-    scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2, metric='ptl/val_loss', mode='min')
+    scheduler = ASHAScheduler(max_t=num_epochs, grace_period=8, reduction_factor=2)
 
     def train_func(config):
         trainer = pl.Trainer(accelerator="auto", devices="auto", 
@@ -324,8 +346,6 @@ if __name__ == '__main__':
         run_config=run_config,
     )
 
-    scheduler = ASHAScheduler(max_t=num_epochs, grace_period=1, reduction_factor=2)
-
     bohb_search = TuneBOHB(
         metric="ptl/val_loss", mode="min"
     )
@@ -335,8 +355,8 @@ if __name__ == '__main__':
             ray_trainer,
             param_space={'train_loop_config': search_space},
             tune_config=tune.TuneConfig(
-                metric="ptl/val_loss",
-                mode="min",
+                metric="ptl/val_loss", 
+                mode='min',
                 num_samples=num_samples,
                 scheduler=scheduler,
                 max_concurrent_trials=2,
@@ -347,7 +367,7 @@ if __name__ == '__main__':
     results = tune_func(num_samples=num_samples)
     end = results.get_best_result(metric="ptl/val_loss", mode="min")
 
-    file_name = f"finetune/best_result/{cell_type}/final_{cell_type}_fine_tune_best_result_with_activation_run_2.txt"
+    file_name = f"finetune/best_result/{cell_type}/ReLU_final_{cell_type}_fine_tune_best_result_with_activation_run_final.txt"
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
     with open(file_name, "w") as f:
         f.write(str(end))
@@ -378,7 +398,14 @@ if __name__ == '__main__':
     print("Sleeping!")
     time.sleep(5)
     print("loading model")
+    torch.cuda.empty_cache()
+    gc.collect()
 
+    print(f"""=========== cell type is {cell_type}  ===========
+              ============ lr is {lr} ===========
+              ================= layer size is {layer_size} ===========
+              ============  checkpoint dir is {checkpoint_dir} ===============
+        """)
     finetune_model(
         cell_type=cell_type,
         lr=lr,

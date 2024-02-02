@@ -244,9 +244,10 @@ if __name__ == '__main__':
     config = {
         'lr' : lr,
         'layer_size' : layer_size,
+        'cell_type': cell_type
     }
     
     model = EnformerFineTuneModel.load_from_checkpoint(os.path.join(checkpoint_dir, "checkpoint.ckpt"), pretrained_model_name='EleutherAI/enformer-official-rough', config=config)
     trainer_2 = pl.Trainer(accelerator="gpu", devices="auto", deterministic=True)
-    test_dataloader_2 = DataLoader(mouse_8_25(cell_type=cell_type, data_class='test'), batch_size=8)
+    test_dataloader_2 = DataLoader(mouse_8_25(cell_type=cell_type, data_class='test'), batch_size=1)
     trainer_2.test(model, dataloaders=[test_dataloader_2])
